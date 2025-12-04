@@ -1,21 +1,11 @@
 pages:
-  # L'image Docker qui sera utilisée pour compiler votre application
   image: node:lts
-
   before_script:
     - npm ci
-
   script:
-    # Précisez ici les étapes de la compilation de votre application
     - npm run build
-
   artifacts:
     paths:
-      # Le dossier qui contient les fichiers compilés à publier.
-      # Il doit être appelé « public ».
       - public
-
   only:
-    # Déclencher une nouvelle compilation et déployer uniquement lorsqu'il y
-    # a un push sur la(les) branche(s) ci-dessous
     - main
