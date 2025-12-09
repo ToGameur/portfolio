@@ -2,48 +2,265 @@
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
-import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="fr">
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700;900&display=swap" rel="stylesheet">
 	</head>
 	<body>
 		<Header />
 		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This
-				template serves as a lightweight, minimally-styled starting point for anyone looking to build
-				a personal website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to
-				<a href="https://docs.astro.build/">read the docs</a>
-				or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out
-				<a href="https://github.com/Charca/astro-blog-template">astro-blog-template</a>
-				by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
+			<section class="hero-background">
+				<div class="overlay"></div> 
+				<div class="hero-content">
+					<div class="status-pill">🎓 Étudiant en BUT MMI</div>
+					
+					<h1><span class="text-gradient">Tom Marcheron</span></h1>
+				</div>
+			</section>
+
+			<section class="presentation-container">
+				<div class="content-box">
+					<h2>Présentation</h2>
+					<p>
+						Je m’appelle Tom Marcheron et je suis actuellement étudiant en Bachelor Universitaire de Technologie des Métiers
+						du Multimédia et de l’Internet (MMI). Grâce à cette formation, je peux développer des compétences dans la communication,
+						le design, le développement web et l'audiovisuel. J’aime bien la création et la technologie, c’est pourquoi j’ai
+						choisi d’intégrer le BUT MMI.
+						<br><br>
+						Étant passionné depuis tout petit par le mixage sonore et l’éclairage DMX, j’ai une bonne base sur l’utilisation de
+						matériels semi-professionnels, notamment un contrôleur DJ de la marque Pioneer, et des projecteurs 
+						(lyres, par LEDs, barres LED…) contrôlables en DMX grâce à une interface SunLite me permettant de créer des ambiances
+						immersives pour certains événements privés que je peux faire.<br>
+						Étant donné que c’est une passion, j'aimerais me diriger vers ce métier pour en faire ma passion. Je suis à la recherche
+						d’opportunités pour intégrer ce milieu professionnel et développer mes compétences dans ce domaine.
+					</p>
+				</div>
+			</section>
+
+			<section class="skills-container">
+				<div class="section-header">
+					<h2>Mes compétences</h2>
+				</div>
+
+				<div class="grid">
+					<a href="/developpement" class="card skill-card">
+						<div class="image-bubble">
+							<img src="../images/dev.jpg" alt="Développement Web" />
+						</div>
+						<h3>Développement Web</h3>
+						<p>HTML, CSS, PHP, JS</p>
+						<span class="link-arrow">Voir les projets &rarr;</span>
+					</a>
+
+					<a href="/communication" class="card skill-card">
+						<div class="image-bubble">
+							<img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=300&q=80" alt="Comm" />
+						</div>
+						<h3>Communication Web</h3>
+						<p>SEO, Réseaux sociaux & Stratégie de contenu</p>
+						<span class="link-arrow">Voir les projets &rarr;</span>
+					</a>
+
+					<a href="/design" class="card skill-card">
+						<div class="image-bubble">
+							<img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=300&q=80" alt="Design" />
+						</div>
+						<h3>Design Multimédia</h3>
+						<p>Création d'interfaces, logos et identités visuelles</p>
+						<span class="link-arrow">Voir les projets &rarr;</span>
+					</a>
+
+					<a href="/light" class="card skill-card">
+						<div class="image-bubble">
+							<img src="https://images.unsplash.com/photo-1514525253440-b393452e8d26?auto=format&fit=crop&w=300&q=80" alt="Light" />
+						</div>
+						<h3>Éclairage Scénique</h3>
+						<p>Régie lumière, DMX & Conception scénique</p>
+						<span class="link-arrow">Voir les projets &rarr;</span>
+					</a>
+				</div>
+
+				<div class="center-action">
+					<a href="/competences" class="btn-main">
+						En savoir plus
+					</a>
+				</div>
+			</section>
 		</main>
 		<Footer />
 	</body>
 </html>
+
+<style>
+	/* --- RESET GLOBAL --- */
+	:global(body) {
+		font-family: 'Outfit', sans-serif !important;
+		margin: 0;
+		background-color: #f9f9f9; /* Fond très légèrement gris pour ressortir les sections blanches */
+	}
+	a { text-decoration: none; }
+
+	main { width: 100%; padding: 0 0 4rem 0; }
+
+	/* --- HERO SECTION --- */
+	.hero-background {
+		position: relative;
+		min-height: 70vh; 
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+		color: white;
+		background-image: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80');
+		background-size: cover;
+		background-position: center;
+	}
+
+	.overlay {
+		position: absolute; inset: 0;
+		background: rgba(0, 0, 0, 0.6); z-index: 1;
+	}
+
+	.hero-content {
+		position: relative; z-index: 2; max-width: 800px; padding: 2rem;
+	}
+
+	.status-pill {
+		display: inline-block;
+		background: rgba(255, 255, 255, 0.1);
+		backdrop-filter: blur(5px);
+		border: 1px solid rgba(255, 255, 255, 0.4);
+		color: #fff;
+		font-size: 0.85rem; font-weight: 700;
+		padding: 0.5rem 1.2rem; border-radius: 50px;
+		letter-spacing: 0.05em; margin-bottom: 1.5rem;
+	}
+
+	h1 {
+		font-size: 4.5rem; font-weight: 800; margin: 0.5rem 0; line-height: 1.1;
+	}
+
+	.text-gradient {
+		background-image: linear-gradient(45deg, #a78bfa, #f472b6);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+	}
+
+	/* --- NOUVELLE SECTION PRÉSENTATION --- */
+	.presentation-container {
+		max-width: 900px;
+		margin: -50px auto 0 auto; /* Remonte un peu sur le hero pour l'effet de style */
+		position: relative;
+		z-index: 10;
+		padding: 0 1.5rem;
+	}
+
+	.content-box {
+		background: white;
+		padding: 3rem;
+		border-radius: 20px;
+		box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+		text-align: center;
+	}
+
+	.content-box h2 {
+		font-size: 2rem;
+		margin-top: 0;
+		color: #111;
+		margin-bottom: 1.5rem;
+	}
+
+	.content-box p {
+		font-size: 1.1rem;
+		color: #555;
+		line-height: 1.8;
+	}
+
+	/* --- SECTION COMPÉTENCES --- */
+	.skills-container {
+		max-width: 1200px; /* Plus large pour faire tenir les 4 cartes */
+		margin: 0 auto;
+		padding: 4rem 1.5rem;
+	}
+
+	.section-header { text-align: center; margin-bottom: 3rem; }
+	.section-header h2 { font-size: 2.2rem; margin-bottom: 0.5rem; color: #111; }
+
+	/* --- GRILLE 4 COLONNES --- */
+	.grid {
+		display: grid;
+		gap: 1.5rem;
+		/* Par défaut (mobile) : 1 colonne */
+		grid-template-columns: 1fr; 
+	}
+
+	/* Sur tablette : 2 colonnes */
+	@media (min-width: 600px) {
+		.grid { grid-template-columns: repeat(2, 1fr); }
+	}
+
+	/* Sur ordinateur : 4 colonnes obligatoires */
+	@media (min-width: 1024px) {
+		.grid { grid-template-columns: repeat(4, 1fr); }
+	}
+
+	/* --- CARTES --- */
+	.card {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+		padding: 2rem 1.5rem;
+		background: #fff;
+		border: 1px solid #eee;
+		border-radius: 20px;
+		color: inherit !important;
+		transition: all 0.3s ease;
+		box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+	}
+
+	.card:hover {
+		transform: translateY(-8px);
+		box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+		border-color: #dbeafe;
+	}
+
+	.image-bubble {
+		width: 80px; /* Un peu plus petit pour que ça rentre bien à 4 */
+		height: 80px;
+		border-radius: 50%;
+		overflow: hidden;
+		margin-bottom: 1.5rem;
+		border: 4px solid #f9fafb;
+	}
+
+	.image-bubble img {
+		width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease;
+	}
+
+	.card:hover .image-bubble img { transform: scale(1.1); }
+
+	.card h3 { font-size: 1.3rem; margin: 0 0 0.5rem 0; color: #111; font-weight: 700; }
+	.card p { color: #666; margin-bottom: 1.5rem; line-height: 1.4; font-size: 0.95rem; }
+	.link-arrow { font-weight: 700; color: #4f39fa; font-size: 0.9rem; }
+
+	/* --- BOUTON FINAL --- */
+	.center-action { text-align: center; margin-top: 4rem; }
+	.btn-main {
+		display: inline-block; background-color: #111; color: #fff !important;
+		padding: 1rem 2.5rem; border-radius: 50px; font-weight: 700; transition: all 0.2s ease;
+	}
+	.btn-main:hover { background-color: #333; transform: scale(1.05); }
+
+	/* --- RESPONSIVE MOBILE --- */
+	@media (max-width: 768px) {
+		h1 { font-size: 3rem; }
+		.hero-background { min-height: 60vh; }
+		.presentation-container { margin-top: 2rem; } /* On annule l'effet de chevauchement sur mobile */
+	}
+</style>
