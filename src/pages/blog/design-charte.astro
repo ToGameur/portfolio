@@ -3,7 +3,8 @@ import Layout from '../../layouts/BlogPost.astro';
 import heroImage from '../../../public/SAE103/page1.jpg';
 // 2. LISTE AUTOMATIQUE DES 9 PAGES
 // Cela crée un tableau ["/SAE103/page1.jpg", "/SAE103/page2.jpg", ... jusqu'à 9]
-const pagesCharte = Array.from({ length: 9 }, (_, i) => `../../../public/SAE103/page${i + 1}.jpg`);
+// ✅ CORRECT : On commence par un slash, et on NE MET PAS "public"
+const pagesCharte = Array.from({ length: 9 }, (_, i) => `/SAE103/page${i + 1}.jpg`);
 ---
 
 <Layout
