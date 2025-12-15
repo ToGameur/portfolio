@@ -25,13 +25,13 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 				
 				<div class="action-box">
 					<p>Vous souhaitez conserver mon profil ? Téléchargez mon CV au format PDF.</p>
-					<a href="public/cv.pdf" download="CV - Tom Marcheron.pdf" class="btn-download">
+					<a href="/portfolio/assets/cv.pdf" download="CV - Tom Marcheron.pdf" class="btn-download">
 						<span class="icon">📥</span> Télécharger le CV
 					</a>
 				</div>
 
 				<div class="cv-preview">
-					<img src="public/cv.jpg" alt="CV de Tom Marcheron" />
+					<img src="/portfolio/assets/cv.pdf" alt="CV de Tom Marcheron" />
 				</div>
 
 			</section>
@@ -137,7 +137,16 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 
 	.icon { font-size: 1.2rem; }
 
-
+	/* --- VISUALISEUR PDF --- */
+	.pdf-viewer-container {
+		width: 100%;
+		height: 1100px; /* Hauteur suffisante pour voir une page A4 entière */
+		background: white;
+		border-radius: 20px;
+		overflow: hidden;
+		box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+		border: 1px solid #eee;
+	}
 
 	/* Message si le PDF ne s'affiche pas (souvent sur mobile) */
 	.fallback-message {
