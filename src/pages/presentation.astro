@@ -54,7 +54,8 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 									<span class="icon">🎂</span>
 									<div class="info">
 										<span class="label">Âge</span>
-										<span class="value">19 ans</span> </div>
+										<span class="value">19 ans</span>
+									</div>
 								</li>
 								<li>
 									<span class="icon">📍</span>
@@ -74,7 +75,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 									<span class="icon">🎓</span>
 									<div class="info">
 										<span class="label">Formation</span>
-										<span class="value">BUT Métiers du Multimédia</span>
+										<span class="value">BUT MMI</span>
 									</div>
 								</li>
 							</ul>
@@ -99,10 +100,9 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 	a { text-decoration: none; }
 	main { width: 100%; padding: 0 0 4rem 0; }
 
-	/* --- HERO SECTION (RÉDUITE) --- */
+	/* --- HERO SECTION --- */
 	.hero-background {
 		position: relative;
-		/* Moins haut que la page d'accueil */
 		min-height: 40vh; 
 		display: flex;
 		align-items: center;
@@ -120,32 +120,33 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 	}
 
 	.hero-content { position: relative; z-index: 2; padding: 2rem; }
+	h1 { font-size: 3.5rem; font-weight: 800; margin: 0;}
 
-	h1 { font-size: 3.5rem; font-weight: 800; margin: 0; }
-	.text-gradient { color: #8B5CF6; } /* Violet punchy */
-
-	/* --- CONTENEUR --- */
+	/* --- CONTENEUR GLOBAL --- */
 	.presentation-container {
-		max-width: 900px;
+		max-width: 900px; /* Largeur max commune */
 		margin: -50px auto 0 auto;
 		position: relative; z-index: 10;
 		padding: 0 1.5rem;
 		display: flex;
 		flex-direction: column;
-		gap: 2rem; /* Espace entre le texte et la carte ID */
+		gap: 2rem;
 	}
 
 	/* --- BOITE DE TEXTE --- */
 	.content-box {
+		width: 100%; /* Force la largeur */
 		background: white;
 		padding: 3rem;
 		border-radius: 20px;
 		box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+		box-sizing: border-box; /* Important pour inclure le padding dans la largeur */
 	}
 
 	.content-box h2 {
 		font-size: 2rem; margin-top: 0; margin-bottom: 1.5rem;
-		color: #22D3EE; /* Cyan */
+		color: #0E0078;
+		text-align: center;
 	}
 
 	.content-box p {
@@ -154,25 +155,25 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 
 	/* --- CARTE D'IDENTITÉ --- */
 	.id-card-wrapper {
-		display: flex;
-		justify-content: center;
+		width: 100%; /* Force la largeur */
 	}
 
 	.id-card {
 		background: white;
-		width: 100%;
-		max-width: 700px;
+		width: 100%; /* Prend toute la place dispo (donc la même que la content-box) */
 		border-radius: 20px;
 		box-shadow: 0 10px 30px rgba(0,0,0,0.08);
 		display: flex;
 		overflow: hidden;
 		border: 1px solid #eee;
+		box-sizing: border-box;
 	}
 
 	/* Partie Gauche (Photo) */
 	.id-photo {
 		background: linear-gradient(135deg, #0E0078, #22D3EE);
-		width: 30%;
+		width: 250px; /* Largeur fixe pour la photo pour garder de la place pour le texte */
+		flex-shrink: 0; /* Empêche la photo de rétrécir */
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -200,7 +201,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 
 	.id-job {
 		display: inline-block;
-		background: #f0fdf4; color: #16a34a; /* Vert style "Actif" */
+		background: #f0fdf4; color: #16a34a;
 		padding: 4px 12px; border-radius: 50px;
 		font-size: 0.8rem; font-weight: 700;
 		margin-bottom: 1.5rem; margin-top: 0.5rem;
@@ -209,7 +210,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 	.id-list {
 		list-style: none; padding: 0; margin: 0;
 		display: grid;
-		grid-template-columns: 1fr 1fr; /* 2 colonnes */
+		grid-template-columns: 1fr 1fr;
 		gap: 1.5rem;
 	}
 
@@ -218,7 +219,6 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 	}
 
 	.icon { font-size: 1.8rem; }
-
 	.info { display: flex; flex-direction: column; }
 	.label { font-size: 0.75rem; color: #888; text-transform: uppercase; font-weight: 700; }
 	.value { font-size: 1.1rem; color: #333; font-weight: 600; }
@@ -227,7 +227,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 	@media (max-width: 768px) {
 		.id-card { flex-direction: column; }
 		.id-photo { width: 100%; padding: 1.5rem; }
-		.id-list { grid-template-columns: 1fr; } /* 1 colonne sur mobile */
+		.id-list { grid-template-columns: 1fr; }
 		.presentation-container { margin-top: -2rem; }
 	}
 </style>
