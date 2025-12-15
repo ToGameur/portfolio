@@ -1,0 +1,129 @@
+---
+import Layout from '../../layouts/BlogPost.astro';
+import heroImage from '../../../public/SAE103/page1.jpg';
+// 2. LISTE AUTOMATIQUE DES 9 PAGES
+// Cela crée un tableau ["/SAE103/page1.jpg", "/SAE103/page2.jpg", ... jusqu'à 9]
+const pagesCharte = Array.from({ length: 9 }, (_, i) => `../../public/SAE103/page${i + 1}.jpg`);
+---
+
+<Layout
+    title="Conception d'une Charte Graphique"
+    description="Création de l'identité visuelle complète et édition du guide de normes graphiques (SAE 103)."
+    pubDate={new Date('January 15 2024')}
+    heroImage={heroImage}
+>
+
+    <section class="intro-text">
+        <h2>Le Contexte du Projet</h2>
+        <p>
+            Dans le cadre de la situation d'apprentissage <strong>SAE 103 (Produire un design graphique)</strong>, 
+            l'objectif était de concevoir une identité visuelle complète pour une marque fictive ou réelle. 
+            Ce projet ne s'arrête pas à la création du logo, mais s'étend à la définition de toutes les normes 
+            graphiques qui permettront à la marque de communiquer de manière cohérente sur tous ses supports.
+        </p>
+        <p>
+            Ce document présente les règles d'utilisation du logotype, les zones de protection, 
+            les interdits, ainsi que les choix typographiques et colorimétriques qui constituent l'ADN de la marque.
+        </p>
+    </section>
+
+    <hr class="divider" />
+
+    <section class="charte-gallery">
+        <h3>Découvrir le livret de normes</h3>
+        <p class="subtitle">Faites défiler pour voir l'intégralité du document.</p>
+
+        <div class="gallery-stack">
+            {pagesCharte.map((imageSrc, index) => (
+                <div class="page-wrapper">
+                    <img 
+                        src={imageSrc} 
+                        alt={`Page ${index + 1} de la charte graphique`} 
+                        loading="lazy" 
+                    />
+                </div>
+            ))}
+        </div>
+    </section>
+
+    <hr class="divider" />
+
+    <section class="details-tech">
+        <h2>Outils & Compétences</h2>
+        <ul class="tools-list">
+            <li><strong>Adobe Illustrator :</strong> Pour la conception vectorielle du logo et des pictogrammes.</li>
+            <li><strong>Adobe InDesign :</strong> Pour la mise en page du livret de normes graphiques.</li>
+            <li><strong>Adobe Photoshop :</strong> Pour les mises en situation (mockups) et le traitement des images.</li>
+        </ul>
+        <p>
+            Ce projet m'a permis de comprendre l'importance de la rigueur dans le design graphique et 
+            la nécessité de créer des systèmes visuels flexibles et durables.
+        </p>
+    </section>
+
+</Layout>
+
+<style>
+    /* --- STYLE GENERAL --- */
+    h2 { font-size: 1.8rem; color: #111; margin-top: 0; margin-bottom: 1rem; }
+    h3 { font-size: 1.5rem; text-align: center; margin-bottom: 0.5rem; }
+    p { line-height: 1.7; color: #444; margin-bottom: 1.5rem; font-size: 1.05rem; }
+    
+    .subtitle { text-align: center; color: #888; font-style: italic; margin-bottom: 3rem; }
+    .divider { margin: 4rem 0; border: 0; border-top: 1px solid #eee; }
+
+    /* --- GALERIE EN COLONNE (STACK) --- */
+    .gallery-stack {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem; /* Espace entre chaque page */
+        align-items: center;
+        background-color: #f3f4f6; /* Fond gris clair pour faire ressortir les pages blanches */
+        padding: 3rem 1rem;
+        border-radius: 15px;
+    }
+
+    .page-wrapper {
+        width: 100%;
+        max-width: 800px; /* Largeur max d'une page A4 à l'écran */
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1); /* Ombre portée pour effet papier */
+        border-radius: 4px;
+        overflow: hidden;
+        transition: transform 0.3s ease;
+    }
+
+    .page-wrapper:hover {
+        transform: scale(1.02); /* Petit zoom au survol */
+    }
+
+    .page-wrapper img {
+        width: 100%;
+        height: auto;
+        display: block; /* Supprime l'espace vide sous l'image */
+    }
+
+    /* --- LISTE OUTILS --- */
+    .tools-list {
+        list-style: none; padding: 0;
+        background: #fff; border: 1px solid #eee;
+        border-radius: 12px; padding: 1.5rem;
+    }
+
+    .tools-list li {
+        margin-bottom: 0.8rem;
+        padding-left: 1.5rem;
+        position: relative;
+    }
+
+    .tools-list li::before {
+        content: "•";
+        color: #EC4899; /* Puce rose */
+        font-weight: bold; font-size: 1.5rem;
+        position: absolute; left: 0; top: -5px;
+    }
+
+    @media (max-width: 768px) {
+        .gallery-stack { padding: 1rem 0.5rem; background: transparent; }
+        .page-wrapper { box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+    }
+</style>
