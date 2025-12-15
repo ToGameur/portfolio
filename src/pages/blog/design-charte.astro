@@ -1,10 +1,6 @@
 ---
 import Layout from '../../layouts/BlogPost.astro';
 import heroImage from '../../../public/SAE103/page1.jpg';
-// 2. LISTE AUTOMATIQUE DES 9 PAGES
-// Cela crée un tableau ["/SAE103/page1.jpg", "/SAE103/page2.jpg", ... jusqu'à 9]
-// ✅ CORRECT : On commence par un slash, et on NE MET PAS "public"
-const pagesCharte = Array.from({ length: 9 }, (_, i) => `/SAE103/page${i + 1}.jpg`);
 ---
 
 <Layout
@@ -35,15 +31,43 @@ const pagesCharte = Array.from({ length: 9 }, (_, i) => `/SAE103/page${i + 1}.jp
         <p class="subtitle">Faites défiler pour voir l'intégralité du document.</p>
 
         <div class="gallery-stack">
-            {pagesCharte.map((imageSrc, index) => (
-                <div class="page-wrapper">
-                    <img 
-                        src={imageSrc} 
-                        alt={`Page ${index + 1} de la charte graphique`} 
-                        loading="lazy" 
-                    />
-                </div>
-            ))}
+            
+            <div class="page-wrapper">
+                <img src="../../public/SAE103/page1.jpg" alt="Page 1 Charte" loading="lazy" />
+            </div>
+
+            <div class="page-wrapper">
+                <img src="../../public/SAE103/page2.jpg" alt="Page 2 Charte" loading="lazy" />
+            </div>
+
+            <div class="page-wrapper">
+                <img src="../../public/SAE103/page3.jpg" alt="Page 3 Charte" loading="lazy" />
+            </div>
+
+            <div class="page-wrapper">
+                <img src="../../public/SAE103/page4.jpg" alt="Page 4 Charte" loading="lazy" />
+            </div>
+
+            <div class="page-wrapper">
+                <img src="../../public/SAE103/page5.jpg" alt="Page 5 Charte" loading="lazy" />
+            </div>
+
+            <div class="page-wrapper">
+                <img src="../../public/SAE103/page6.jpg" alt="Page 6 Charte" loading="lazy" />
+            </div>
+
+            <div class="page-wrapper">
+                <img src="../../public/SAE103/page7.jpg" alt="Page 7 Charte" loading="lazy" />
+            </div>
+
+            <div class="page-wrapper">
+                <img src="../../public/SAE103/page8.jpg" alt="Page 8 Charte" loading="lazy" />
+            </div>
+
+            <div class="page-wrapper">
+                <img src="../../public/SAE103/page9.jpg" alt="Page 9 Charte" loading="lazy" />
+            </div>
+
         </div>
     </section>
 
@@ -77,30 +101,30 @@ const pagesCharte = Array.from({ length: 9 }, (_, i) => `/SAE103/page${i + 1}.jp
     .gallery-stack {
         display: flex;
         flex-direction: column;
-        gap: 2rem; /* Espace entre chaque page */
+        gap: 2rem; 
         align-items: center;
-        background-color: #f3f4f6; /* Fond gris clair pour faire ressortir les pages blanches */
+        background-color: #f3f4f6; 
         padding: 3rem 1rem;
         border-radius: 15px;
     }
 
     .page-wrapper {
         width: 100%;
-        max-width: 800px; /* Largeur max d'une page A4 à l'écran */
-        box-shadow: 0 10px 30px rgba(0,0,0,0.1); /* Ombre portée pour effet papier */
+        max-width: 800px; 
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         border-radius: 4px;
         overflow: hidden;
         transition: transform 0.3s ease;
     }
 
     .page-wrapper:hover {
-        transform: scale(1.02); /* Petit zoom au survol */
+        transform: scale(1.02);
     }
 
     .page-wrapper img {
         width: 100%;
         height: auto;
-        display: block; /* Supprime l'espace vide sous l'image */
+        display: block; 
     }
 
     /* --- LISTE OUTILS --- */
@@ -118,7 +142,7 @@ const pagesCharte = Array.from({ length: 9 }, (_, i) => `/SAE103/page${i + 1}.jp
 
     .tools-list li::before {
         content: "•";
-        color: #EC4899; /* Puce rose */
+        color: #EC4899; 
         font-weight: bold; font-size: 1.5rem;
         position: absolute; left: 0; top: -5px;
     }
