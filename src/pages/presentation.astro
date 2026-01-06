@@ -1,54 +1,76 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Footer from '../components/Footer.astro';
-import Header from '../components/Header.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import BaseHead from "../components/BaseHead.astro";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 ---
 
 <!doctype html>
 <html lang="fr">
 	<head>
-		<BaseHead title={`Présentation | ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
-		<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700;900&display=swap" rel="stylesheet">
+		<BaseHead
+			title={`Présentation | ${SITE_TITLE}`}
+			description={SITE_DESCRIPTION}
+		/>
 	</head>
 	<body>
+		<!-- Background Blobs -->
+		<div class="fixed-background">
+			<div class="blob purple"></div>
+			<div class="blob blue"></div>
+		</div>
+
 		<Header />
 		<main>
-			<section class="hero-background small-hero">
-				<div class="overlay"></div> 
-				<div class="hero-content">
-					<h1>Présentation</h1>
+			<section class="hero-section small-hero">
+				<div class="container hero-container">
+					<span class="badge">A PROPOS</span>
+					<h1 class="hero-title">
+						Mon <span class="text-gradient">Parcours</span>
+					</h1>
 				</div>
 			</section>
 
-			<section class="presentation-container">
-				
-				<div class="content-box">
-					<h2>Mon Parcours</h2>
-					<p>
-						Je m’appelle Tom Marcheron et je suis actuellement étudiant en Bachelor Universitaire de Technologie des Métiers
-						du Multimédia et de l’Internet (MMI). Grâce à cette formation, je peux développer des compétences dans la communication,
-						le design, le développement web et l'audiovisuel. J’aime bien la création et la technologie, c’est pourquoi j’ai
-						choisi d’intégrer le BUT MMI.
-						<br><br>
-						Étant passionné depuis tout petit par le mixage sonore et l’éclairage DMX, j’ai une bonne base sur l’utilisation de
-						matériels semi-professionnels, notamment un contrôleur DJ de la marque Pioneer, et des projecteurs 
-						(lyres, par LEDs, barres LED…) contrôlables en DMX grâce à une interface SunLite me permettant de créer des ambiances
-						immersives pour certains événements privés que je peux faire.<br>
-						Étant donné que c’est une passion, j'aimerais me diriger vers ce métier pour en faire ma passion. Je suis à la recherche
-						d’opportunités pour intégrer ce milieu professionnel et développer mes compétences dans ce domaine.
-					</p>
-				</div>
+			<section class="presentation-section">
+				<div class="container layout-split">
+					<div class="glass-panel content-box">
+						<h2>Qui suis-je ?</h2>
+						<p>
+							Je m’appelle Tom Marcheron et je suis actuellement
+							étudiant en Bachelor Universitaire de Technologie
+							des Métiers du Multimédia et de l’Internet (MMI).
+							Grâce à cette formation, je peux développer des
+							compétences dans la communication, le design, le
+							développement web et l'audiovisuel.
+						</p>
+						<p>
+							J’aime bien la création et la technologie, c’est
+							pourquoi j’ai choisi d’intégrer le BUT MMI.
+						</p>
+						<br />
+						<h3>Une passion pour la scène</h3>
+						<p>
+							Passionné depuis tout petit par le mixage sonore et
+							l’éclairage DMX, j’ai une bonne base sur
+							l’utilisation de matériels semi-professionnels
+							(Pioneer, lyres, SunLite...).
+						</p>
+						<p>
+							Je crée des ambiances immersives pour des événements
+							privés. C'est plus qu'un hobby, c'est une vocation
+							vers laquelle j'aimerais diriger ma carrière
+							professionnelle.
+						</p>
+					</div>
 
-				<div class="id-card-wrapper">
-					<div class="id-card">
+					<div class="glass-panel id-card">
 						<div class="id-photo">
 							<div class="placeholder-icon">TM</div>
 						</div>
 						<div class="id-details">
 							<h3>Tom Marcheron</h3>
 							<span class="id-job">Étudiant MMI</span>
-							
+
 							<ul class="id-list">
 								<li>
 									<span class="icon">🎂</span>
@@ -61,14 +83,16 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 									<span class="icon">📍</span>
 									<div class="info">
 										<span class="label">Localisation</span>
-										<span class="value">Saint-Lô, France</span>
+										<span class="value"
+											>Saint-Lô, France</span
+										>
 									</div>
 								</li>
 								<li>
 									<span class="icon">🚗</span>
 									<div class="info">
 										<span class="label">Mobilité</span>
-										<span class="value">Permis B (Véhiculé)</span>
+										<span class="value">Permis B</span>
 									</div>
 								</li>
 								<li>
@@ -82,7 +106,6 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 						</div>
 					</div>
 				</div>
-
 			</section>
 		</main>
 		<Footer />
@@ -90,144 +113,167 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 </html>
 
 <style>
-	/* --- VARIABLES & GLOBAL --- */
-	:global(body) {
-		font-family: 'Outfit', sans-serif !important;
-		margin: 0;
-		background-color: #f9f9f9;
-		color: #333;
-	}
-	a { text-decoration: none; }
-	main { width: 100%; padding: 0 0 4rem 0; }
-
-	/* --- HERO SECTION --- */
-	.hero-background {
-		position: relative;
-		min-height: 40vh; 
+	/* HERO */
+	.hero-section.small-hero {
+		min-height: 40vh;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		text-align: center;
-		color: white;
-		background-image: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80');
-		background-size: cover;
-		background-position: center;
 	}
 
-	.overlay {
-		position: absolute; inset: 0;
-		background: rgba(0, 0, 0, 0.6); z-index: 1;
-	}
-
-	.hero-content { position: relative; z-index: 2; padding: 2rem; }
-	h1 { font-size: 3.5rem; font-weight: 800; margin: 0;}
-
-	/* --- CONTENEUR GLOBAL --- */
-	.presentation-container {
-		max-width: 900px; /* Largeur max commune */
-		margin: -50px auto 0 auto;
-		position: relative; z-index: 10;
-		padding: 0 1.5rem;
+	.hero-container {
 		display: flex;
 		flex-direction: column;
-		gap: 2rem;
+		align-items: center;
+		gap: 1rem;
 	}
 
-	/* --- BOITE DE TEXTE --- */
+	.hero-title {
+		font-size: 3.5rem;
+		margin: 0;
+	}
+
+	/* LAYOUT */
+	.presentation-section {
+		margin-bottom: 4rem;
+	}
+
+	.layout-split {
+		display: grid;
+		grid-template-columns: 1.5fr 1fr;
+		gap: 2rem;
+		align-items: start;
+	}
+
+	/* CONTENT BOX */
 	.content-box {
-		width: 100%; /* Force la largeur */
-		background: white;
-		padding: 3rem;
-		border-radius: 20px;
-		box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-		box-sizing: border-box; /* Important pour inclure le padding dans la largeur */
+		padding: 2.5rem;
+		border-radius: var(--radius-lg);
 	}
 
 	.content-box h2 {
-		font-size: 2rem; margin-top: 0; margin-bottom: 1.5rem;
-		color: #0E0078;
-		text-align: center;
+		color: var(--color-primary);
+		margin-bottom: 1.5rem;
+		font-size: 2rem;
 	}
-
+	.content-box h3 {
+		color: var(--color-text);
+		margin-top: 1rem;
+		font-size: 1.3rem;
+	}
 	.content-box p {
-		font-size: 1.1rem; color: #555; line-height: 1.8;
+		font-size: 1.05rem;
+		margin-bottom: 1rem;
 	}
 
-	/* --- CARTE D'IDENTITÉ --- */
-	.id-card-wrapper {
-		width: 100%; /* Force la largeur */
-	}
-
+	/* ID CARD */
 	.id-card {
-		background: white;
-		width: 100%; /* Prend toute la place dispo (donc la même que la content-box) */
-		border-radius: 20px;
-		box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-		display: flex;
+		border-radius: var(--radius-lg);
 		overflow: hidden;
-		border: 1px solid #eee;
-		box-sizing: border-box;
+		display: flex;
+		flex-direction: column;
 	}
 
-	/* Partie Gauche (Photo) */
 	.id-photo {
-		background: linear-gradient(135deg, #0E0078, #22D3EE);
-		width: 250px; /* Largeur fixe pour la photo pour garder de la place pour le texte */
-		flex-shrink: 0; /* Empêche la photo de rétrécir */
+		background: var(--gradient-main);
+		height: 150px;
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		padding: 2rem;
 	}
 
 	.placeholder-icon {
-		width: 100px; height: 100px;
+		width: 80px;
+		height: 80px;
 		background: white;
+		color: var(--color-primary);
 		border-radius: 50%;
-		display: flex; align-items: center; justify-content: center;
-		font-size: 2rem; font-weight: 900; color: #0E0078;
-		box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+		font-weight: 900;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 2rem;
+		box-shadow: var(--shadow-lg);
 	}
 
-	/* Partie Droite (Infos) */
 	.id-details {
 		padding: 2rem;
-		flex: 1;
 	}
-
 	.id-details h3 {
-		margin: 0; font-size: 1.8rem; color: #111;
+		font-size: 1.8rem;
+		margin: 0;
 	}
 
 	.id-job {
 		display: inline-block;
-		background: #f0fdf4; color: #16a34a;
-		padding: 4px 12px; border-radius: 50px;
-		font-size: 0.8rem; font-weight: 700;
-		margin-bottom: 1.5rem; margin-top: 0.5rem;
+		background: #dcfce7;
+		color: #166534;
+		padding: 4px 12px;
+		border-radius: 50px;
+		font-size: 0.8rem;
+		font-weight: 700;
+		margin: 0.5rem 0 1.5rem;
 	}
 
 	.id-list {
-		list-style: none; padding: 0; margin: 0;
+		list-style: none;
+		padding: 0;
+		margin: 0;
 		display: grid;
-		grid-template-columns: 1fr 1fr;
+		grid-template-columns: 1fr;
 		gap: 1.5rem;
 	}
 
 	.id-list li {
-		display: flex; align-items: center; gap: 1rem;
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+	}
+	.icon {
+		font-size: 1.5rem;
+		width: 40px;
+		text-align: center;
 	}
 
-	.icon { font-size: 1.8rem; }
-	.info { display: flex; flex-direction: column; }
-	.label { font-size: 0.75rem; color: #888; text-transform: uppercase; font-weight: 700; }
-	.value { font-size: 1.1rem; color: #333; font-weight: 600; }
+	.info {
+		display: flex;
+		flex-direction: column;
+	}
+	.label {
+		font-size: 0.75rem;
+		color: var(--color-text-light);
+		text-transform: uppercase;
+		font-weight: 700;
+	}
+	.value {
+		font-size: 1.1rem;
+		font-weight: 600;
+		color: var(--color-text);
+	}
 
-	/* --- RESPONSIVE MOBILE --- */
-	@media (max-width: 768px) {
-		.id-card { flex-direction: column; }
-		.id-photo { width: 100%; padding: 1.5rem; }
-		.id-list { grid-template-columns: 1fr; }
-		.presentation-container { margin-top: -2rem; }
+	@media (max-width: 900px) {
+		.layout-split {
+			grid-template-columns: 1fr;
+		}
+		.id-card {
+			flex-direction: row;
+			align-items: center;
+		}
+		.id-photo {
+			width: 120px;
+			height: auto;
+			align-self: stretch;
+		}
+	}
+
+	@media (max-width: 600px) {
+		.id-card {
+			flex-direction: column;
+		}
+		.id-photo {
+			width: 100%;
+			height: 150px;
+		}
 	}
 </style>

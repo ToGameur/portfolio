@@ -1,167 +1,326 @@
 ---
-import HeaderLink from './HeaderLink.astro';
-import { SITE_TITLE } from '../consts';
+import HeaderLink from "./HeaderLink.astro";
+import { SITE_TITLE } from "../consts";
 
 const { pathname } = Astro.url;
 
-// Logique pour savoir si un menu parent est actif
-const isPortfolioActive = pathname.includes('/developpement') || pathname.includes('/communication') || pathname.includes('/design') || pathname.includes('/light');
-const isAboutActive = pathname.includes('/presentation') || pathname.includes('/cv');
+// --- ASTUCE IMPORTANTE ---
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+
+// Logique pour les menus actifs
+const isPortfolioActive =
+	pathname.includes("/developpement") ||
+	pathname.includes("/communication") ||
+	pathname.includes("/design") ||
+	pathname.includes("/light");
+const isAboutActive =
+	pathname.includes("/presentation") || pathname.includes("/cv");
 ---
 
-<header>
-	<nav>
-		<h2><a href="/">{SITE_TITLE}</a></h2>
+<header class="header-animate">
+	<nav class="glass-panel">
+		<div class="logo">
+			<a href={base + "/"}>{SITE_TITLE}</a>
+		</div>
 
 		<div class="internal-links">
-			<HeaderLink href="/">Accueil</HeaderLink>
+			<a
+				href={base + "/"}
+				class={pathname === base || pathname === base + "/"
+					? "active"
+					: ""}
+			>
+				Accueil
+			</a>
 
 			<div class="dropdown">
-				<button class={`dropbtn ${isAboutActive ? 'active' : ''}`}>
-					A propos 
-					<svg class="chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+				<button class={`dropbtn ${isAboutActive ? "active" : ""}`}>
+					A propos
+					<svg class="chevron" viewBox="0 0 20 20" fill="currentColor"
+						><path
+							fill-rule="evenodd"
+							d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+							clip-rule="evenodd"></path></svg
+					>
 				</button>
 				<div class="dropdown-content">
-					<a href="/presentation" class={pathname === '/presentation' ? 'sub-active' : ''}>Présentation</a>
-					<a href="/cv" class={pathname === '/cv' ? 'sub-active' : ''}>Mon CV</a>
+					<div class="glass-panel">
+						<a
+							href={base + "/presentation"}
+							class={pathname.includes("/presentation")
+								? "sub-active"
+								: ""}>Présentation</a
+						>
+						<a
+							href={base + "/cv"}
+							class={pathname.includes("/cv") ? "sub-active" : ""}
+							>Mon CV</a
+						>
+					</div>
 				</div>
 			</div>
 
-			<HeaderLink href="/competences">Compétences</HeaderLink>
+			<HeaderLink href={base + "/competences"}>Compétences</HeaderLink>
 
 			<div class="dropdown">
-				<button class={`dropbtn ${isPortfolioActive ? 'active' : ''}`}>
+				<button class={`dropbtn ${isPortfolioActive ? "active" : ""}`}>
 					Portfolio
-					<svg class="chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+					<svg class="chevron" viewBox="0 0 20 20" fill="currentColor"
+						><path
+							fill-rule="evenodd"
+							d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+							clip-rule="evenodd"></path></svg
+					>
 				</button>
 				<div class="dropdown-content">
-					<a href="/developpement" class={pathname.includes('/developpement') ? 'sub-active' : ''}>Dev WEB</a>
-					<a href="/communication" class={pathname.includes('/communication') ? 'sub-active' : ''}>Communication WEB</a>
-					<a href="/design" class={pathname.includes('/design') ? 'sub-active' : ''}>Design Multimédia</a>
-					<a href="/light" class={pathname.includes('/light') ? 'sub-active' : ''}>Éclairage scénique</a>
+					<div class="glass-panel">
+						<a
+							href={base + "/developpement"}
+							class={pathname.includes("/developpement")
+								? "sub-active"
+								: ""}>Dev WEB</a
+						>
+						<a
+							href={base + "/communication"}
+							class={pathname.includes("/communication")
+								? "sub-active"
+								: ""}>Communication WEB</a
+						>
+						<a
+							href={base + "/design"}
+							class={pathname.includes("/design")
+								? "sub-active"
+								: ""}>Design Multimédia</a
+						>
+						<a
+							href={base + "/light"}
+							class={pathname.includes("/light")
+								? "sub-active"
+								: ""}>Éclairage scénique</a
+						>
+					</div>
 				</div>
 			</div>
 
-			<HeaderLink href="/contact">Contact</HeaderLink>
+			<HeaderLink href={base + "/contact"}>Contact</HeaderLink>
 		</div>
 
 		<div class="social-links">
-			<a href="https://linkedin.com/in/tom-marcheron-35b087357" target="_blank" aria-label="LinkedIn">
-				<svg viewBox="0 0 24 24" aria-hidden="true" width="20" height="20" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"></path></svg>
+			<a
+				href="https://linkedin.com/in/tom-marcheron-35b087357"
+				target="_blank"
+				aria-label="LinkedIn"
+			>
+				<svg
+					viewBox="0 0 24 24"
+					aria-hidden="true"
+					width="20"
+					height="20"
+					fill="currentColor"
+					><path
+						d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"
+					></path></svg
+				>
 			</a>
-			<a href="mailto:ton-email@exemple.com" aria-label="Email">
-				<svg viewBox="0 0 24 24" aria-hidden="true" width="20" height="20" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"></path></svg>
+			<a href="mailto:tom.marcheron@gmail.com" aria-label="Email">
+				<svg
+					viewBox="0 0 24 24"
+					aria-hidden="true"
+					width="20"
+					height="20"
+					fill="currentColor"
+					><path
+						d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"
+					></path></svg
+				>
 			</a>
 		</div>
 	</nav>
 </header>
 
 <style>
-	/* --- LAYOUT DU HEADER --- */
+	/* --- HEADER FLOTTANT --- */
 	header {
-		margin: 0; padding: 0 1rem;
-		background: white; /* Fond blanc pur */
-		/* Ombre ultra légère, quasi invisible */
-		border-bottom: 1px solid #f0f0f0;
-		position: sticky; top: 0; z-index: 1000;
+		position: sticky;
+		top: 1rem;
+		z-index: 100;
+		padding: 0 1rem;
+		display: flex;
+		justify-content: center;
+		margin-bottom: 2rem;
+	}
+
+	.header-animate {
+		animation: slideDown 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+	}
+
+	@keyframes slideDown {
+		from {
+			transform: translateY(-100%);
+			opacity: 0;
+		}
+		to {
+			transform: translateY(0);
+			opacity: 1;
+		}
 	}
 
 	nav {
-		display: flex; align-items: center; justify-content: space-between;
-		max-width: 1200px; margin: 0 auto; height: 70px;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		width: 100%;
+		max-width: 1000px;
+		padding: 0.75rem 1.5rem;
+		border-radius: 100px; /* Forme de pilule */
 	}
 
-	h2 { margin: 0; font-size: 1.1rem; font-weight: 700; letter-spacing: -0.5px; }
-	h2 a { text-decoration: none; color: #111; }
+	.logo a {
+		font-weight: 800;
+		font-size: 1.2rem;
+		color: var(--color-primary-dark);
+		letter-spacing: -0.5px;
+		text-decoration: none;
+	}
 
-	/* --- LIENS (STYLE MINIMALISTE) --- */
+	/* --- LIENS --- */
 	.internal-links {
-		display: flex; gap: 0.5rem; height: 100%; align-items: center;
+		display: flex;
+		gap: 0.25rem;
+		align-items: center;
 	}
 
-	.internal-links :global(a), 
+	/* On surcharge les HeaderLink qui sont des <a> */
+	.internal-links :global(a),
 	.dropbtn {
-		font-family: 'Outfit', sans-serif !important;
-		font-size: 0.95rem;
-		font-weight: 400; /* Texte fin par défaut */
-		color: #555;      /* Gris foncé (pas noir complet pour la légèreté) */
+		font-family: "Outfit", sans-serif;
+		font-size: 0.9rem;
+		font-weight: 500;
+		color: var(--color-text-light);
 		text-decoration: none;
 		padding: 0.5rem 1rem;
-		border-radius: 8px; /* Bords arrondis pour l'effet pilule */
-		display: inline-flex; align-items: center; gap: 4px;
-		border: none; background: none; cursor: pointer;
+		border-radius: 50px;
+		display: inline-flex;
+		align-items: center;
+		gap: 4px;
+		border: none;
+		background: none;
+		cursor: pointer;
 		transition: all 0.2s ease;
 	}
 
-	/* --- ETAT ACTIF (STYLE PILULE GRISE) --- */
+	.internal-links :global(a:hover),
+	.dropbtn:hover {
+		color: var(--color-primary);
+		background: rgba(79, 70, 229, 0.05);
+	}
+
 	.internal-links :global(a.active),
 	.dropbtn.active {
-		background-color: #F3F4F6; /* Fond Gris très pâle */
-		color: #000;               /* Texte noir pour le contraste */
-		font-weight: 600;          /* Un peu plus gras */
+		background: var(--color-primary);
+		color: white;
+		box-shadow: 0 2px 10px rgba(79, 70, 229, 0.3);
 	}
 
-	/* Survol simple */
-	.internal-links :global(a):hover,
-	.dropbtn:hover {
-		color: #000;
-		background-color: #fafafa;
+	/* Chevron */
+	.chevron {
+		width: 12px;
+		height: 12px;
+		opacity: 0.6;
+		transition: transform 0.2s;
 	}
-	
-	/* --- MENU DÉROULANT --- */
-	.dropdown { position: relative; height: 100%; display: flex; align-items: center; }
-	.chevron { width: 14px; height: 14px; opacity: 0.4; transition: transform 0.2s; }
+	.dropdown:hover .chevron {
+		transform: rotate(180deg);
+	}
+
+	/* --- DROPDOWN --- */
+	.dropdown {
+		position: relative;
+	}
 
 	.dropdown-content {
-		display: none; position: absolute;
-		top: 55px; left: 50%; transform: translateX(-50%);
-		background-color: white; min-width: 200px;
-		/* Ombre douce */
-		box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-		border-radius: 12px; padding: 6px;
-		border: 1px solid #f0f0f0; z-index: 999;
+		display: none;
+		position: absolute;
+		top: 100%; /* Collé au bouton */
+		padding-top: 10px; /* Zone tampon invisible */
+		left: 50%;
+		transform: translateX(-50%);
+		min-width: 200px;
+		flex-direction: column;
+		z-index: 1000;
+	}
+
+	/* Le panneau interne qui contient les liens et le fond glass */
+	.dropdown-content .glass-panel {
+		padding: 0.5rem;
+		border-radius: var(--radius-md);
+		display: flex;
+		overflow: hidden; /* Empêche le hover de déborder */
+		flex-direction: column;
+		gap: 2px;
+		background: rgba(255, 255, 255, 0.95);
+		box-shadow: var(--shadow-lg);
+	}
+
+	.dropdown:hover .dropdown-content {
+		display: flex;
+		animation: fadeIn 0.15s ease-out;
 	}
 
 	.dropdown-content a {
-		font-weight: 400 !important; font-size: 0.9rem;
-		display: block; width: 100%; box-sizing: border-box;
-		padding: 8px 12px !important;
-		border-radius: 6px; color: #555 !important;
+		border-radius: var(--radius-sm);
+		justify-content: flex-start;
+		width: 100%;
+		color: var(--color-text) !important;
 	}
 
 	.dropdown-content a:hover {
-		background-color: #F3F4F6; color: #000 !important;
-	}
-	
-	/* Lien actif dans le sous-menu (Juste en gras) */
-	.dropdown-content a.sub-active {
-		color: #000 !important;
-		font-weight: 600 !important;
-		background-color: #F3F4F6;
+		background: rgba(79, 70, 229, 0.05);
+		color: var(--color-primary) !important;
 	}
 
-	.dropdown:hover .dropdown-content { display: flex; flex-direction: column; animation: fadeIn 0.15s ease-out; }
-	.dropdown:hover .chevron { transform: rotate(180deg); }
+	.dropdown-content a.sub-active {
+		background: rgba(79, 70, 229, 0.1);
+		color: var(--color-primary) !important;
+		font-weight: 700;
+	}
 
 	@keyframes fadeIn {
-		from { opacity: 0; transform: translateX(-50%) translateY(-5px); }
-		to { opacity: 1; transform: translateX(-50%) translateY(0); }
+		from {
+			opacity: 0;
+			transform: translateX(-50%) translateY(5px);
+		}
+		to {
+			opacity: 1;
+			transform: translateX(-50%) translateY(0);
+		}
 	}
 
 	/* --- SOCIAUX --- */
-	.social-links { display: flex; gap: 0.8rem; align-items: center; }
-	.social-links a { 
-		color: #666; 
-		display: flex; transition: color 0.2s; 
-		padding: 8px; border-radius: 50%; /* Zone de clic ronde */
+	.social-links {
+		display: flex;
+		gap: 0.5rem;
 	}
-	.social-links a:hover { 
-		color: #000; 
-		background-color: #F3F4F6; /* Petit rond gris au survol */
+	.social-links a {
+		color: var(--color-text-light);
+		padding: 8px;
+		border-radius: 50%;
+		display: flex;
+		transition: all 0.2s;
+	}
+	.social-links a:hover {
+		color: var(--color-primary);
+		background: rgba(79, 70, 229, 0.1);
+		transform: rotate(15deg);
 	}
 
-	@media (max-width: 768px) {
-		.social-links { display: none; }
-		.internal-links { display: none; }
+	@media (max-width: 850px) {
+		.social-links,
+		.internal-links {
+			display: none;
+		}
+		nav {
+			justify-content: center;
+		}
 	}
 </style>

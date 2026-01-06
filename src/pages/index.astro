@@ -1,103 +1,166 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Footer from '../components/Footer.astro';
-import Header from '../components/Header.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import BaseHead from "../components/BaseHead.astro";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 
-// 1. IMPORT DU COMPOSANT IMAGE
-import { Image } from 'astro:assets';
+import { Image } from "astro:assets";
 
-// 2. IMPORT DES IMAGES DEPUIS src/assets/images/
-import devImg from '../imgs/images/dev.jpg';
-import comImg from '../imgs/images/com.jpg';
-import creaImg from '../imgs/images/crea.jpg';
-import lightImg from '../imgs/images/light.jpg';
+// Modifie les chemins pour pointer vers src/assets/
+import devImg from "../assets/images/dev.jpg";
+import comImg from "../assets/images/com.jpg";
+import creaImg from "../assets/images/crea.jpg";
+import lightImg from "../assets/images/light.jpg";
 ---
 
 <!doctype html>
 <html lang="fr">
     <head>
         <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-        <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700;900&display=swap" rel="stylesheet">
     </head>
     <body>
+        <div class="fixed-background">
+            <div class="blob purple"></div>
+            <div class="blob blue"></div>
+            <div class="blob cyan"></div>
+        </div>
+
         <Header />
+
         <main>
-            <section class="hero-background">
-                <div class="overlay"></div> 
-                <div class="hero-content">
-                    <div class="status-pill">🎓 Étudiant en BUT MMI</div>
-                    
-                    <h1><span class="text-gradient">Tom Marcheron</span></h1>
-                </div>
-            </section>
+            <!-- HERO -->
+            <section class="hero-section">
+                <div class="container hero-container">
+                    <span class="badge animate-float"
+                        >🎓 Étudiant en BUT MMI</span
+                    >
 
-            <section class="presentation-container">
-                <div class="content-box">
-                    <h2>Présentation</h2>
-                    <p>
-                        Je m’appelle Tom Marcheron et je suis actuellement étudiant en Bachelor Universitaire de Technologie des Métiers
-                        du Multimédia et de l’Internet (MMI). Grâce à cette formation, je peux développer des compétences dans la communication,
-                        le design, le développement web et l'audiovisuel. J’aime bien la création et la technologie, c’est pourquoi j’ai
-                        choisi d’intégrer le BUT MMI.
-                        <br><br>
-                        Étant passionné depuis tout petit par le mixage sonore et l’éclairage DMX, j’ai une bonne base sur l’utilisation de
-                        matériels semi-professionnels, notamment un contrôleur DJ de la marque Pioneer, et des projecteurs 
-                        (lyres, par LEDs, barres LED…) contrôlables en DMX grâce à une interface SunLite me permettant de créer des ambiances
-                        immersives pour certains événements privés que je peux faire.<br>
-                        Étant donné que c’est une passion, j'aimerais me diriger vers ce métier pour en faire ma passion. Je suis à la recherche
-                        d’opportunités pour intégrer ce milieu professionnel et développer mes compétences dans ce domaine.
+                    <h1 class="hero-title">
+                        <span class="text-primary">Tom</span>
+                        <br />
+                        <span class="text-gradient">Marcheron</span>
+                    </h1>
+
+                    <p class="hero-text text-balance">
+                        Étudiant créatif et passionné par la convergence entre
+                        le <span class="highlight">Design</span>, le <span
+                            class="highlight">Développement Web</span
+                        > et l'<span class="highlight">Audiovisuel</span>.
                     </p>
+
+                    <div class="hero-actions">
+                        <a href="#competences" class="btn btn-primary"
+                            >Découvrir mon univers</a
+                        >
+                        <a href="/contact" class="btn btn-secondary"
+                            >Me contacter</a
+                        >
+                    </div>
                 </div>
             </section>
 
-            <section class="skills-container">
-                <div class="section-header">
-                    <h2>Mes compétences</h2>
+            <!-- PRESENTATION STRIP -->
+            <section class="presentation-section">
+                <div class="container">
+                    <div class="glass-panel presentation-box">
+                        <h2>Mon Histoire</h2>
+                        <p>
+                            Passionné depuis toujours par la technique et
+                            l'artistique, je navigue entre la rigueur du code et
+                            la liberté du design. Le BUT MMI m'offre le terrain
+                            de jeu idéal pour expérimenter et fusionner ces
+                            domaines.
+                        </p>
+                        <p>
+                            Mon univers s'étend aussi à la scène : l'éclairage
+                            DMX et le mixage sonore sont mes passions nocturnes,
+                            où je crée des ambiances immersives.
+                        </p>
+                    </div>
                 </div>
+            </section>
 
-                <div class="grid">
-                    <a href="/developpement" class="card skill-card">
-                        <div class="image-bubble">
-                            <Image src={devImg} alt="Développement Web" width={200} />
-                        </div>
-                        <h3>Développement Web</h3>
-                        <p>HTML, CSS, PHP et JS</p>
-                        <span class="link-arrow">Voir les projets &rarr;</span>
-                    </a>
+            <!-- SKILLS -->
+            <section id="competences" class="skills-section">
+                <div class="container">
+                    <div class="section-header">
+                        <h2>Mes Domaines</h2>
+                        <p>Quatre piliers qui définissent mon profil hybride</p>
+                    </div>
 
-                    <a href="/communication" class="card skill-card">
-                        <div class="image-bubble">
-                            <Image src={comImg} alt="Communication Web" width={200} />
-                        </div>
-                        <h3>Communication Web</h3>
-                        <p>SEO, Réseaux sociaux et Stratégie de contenu</p>
-                        <span class="link-arrow">Voir les projets &rarr;</span>
-                    </a>
+                    <div class="bento-grid">
+                        <a href="/developpement" class="bento-card skill-dev">
+                            <div class="card-content">
+                                <div class="icon-bubble">💻</div>
+                                <h3>Développement</h3>
+                                <p>
+                                    Sites interactifs, applications web &
+                                    intégration soignée.
+                                </p>
+                                <div class="card-image-wrapper">
+                                    <Image
+                                        src={devImg}
+                                        alt="Dev"
+                                        class="card-img"
+                                    />
+                                </div>
+                            </div>
+                        </a>
 
-                    <a href="/design" class="card skill-card">
-                        <div class="image-bubble">
-                            <Image src={creaImg} alt="Design Multimédia" width={200} />
-                        </div>
-                        <h3>Design Multimédia</h3>
-                        <p>Création d'interfaces, logos et identités visuelles</p>
-                        <span class="link-arrow">Voir les projets &rarr;</span>
-                    </a>
+                        <a href="/design" class="bento-card skill-design">
+                            <div class="card-content">
+                                <div class="icon-bubble">🎨</div>
+                                <h3>Design & UI</h3>
+                                <p>
+                                    Interfaces modernes, identités visuelles &
+                                    expérience utilisateur.
+                                </p>
+                                <div class="card-image-wrapper">
+                                    <Image
+                                        src={creaImg}
+                                        alt="Design"
+                                        class="card-img"
+                                    />
+                                </div>
+                            </div>
+                        </a>
 
-                    <a href="/light" class="card skill-card">
-                        <div class="image-bubble">
-                            <Image src={lightImg} alt="Éclairage Scénique" width={200} />
-                        </div>
-                        <h3>Éclairage Scénique</h3>
-                        <p>Régie lumière, DMX et Conception scénique</p>
-                        <span class="link-arrow">Voir les projets &rarr;</span>
-                    </a>
-                </div>
+                        <a href="/communication" class="bento-card skill-com">
+                            <div class="card-content">
+                                <div class="icon-bubble">📢</div>
+                                <h3>Communication</h3>
+                                <p>
+                                    Stratégie digitale, SEO & création de
+                                    contenu impactant.
+                                </p>
+                                <div class="card-image-wrapper">
+                                    <Image
+                                        src={comImg}
+                                        alt="Com"
+                                        class="card-img"
+                                    />
+                                </div>
+                            </div>
+                        </a>
 
-                <div class="center-action">
-                    <a href="/competences" class="btn-main">
-                        En savoir plus
-                    </a>
+                        <a href="/light" class="bento-card skill-light">
+                            <div class="card-content">
+                                <div class="icon-bubble">💡</div>
+                                <h3>Lumière & Son</h3>
+                                <p>
+                                    Régie scénique, DMX & immersion
+                                    événementielle.
+                                </p>
+                                <div class="card-image-wrapper">
+                                    <Image
+                                        src={lightImg}
+                                        alt="Light"
+                                        class="card-img"
+                                    />
+                                </div>
+                            </div>
+                        </a>
+                    </div>
                 </div>
             </section>
         </main>
@@ -106,166 +169,169 @@ import lightImg from '../imgs/images/light.jpg';
 </html>
 
 <style>
-    /* --- RESET GLOBAL --- */
-    :global(body) {
-        font-family: 'Outfit', sans-serif !important;
-        margin: 0;
-        background-color: #f9f9f9;
-    }
-    a { text-decoration: none; }
-
-    main { width: 100%; padding: 0 0 4rem 0; }
-
-    /* --- HERO SECTION --- */
-    .hero-background {
-        position: relative;
-        min-height: 70vh; 
+    /* HERO */
+    .hero-section {
+        min-height: 80vh;
         display: flex;
         align-items: center;
-        justify-content: center;
         text-align: center;
-        color: white;
-        background-image: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80');
-        background-size: cover;
-        background-position: center;
-    }
-
-    .overlay {
-        position: absolute; inset: 0;
-        background: rgba(0, 0, 0, 0.6); z-index: 1;
-    }
-
-    .hero-content {
-        position: relative; z-index: 2; max-width: 800px; padding: 2rem;
-    }
-
-    .status-pill {
-        display: inline-block;
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(5px);
-        border: 1px solid rgba(255, 255, 255, 0.4);
-        color: #fff;
-        font-size: 0.85rem; font-weight: 700;
-        padding: 0.5rem 1.2rem; border-radius: 50px;
-        letter-spacing: 0.05em; margin-bottom: 1.5rem;
-    }
-
-    h1 {
-        font-size: 4.5rem; font-weight: 800; margin: 0.5rem 0; line-height: 1.1;
-    }
-
-    .text-gradient {
-        color: #8B5CF6;
-    }
-
-    /* --- SECTION PRÉSENTATION --- */
-    .presentation-container {
-        max-width: 900px;
-        margin: -50px auto 0 auto;
         position: relative;
-        z-index: 10;
-        padding: 0 1.5rem;
+        padding-top: 2rem;
     }
 
-    .content-box {
-        background: white;
-        padding: 3rem;
-        border-radius: 20px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-        text-align: center;
-    }
-
-    .content-box h2 {
-        font-size: 2rem;
-        margin-top: 0;
-        color: #22D3EE;
-        margin-bottom: 1.5rem;
-    }
-
-    .content-box p {
-        font-size: 1.1rem;
-        color: #555;
-        line-height: 1.8;
-    }
-
-    /* --- SECTION COMPÉTENCES --- */
-    .skills-container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 4rem 1.5rem;
-    }
-
-    .section-header { text-align: center; margin-bottom: 3rem; }
-    .section-header h2 { font-size: 2.2rem; margin-bottom: 0.5rem; color: #0E0078; }
-
-    /* --- GRILLE 4 COLONNES --- */
-    .grid {
-        display: grid;
-        gap: 1.5rem;
-        grid-template-columns: 1fr; 
-    }
-
-    @media (min-width: 600px) {
-        .grid { grid-template-columns: repeat(2, 1fr); }
-    }
-
-    @media (min-width: 1024px) {
-        .grid { grid-template-columns: repeat(4, 1fr); }
-    }
-
-    /* --- CARTES --- */
-    .card {
+    .hero-container {
         display: flex;
         flex-direction: column;
         align-items: center;
+        gap: 1.5rem;
+    }
+
+    .hero-title {
+        font-size: clamp(4rem, 10vw, 7rem);
+        line-height: 0.9;
+        margin: 0;
+        font-weight: 800;
+        letter-spacing: -2px;
+    }
+
+    .text-primary {
+        color: var(--color-primary);
+    }
+
+    .hero-text {
+        max-width: 600px;
+        font-size: 1.25rem;
+        color: var(--color-text-light);
+    }
+
+    .highlight {
+        color: var(--color-primary);
+        font-weight: 600;
+    }
+
+    .hero-actions {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    /* PRESENTATION */
+    .presentation-section {
+        margin: 4rem 0;
+    }
+
+    .presentation-box {
+        padding: 3rem;
+        border-radius: var(--radius-lg);
         text-align: center;
-        padding: 2rem 1.5rem;
-        background: #fff;
-        border: 1px solid #eee;
-        border-radius: 20px;
-        color: inherit !important;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+        max-width: 800px;
+        margin: 0 auto;
     }
 
-    .card:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-        border-color: #dbeafe;
-    }
-
-    .image-bubble {
-        width: 80px;
-        height: 80px;
-        border-radius: 50%;
-        overflow: hidden;
+    .presentation-box h2 {
+        color: var(--color-primary);
         margin-bottom: 1.5rem;
-        border: 4px solid #f9fafb;
+    }
+    .presentation-box p {
+        font-size: 1.1rem;
     }
 
-    /* Important : on cible l'image générée par Astro */
-    .image-bubble img {
-        width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease;
+    /* SKILLS BENTO */
+    .skills-section {
+        padding: 4rem 0 8rem;
     }
 
-    .card:hover .image-bubble img { transform: scale(1.1); }
-
-    .card h3 { font-size: 1.3rem; margin: 0 0 0.5rem 0; color: #111; font-weight: 700; }
-    .card p { color: #666; margin-bottom: 1.5rem; line-height: 1.4; font-size: 0.95rem; }
-    .link-arrow { font-weight: 700; color: #4f39fa; font-size: 0.9rem; }
-
-    /* --- BOUTON FINAL --- */
-    .center-action { text-align: center; margin-top: 4rem; }
-    .btn-main {
-        display: inline-block; background-color: #0E0078; color: #fff !important;
-        padding: 1rem 2.5rem; border-radius: 50px; font-weight: 700; transition: all 0.2s ease;
+    .section-header {
+        text-align: center;
+        margin-bottom: 3rem;
     }
-    .btn-main:hover { background-color: #0A0045; transform: scale(1.05); }
+    .section-header h2 {
+        font-size: 2.5rem;
+        color: var(--color-primary-dark);
+    }
 
-    /* --- RESPONSIVE MOBILE --- */
-    @media (max-width: 768px) {
-        h1 { font-size: 3rem; }
-        .hero-background { min-height: 60vh; }
-        .presentation-container { margin-top: 2rem; }
+    .bento-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem; /* Espace plus aéré */
+        align-items: stretch;
+    }
+
+    /* Force 4 columns on large screens */
+    @media (min-width: 1024px) {
+        .bento-grid {
+            grid-template-columns: repeat(4, 1fr);
+        }
+    }
+
+    .bento-card {
+        background: white;
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        text-decoration: none;
+        color: inherit;
+        border: 1px solid var(--color-border);
+        transition: all var(--transition-smooth);
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        position: relative;
+    }
+
+    .bento-card:hover {
+        transform: translateY(-8px);
+        box-shadow: var(--shadow-xl);
+        border-color: var(--color-primary);
+    }
+
+    .card-content {
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        z-index: 2;
+    }
+
+    .icon-bubble {
+        width: 50px;
+        height: 50px;
+        background: var(--color-bg);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .bento-card h3 {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+        color: var(--color-text);
+    }
+    .bento-card p {
+        font-size: 0.95rem;
+        margin-bottom: 1.5rem;
+        flex-grow: 1;
+    }
+
+    .card-image-wrapper {
+        height: 180px;
+        border-radius: var(--radius-md);
+        overflow: hidden;
+        margin-top: auto;
+    }
+
+    .card-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.6s ease;
+    }
+
+    .bento-card:hover .card-img {
+        transform: scale(1.1);
     }
 </style>

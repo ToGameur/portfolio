@@ -1,179 +1,231 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Footer from '../components/Footer.astro';
-import Header from '../components/Header.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+
+/* GitLab Pages SAFE */
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const cvUrl = `${base}/cv.pdf`;
+
+import { Image } from "astro:assets";
+import cvPreviewImg from "../assets/cv-preview.jpg";
 ---
 
 <!doctype html>
 <html lang="fr">
-	<head>
-		<BaseHead title={`Mon CV | ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
-		<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700;900&display=swap" rel="stylesheet">
-	</head>
-	<body>
-		<Header />
-		<main>
-			<section class="hero-background small-hero">
-				<div class="overlay"></div> 
-				<div class="hero-content">
-					<h1>Mon CV</h1>
-				</div>
-			</section>
+  <head>
+    <BaseHead title={`CV | ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
+  </head>
 
-			<section class="cv-container">
-				
-				<div class="action-box">
-					<p>Vous souhaitez conserver mon profil ? Téléchargez mon CV au format PDF.</p>
-					<a href="/portfolio/public/cv.pdf" download="CV - Tom Marcheron.pdf" class="btn-download">
-						<span class="icon">📥</span> Télécharger le CV
-					</a>
-				</div>
+  <body>
+    <!-- BACKGROUND -->
+    <div class="fixed-background">
+      <div class="blob purple"></div>
+      <div class="blob blue"></div>
+      <div class="blob cyan"></div>
+    </div>
 
-				<div class="cv-preview">
-					<img src="/portfolio/public/cv.pdf" alt="CV de Tom Marcheron" />
-				</div>
+    <Header />
 
-			</section>
-		</main>
-		<Footer />
-	</body>
+    <main class="container">
+      <!-- HERO -->
+      <section class="cv-hero">
+        <span class="badge">Curriculum Vitae</span>
+
+        <h1>
+          Mon parcours
+          <span class="text-gradient d-block">professionnel</span>
+        </h1>
+
+        <p class="subtitle">
+          Développeur multimédia & créatif, passionné par le web, le design et
+          la technique.
+        </p>
+
+        <div class="cta">
+          <a
+            href={cvUrl}
+            download="CV - Tom Marcheron.pdf"
+            class="btn btn-primary"
+          >
+            Télécharger le CV
+          </a>
+          <a href="#preview" class="btn btn-secondary"> Voir le document </a>
+        </div>
+      </section>
+
+      <!-- PREVIEW -->
+      <section id="preview" class="preview">
+        <div class="document">
+          <div class="document-bar">
+            <div class="dots">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+            </div>
+            <span class="filename">CV - Tom Marcheron</span>
+          </div>
+
+          <div class="document-content">
+            <a href={cvUrl} target="_blank" class="cv-preview-link">
+              <!-- Placeholder Image - Remplacez 'cv-preview.jpg' par une image de votre CV -->
+              <Image src={cvPreviewImg} alt="Aperçu du CV" class="cv-img" />
+              <div class="overlay">
+                <span class="btn btn-primary">Voir le PDF</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <Footer />
+  </body>
 </html>
 
 <style>
-	/* --- VARIABLES & GLOBAL --- */
-	:global(body) {
-		font-family: 'Outfit', sans-serif !important;
-		margin: 0;
-		background-color: #f9f9f9;
-		color: #333;
-	}
-	a { text-decoration: none; }
-	main { width: 100%; padding: 0 0 4rem 0; }
+  .cv-hero {
+    padding: 6rem 1rem 3rem;
+    text-align: center;
+  }
 
-	/* --- HERO SECTION --- */
-	.hero-background {
-		position: relative;
-		min-height: 40vh; 
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		text-align: center;
-		color: white;
-		background-image: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80');
-		background-size: cover;
-		background-position: center;
-	}
+  .cv-hero h1 {
+    font-size: clamp(3rem, 6vw, 5rem);
+    line-height: 1.1;
+    margin: 1.5rem 0;
+    font-weight: 900;
+  }
 
-	.overlay {
-		position: absolute; inset: 0;
-		background: rgba(0, 0, 0, 0.6); z-index: 1;
-	}
+  .subtitle {
+    max-width: 700px;
+    margin: 0 auto 2.5rem;
+    font-size: 1.1rem;
+    color: var(--color-text-soft);
+  }
 
-	.hero-content { position: relative; z-index: 2; padding: 2rem; }
-	h1 { font-size: 3.5rem; font-weight: 800; margin: 0; }
-	.text-gradient { color: #8B5CF6; }
+  .cta {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
 
-	/* --- CONTENEUR CV --- */
-	.cv-container {
-		max-width: 1000px;
-		margin: -50px auto 0 auto;
-		position: relative; z-index: 10;
-		padding: 0 1.5rem;
-		display: flex;
-		flex-direction: column;
-		gap: 2rem;
-	}
-    .cv-preview {
-		background: white;
-		padding: 10px; /* Petit cadre blanc autour */
-		border-radius: 10px;
-		box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-		line-height: 0; /* Enlève l'espace vide sous l'image */
-	}
+  /* PREVIEW */
 
-	.cv-preview img {
-		width: 100%;
-		height: auto; /* L'image garde ses proportions */
-		border-radius: 5px;
-		display: block;
-	}
+  .preview {
+    padding: 3rem 0 6rem;
+  }
 
-	/* --- BOITE D'ACTION --- */
-	.action-box {
-		background: white;
-		padding: 2rem;
-		border-radius: 20px;
-		box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-		text-align: center;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		gap: 1rem;
-	}
+  .document {
+    background: white;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-strong);
+    overflow: hidden;
+    height: 850px;
+    animation: appear 0.8s ease forwards;
+    transform: translateY(40px);
+    opacity: 0;
+  }
 
-	.action-box p {
-		margin: 0;
-		font-size: 1.1rem;
-		color: #555;
-	}
+  @keyframes appear {
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
 
-	.btn-download {
-		display: inline-flex;
-		align-items: center;
-		gap: 10px;
-		background-color: #0E0078; /* Ton bleu foncé */
-		color: white;
-		padding: 12px 30px;
-		border-radius: 50px;
-		font-weight: 700;
-		transition: transform 0.2s, background-color 0.2s;
-	}
+  .document-bar {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem 1rem;
+    background: #f9fafb;
+    border-bottom: 1px solid var(--color-border);
+  }
 
-	.btn-download:hover {
-		background-color: #0A0045;
-		transform: translateY(-3px);
-	}
+  .dots {
+    display: flex;
+    gap: 6px;
+  }
 
-	.icon { font-size: 1.2rem; }
+  .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+  }
 
-	/* --- VISUALISEUR PDF --- */
-	.pdf-viewer-container {
-		width: 100%;
-		height: 1100px; /* Hauteur suffisante pour voir une page A4 entière */
-		background: white;
-		border-radius: 20px;
-		overflow: hidden;
-		box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-		border: 1px solid #eee;
-	}
+  .red {
+    background: #ff5f56;
+  }
+  .yellow {
+    background: #ffbd2e;
+  }
+  .green {
+    background: #27c93f;
+  }
 
-	/* Message si le PDF ne s'affiche pas (souvent sur mobile) */
-	.fallback-message {
-		height: 100%;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		text-align: center;
-		color: #555;
-	}
+  .filename {
+    font-family: monospace;
+    font-size: 0.8rem;
+    color: #6b7280;
+  }
 
-	.btn-fallback {
-		margin-top: 1rem;
-		color: #0E0078;
-		font-weight: 700;
-		text-decoration: underline;
-	}
+  .document-content {
+    height: calc(100% - 42px);
+    background: #e5e7eb;
+  }
 
-	/* --- RESPONSIVE MOBILE --- */
-	@media (max-width: 768px) {
-		.hero-background { min-height: 30vh; }
-		h1 { font-size: 2.5rem; }
-		
-		/* Sur mobile, on réduit la hauteur du visualiseur car c'est petit */
-		.pdf-viewer-container {
-			height: 500px;
-		}
-	}
+  .cv-preview-link {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cv-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Ou cover selon préférence */
+    background: white;
+    transition: transform 0.3s ease;
+  }
+
+  .overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .cv-preview-link:hover .overlay {
+    opacity: 1;
+  }
+
+  .cv-preview-link:hover .cv-img {
+    transform: scale(1.02);
+  }
+
+  .fallback {
+    height: 100%;
+    display: grid;
+    place-content: center;
+    text-align: center;
+    gap: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    .document {
+      height: 500px;
+    }
+  }
+
+  .d-block {
+    display: block;
+  }
 </style>

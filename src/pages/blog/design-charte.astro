@@ -1,26 +1,44 @@
 ---
-import Layout from '../../layouts/BlogPost.astro';
-import heroImage from 'portfolio/public/SAE103/page1.jpg';
+import Layout from "../../layouts/BlogPost.astro";
+// 1. On importe le composant Image d'Astro pour l'optimisation automatique
+import { Image } from "astro:assets";
+
+// 2. On importe tes 9 images DEPUIS LE DOSSIER src/assets/
+import page1 from "../../assets/SAE103/page1.jpg";
+import page2 from "../../assets/SAE103/page2.jpg";
+import page3 from "../../assets/SAE103/page3.jpg";
+import page4 from "../../assets/SAE103/page4.jpg";
+import page5 from "../../assets/SAE103/page5.jpg";
+import page6 from "../../assets/SAE103/page6.jpg";
+import page7 from "../../assets/SAE103/page7.jpg";
+import page8 from "../../assets/SAE103/page8.jpg";
+import page9 from "../../assets/SAE103/page9.jpg";
+
+// On définit l'image de couverture (la page 1)
+import imageDeCouverture from "../../assets/SAE103/page1.jpg";
 ---
 
 <Layout
     title="Conception d'une Charte Graphique"
     description="Création de l'identité visuelle complète et édition du guide de normes graphiques (SAE 103)."
-    pubDate={new Date('January 15 2024')}
-    heroImage={heroImage}
+    pubDate={new Date("January 15 2024")}
+    heroImage={page1}
 >
-
     <section class="intro-text">
         <h2>Le Contexte du Projet</h2>
         <p>
-            Dans le cadre de la situation d'apprentissage <strong>SAE 103 (Produire un design graphique)</strong>, 
-            l'objectif était de concevoir une identité visuelle complète pour une marque fictive ou réelle. 
-            Ce projet ne s'arrête pas à la création du logo, mais s'étend à la définition de toutes les normes 
-            graphiques qui permettront à la marque de communiquer de manière cohérente sur tous ses supports.
+            Dans le cadre de la situation d'apprentissage <strong
+                >SAE 103 (Produire un design graphique)</strong
+            >, l'objectif était de concevoir une identité visuelle complète pour
+            une marque fictive ou réelle. Ce projet ne s'arrête pas à la
+            création du logo, mais s'étend à la définition de toutes les normes
+            graphiques qui permettront à la marque de communiquer de manière
+            cohérente sur tous ses supports.
         </p>
         <p>
-            Ce document présente les règles d'utilisation du logotype, les zones de protection, 
-            les interdits, ainsi que les choix typographiques et colorimétriques qui constituent l'ADN de la marque.
+            Ce document présente les règles d'utilisation du logotype, les zones
+            de protection, les interdits, ainsi que les choix typographiques et
+            colorimétriques qui constituent l'ADN de la marque.
         </p>
     </section>
 
@@ -28,46 +46,46 @@ import heroImage from 'portfolio/public/SAE103/page1.jpg';
 
     <section class="charte-gallery">
         <h3>Découvrir le livret de normes</h3>
-        <p class="subtitle">Faites défiler pour voir l'intégralité du document.</p>
+        <p class="subtitle">
+            Faites défiler pour voir l'intégralité du document.
+        </p>
 
         <div class="gallery-stack">
-            
             <div class="page-wrapper">
-                <img src="portfolio/public/SAE103/page1.jpg" alt="Page 1 Charte" loading="lazy" />
+                <Image src={page1} alt="Page 1 Charte" width={800} />
             </div>
 
             <div class="page-wrapper">
-                <img src="portfolio/public/SAE103/page2.jpg" alt="Page 2 Charte" loading="lazy" />
+                <Image src={page2} alt="Page 2 Charte" width={800} />
             </div>
 
             <div class="page-wrapper">
-                <img src="portfolio/public/SAE103/page3.jpg" alt="Page 3 Charte" loading="lazy" />
+                <Image src={page3} alt="Page 3 Charte" width={800} />
             </div>
 
             <div class="page-wrapper">
-                <img src="portfolio/public/SAE103/page4.jpg" alt="Page 4 Charte" loading="lazy" />
+                <Image src={page4} alt="Page 4 Charte" width={800} />
             </div>
 
             <div class="page-wrapper">
-                <img src="portfolio/public/SAE103/page5.jpg" alt="Page 5 Charte" loading="lazy" />
+                <Image src={page5} alt="Page 5 Charte" width={800} />
             </div>
 
             <div class="page-wrapper">
-                <img src="portfolio/public/SAE103/page6.jpg" alt="Page 6 Charte" loading="lazy" />
+                <Image src={page6} alt="Page 6 Charte" width={800} />
             </div>
 
             <div class="page-wrapper">
-                <img src="portfolio/public/SAE103/page7.jpg" alt="Page 7 Charte" loading="lazy" />
+                <Image src={page7} alt="Page 7 Charte" width={800} />
             </div>
 
             <div class="page-wrapper">
-                <img src="portfolio/public/SAE103/page8.jpg" alt="Page 8 Charte" loading="lazy" />
+                <Image src={page8} alt="Page 8 Charte" width={800} />
             </div>
 
             <div class="page-wrapper">
-                <img src="portfolio/public/SAE103/page9.jpg" alt="Page 9 Charte" loading="lazy" />
+                <Image src={page9} alt="Page 9 Charte" width={800} />
             </div>
-
         </div>
     </section>
 
@@ -76,42 +94,74 @@ import heroImage from 'portfolio/public/SAE103/page1.jpg';
     <section class="details-tech">
         <h2>Outils & Compétences</h2>
         <ul class="tools-list">
-            <li><strong>Adobe Illustrator :</strong> Pour la conception vectorielle du logo et des pictogrammes.</li>
-            <li><strong>Adobe InDesign :</strong> Pour la mise en page du livret de normes graphiques.</li>
-            <li><strong>Adobe Photoshop :</strong> Pour les mises en situation (mockups) et le traitement des images.</li>
+            <li>
+                <strong>Adobe Illustrator :</strong> Pour la conception vectorielle
+                du logo et des pictogrammes.
+            </li>
+            <li>
+                <strong>Adobe InDesign :</strong> Pour la mise en page du livret de
+                normes graphiques.
+            </li>
+            <li>
+                <strong>Adobe Photoshop :</strong> Pour les mises en situation (mockups)
+                et le traitement des images.
+            </li>
         </ul>
         <p>
-            Ce projet m'a permis de comprendre l'importance de la rigueur dans le design graphique et 
-            la nécessité de créer des systèmes visuels flexibles et durables.
+            Ce projet m'a permis de comprendre l'importance de la rigueur dans
+            le design graphique et la nécessité de créer des systèmes visuels
+            flexibles et durables.
         </p>
     </section>
-
 </Layout>
 
 <style>
     /* --- STYLE GENERAL --- */
-    h2 { font-size: 1.8rem; color: #111; margin-top: 0; margin-bottom: 1rem; }
-    h3 { font-size: 1.5rem; text-align: center; margin-bottom: 0.5rem; }
-    p { line-height: 1.7; color: #444; margin-bottom: 1.5rem; font-size: 1.05rem; }
-    
-    .subtitle { text-align: center; color: #888; font-style: italic; margin-bottom: 3rem; }
-    .divider { margin: 4rem 0; border: 0; border-top: 1px solid #eee; }
+    h2 {
+        font-size: 1.8rem;
+        color: #111;
+        margin-top: 0;
+        margin-bottom: 1rem;
+    }
+    h3 {
+        font-size: 1.5rem;
+        text-align: center;
+        margin-bottom: 0.5rem;
+    }
+    p {
+        line-height: 1.7;
+        color: #444;
+        margin-bottom: 1.5rem;
+        font-size: 1.05rem;
+    }
+
+    .subtitle {
+        text-align: center;
+        color: #888;
+        font-style: italic;
+        margin-bottom: 3rem;
+    }
+    .divider {
+        margin: 4rem 0;
+        border: 0;
+        border-top: 1px solid #eee;
+    }
 
     /* --- GALERIE EN COLONNE (STACK) --- */
     .gallery-stack {
         display: flex;
         flex-direction: column;
-        gap: 2rem; 
+        gap: 2rem;
         align-items: center;
-        background-color: #f3f4f6; 
+        background-color: #f3f4f6;
         padding: 3rem 1rem;
         border-radius: 15px;
     }
 
     .page-wrapper {
         width: 100%;
-        max-width: 800px; 
-        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        max-width: 800px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         border-radius: 4px;
         overflow: hidden;
         transition: transform 0.3s ease;
@@ -121,17 +171,21 @@ import heroImage from 'portfolio/public/SAE103/page1.jpg';
         transform: scale(1.02);
     }
 
+    /* Le composant Image d'Astro génère une balise img, on la style ici */
     .page-wrapper img {
         width: 100%;
         height: auto;
-        display: block; 
+        display: block;
     }
 
     /* --- LISTE OUTILS --- */
     .tools-list {
-        list-style: none; padding: 0;
-        background: #fff; border: 1px solid #eee;
-        border-radius: 12px; padding: 1.5rem;
+        list-style: none;
+        padding: 0;
+        background: #fff;
+        border: 1px solid #eee;
+        border-radius: 12px;
+        padding: 1.5rem;
     }
 
     .tools-list li {
@@ -142,13 +196,21 @@ import heroImage from 'portfolio/public/SAE103/page1.jpg';
 
     .tools-list li::before {
         content: "•";
-        color: #EC4899; 
-        font-weight: bold; font-size: 1.5rem;
-        position: absolute; left: 0; top: -5px;
+        color: #ec4899;
+        font-weight: bold;
+        font-size: 1.5rem;
+        position: absolute;
+        left: 0;
+        top: -5px;
     }
 
     @media (max-width: 768px) {
-        .gallery-stack { padding: 1rem 0.5rem; background: transparent; }
-        .page-wrapper { box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .gallery-stack {
+            padding: 1rem 0.5rem;
+            background: transparent;
+        }
+        .page-wrapper {
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
     }
 </style>
