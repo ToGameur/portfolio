@@ -1,18 +1,14 @@
 image: node:lts
 
 pages:
-  cache:
-    paths:
-      - node_modules/
+  stage: deploy
   script:
-    - npm install
+    - npm ci
     - npm run build
+    - mv dist public
   artifacts:
     paths:
       - public
   only:
     - main
     - master
-
-# To deploy to GitLab Pages, the artifact folder MUST be named 'public'.
-# Since astro.config.mjs already sets 'outDir' to 'public', this works automatically.
