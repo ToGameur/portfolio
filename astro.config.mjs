@@ -7,4 +7,6 @@ export default defineConfig({
 	site: 'https://portfolio-b96939.pages.unicaen.fr',
 	base: '/portfolio',
 	integrations: [mdx(), sitemap()],
+	outDir: 'public',
+  	publicDir: 'static',
 });
