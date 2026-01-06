@@ -60,7 +60,12 @@ const isAboutActive =
 				</div>
 			</div>
 
-			<HeaderLink href={base + "/competences"}>Compétences</HeaderLink>
+			<HeaderLink
+				href={base + "/competences"}
+				class={pathname.includes("/competences") ? "active" : ""}
+			>
+				Compétences
+			</HeaderLink>
 
 			<div class="dropdown">
 				<button class={`dropbtn ${isPortfolioActive ? "active" : ""}`}>
@@ -260,6 +265,7 @@ const isAboutActive =
 		gap: 2px;
 		background: rgba(255, 255, 255, 0.95);
 		box-shadow: var(--shadow-lg);
+		border: 1px solid rgba(0, 0, 0, 0.05);
 	}
 
 	.dropdown:hover .dropdown-content {

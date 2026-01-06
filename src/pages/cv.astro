@@ -3,13 +3,12 @@ import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import { Image } from "astro:assets";
+import cvPreviewImg from "../assets/cv-preview.jpg";
 
 /* GitLab Pages SAFE */
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 const cvUrl = `${base}/cv.pdf`;
-
-import { Image } from "astro:assets";
-import cvPreviewImg from "../assets/cv-preview.jpg";
 ---
 
 <!doctype html>
@@ -31,7 +30,7 @@ import cvPreviewImg from "../assets/cv-preview.jpg";
     <main class="container">
       <!-- HERO -->
       <section class="cv-hero">
-        <span class="badge">Curriculum Vitae</span>
+        <span class="badge">MON CV</span>
 
         <h1>
           Mon parcours
@@ -68,12 +67,19 @@ import cvPreviewImg from "../assets/cv-preview.jpg";
           </div>
 
           <div class="document-content">
-            <a href={cvUrl} target="_blank" class="cv-preview-link">
+            <a
+              href={cvUrl}
+              target="_blank"
+              class="cv-preview-link"
+              title="Ouvrir le CV en PDF"
+            >
               <!-- Placeholder Image - Remplacez 'cv-preview.jpg' par une image de votre CV -->
-              <Image src={cvPreviewImg} alt="Aperçu du CV" class="cv-img" />
-              <div class="overlay">
-                <span class="btn btn-primary">Voir le PDF</span>
-              </div>
+              <Image
+                src={cvPreviewImg}
+                alt="Aperçu du CV de Tom Marcheron"
+                class="cv-img"
+                loading="eager"
+              />
             </a>
           </div>
         </div>
@@ -187,28 +193,15 @@ import cvPreviewImg from "../assets/cv-preview.jpg";
   .cv-img {
     width: 100%;
     height: 100%;
-    object-fit: contain; /* Ou cover selon préférence */
+    object-fit: contain;
     background: white;
-    transition: transform 0.3s ease;
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
 
-  .overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.3);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-
-  .cv-preview-link:hover .overlay {
-    opacity: 1;
-  }
-
+  /* Effet de zoom fluide au survol */
   .cv-preview-link:hover .cv-img {
-    transform: scale(1.02);
+    transform: scale(1.03);
+    cursor: pointer;
   }
 
   .fallback {
