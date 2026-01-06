@@ -2,33 +2,21 @@
 import BaseHead from "../components/BaseHead.astro";
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
+import { Image } from "astro:assets";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 
 // --- C'EST ICI QUE TU AJOUTES TES PROJETS ---
+// Import des images pour les cartes
+import piThumb from "../assets/portfolio_dev/produit_innovant.jpeg";
+
 const projects = [
 	{
-		title: "Mon Portfolio V1",
+		title: "Blog Produit Innovant",
 		description:
-			"Création de mon site personnel pour présenter mes compétences en MMI. Utilisation d'Astro pour la performance.",
-		image: "/portfolio/images/dev.jpg", // Utilise tes images locales
-		tags: ["Astro", "HTML/CSS", "Responsive"],
-		link: "https://github.com/ton-pseudo/portfolio", // Lien vers le site ou le GitHub
-	},
-	{
-		title: "Application Météo",
-		description:
-			"Développement d'une petite application météo connectée à une API. Gestion des états et affichage dynamique.",
-		image: "https://images.unsplash.com/photo-1592210454359-9043f067919b?auto=format&fit=crop&q=80&w=500",
-		tags: ["React", "API", "JavaScript"],
-		link: "#",
-	},
-	{
-		title: "Site Vitrine Agence",
-		description:
-			"Maquette et intégration d'un site pour une agence fictive. Travail sur l'UX/UI et les animations CSS.",
-		image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=500",
-		tags: ["HTML", "SASS", "Figma"],
-		link: "#",
+			"Création complète d'un blog WordPress sur le thème du sport et intégration d'un motion design pour un ballon connecté.",
+		image: piThumb,
+		tags: ["WordPress", "Motion Design", "Rédaction"],
+		link: "/portfolio/developpement/wordpress-blog",
 	},
 	// Copie-colle un bloc {} pour ajouter un nouveau projet
 ];
@@ -65,13 +53,9 @@ const projects = [
 					{
 						projects.map((project) => (
 							<article class="project-card">
-								<a
-									href={project.link}
-									target="_blank"
-									class="card-image-link"
-								>
+								<a href={project.link} class="card-image-link">
 									<div class="card-image">
-										<img
+										<Image
 											src={project.image}
 											alt={project.title}
 										/>
@@ -85,11 +69,7 @@ const projects = [
 									</div>
 									<h3>{project.title}</h3>
 									<p>{project.description}</p>
-									<a
-										href={project.link}
-										class="read-more"
-										target="_blank"
-									>
+									<a href={project.link} class="read-more">
 										Voir le projet &rarr;
 									</a>
 								</div>

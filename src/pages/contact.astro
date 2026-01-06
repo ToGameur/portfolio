@@ -1,76 +1,392 @@
 ---
-import AboutHeroImage from "../assets/blog-placeholder-about.jpg";
-import Layout from "../layouts/BlogPost.astro";
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 ---
 
-<Layout
-	title="Contacts"
-	description="Lorem ipsum dolor sit amet"
-	pubDate={new Date("August 08 2021")}
-	heroImage={AboutHeroImage}
->
-	<p>
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-		tempor incididunt ut labore et dolore magna aliqua. Vitae ultricies leo
-		integer malesuada nunc vel risus commodo viverra. Adipiscing enim eu
-		turpis egestas pretium. Euismod elementum nisi quis eleifend quam
-		adipiscing. In hac habitasse platea dictumst vestibulum. Sagittis purus
-		sit amet volutpat. Netus et malesuada fames ac turpis egestas. Eget
-		magna fermentum iaculis eu non diam phasellus vestibulum lorem. Varius
-		sit amet mattis vulputate enim. Habitasse platea dictumst quisque
-		sagittis. Integer quis auctor elit sed vulputate mi. Dictumst quisque
-		sagittis purus sit amet.
-	</p>
+<!doctype html>
+<html lang="fr">
+	<head>
+		<BaseHead
+			title={`Contact | ${SITE_TITLE}`}
+			description={SITE_DESCRIPTION}
+		/>
+	</head>
+	<body>
+		<!-- BACKGROUND -->
+		<div class="fixed-background">
+			<div class="blob purple"></div>
+			<div class="blob blue"></div>
+			<div class="blob cyan"></div>
+		</div>
 
-	<p>
-		Morbi tristique senectus et netus. Id semper risus in hendrerit gravida
-		rutrum quisque non tellus. Habitasse platea dictumst quisque sagittis
-		purus sit amet. Tellus molestie nunc non blandit massa. Cursus vitae
-		congue mauris rhoncus. Accumsan tortor posuere ac ut. Fringilla urna
-		porttitor rhoncus dolor. Elit ullamcorper dignissim cras tincidunt
-		lobortis. In cursus turpis massa tincidunt dui ut ornare lectus. Integer
-		feugiat scelerisque varius morbi enim nunc. Bibendum neque egestas
-		congue quisque egestas diam. Cras ornare arcu dui vivamus arcu felis
-		bibendum. Dignissim suspendisse in est ante in nibh mauris. Sed tempus
-		urna et pharetra pharetra massa massa ultricies mi.
-	</p>
+		<Header />
 
-	<p>
-		Mollis nunc sed id semper risus in. Convallis a cras semper auctor
-		neque. Diam sit amet nisl suscipit. Lacus viverra vitae congue eu
-		consequat ac felis donec. Egestas integer eget aliquet nibh praesent
-		tristique magna sit amet. Eget magna fermentum iaculis eu non diam. In
-		vitae turpis massa sed elementum. Tristique et egestas quis ipsum
-		suspendisse ultrices. Eget lorem dolor sed viverra ipsum. Vel turpis
-		nunc eget lorem dolor sed viverra. Posuere ac ut consequat semper
-		viverra nam. Laoreet suspendisse interdum consectetur libero id
-		faucibus. Diam phasellus vestibulum lorem sed risus ultricies tristique.
-		Rhoncus dolor purus non enim praesent elementum facilisis. Ultrices
-		tincidunt arcu non sodales neque. Tempus egestas sed sed risus pretium
-		quam vulputate. Viverra suspendisse potenti nullam ac tortor vitae purus
-		faucibus ornare. Fringilla urna porttitor rhoncus dolor purus non. Amet
-		dictum sit amet justo donec enim.
-	</p>
+		<main class="container">
+			<!-- HERO -->
+			<section class="hero-section">
+				<span class="badge">ME CONTACTER</span>
+				<h1>
+					Parlons de votre <br />
+					<span class="text-gradient">projet</span>
+				</h1>
+				<p class="subtitle">
+					Une idée ? Une collaboration ? N'hésitez pas à m'envoyer un
+					message. Je vous répondrai dans les plus brefs délais.
+				</p>
+			</section>
 
-	<p>
-		Mattis ullamcorper velit sed ullamcorper morbi tincidunt. Tortor posuere
-		ac ut consequat semper viverra. Tellus mauris a diam maecenas sed enim
-		ut sem viverra. Venenatis urna cursus eget nunc scelerisque viverra
-		mauris in. Arcu ac tortor dignissim convallis aenean et tortor at.
-		Curabitur gravida arcu ac tortor dignissim convallis aenean et tortor.
-		Egestas tellus rutrum tellus pellentesque eu. Fusce ut placerat orci
-		nulla pellentesque dignissim enim sit amet. Ut enim blandit volutpat
-		maecenas volutpat blandit aliquam etiam. Id donec ultrices tincidunt
-		arcu. Id cursus metus aliquam eleifend mi.
-	</p>
+			<div class="contact-wrapper">
+				<!-- LEFT: INFO -->
+				<div class="contact-info glass-panel">
+					<h2>Coordonnées</h2>
+					<p class="info-intro">
+						Basé en France, je suis disponible pour des projets de
+						développement, de design et de régie lumière.
+					</p>
 
-	<p>
-		Tempus quam pellentesque nec nam aliquam sem. Risus at ultrices mi
-		tempus imperdiet. Id porta nibh venenatis cras sed felis eget velit.
-		Ipsum a arcu cursus vitae. Facilisis magna etiam tempor orci eu lobortis
-		elementum. Tincidunt dui ut ornare lectus sit. Quisque non tellus orci
-		ac. Blandit libero volutpat sed cras. Nec tincidunt praesent semper
-		feugiat nibh sed pulvinar proin gravida. Egestas integer eget aliquet
-		nibh praesent tristique magna.
-	</p>
-</Layout>
+					<div class="info-list">
+						<div class="info-item">
+							<div class="icon-box">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									><path
+										d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+									></path><polyline points="22,6 12,13 2,6"
+									></polyline></svg
+								>
+							</div>
+							<div class="info-text">
+								<span class="label">Email</span>
+								<a
+									href="mailto:tom.marcheron@gmail.com"
+									class="value">tom.marcheron@gmail.com</a
+								>
+							</div>
+						</div>
+
+						<div class="info-item">
+							<div class="icon-box">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									><path
+										d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"
+									></path><circle cx="12" cy="10" r="3"
+									></circle></svg
+								>
+							</div>
+							<div class="info-text">
+								<span class="label">Localisation</span>
+								<span class="value">Normandie, France</span>
+							</div>
+						</div>
+
+						<div class="info-item">
+							<div class="icon-box">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									><path
+										d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
+									></path><rect
+										x="2"
+										y="9"
+										width="4"
+										height="12"></rect><circle
+										cx="4"
+										cy="4"
+										r="2"></circle></svg
+								>
+							</div>
+							<div class="info-text">
+								<span class="label">LinkedIn</span>
+								<a
+									href="https://linkedin.com/in/tom-marcheron-35b087357"
+									target="_blank"
+									class="value">Tom Marcheron</a
+								>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- RIGHT: FORM -->
+				<div class="contact-form glass-panel">
+					<form>
+						<div class="form-group">
+							<label for="name">Nom et Prénom</label>
+							<input
+								type="text"
+								id="name"
+								name="name"
+								placeholder="Votre nom"
+								required
+							/>
+						</div>
+
+						<div class="form-group">
+							<label for="email">Email</label>
+							<input
+								type="email"
+								id="email"
+								name="email"
+								placeholder="votre@email.com"
+								required
+							/>
+						</div>
+
+						<div class="form-group">
+							<label for="subject">Sujet</label>
+							<input
+								type="text"
+								id="subject"
+								name="subject"
+								placeholder="Proposition de projet..."
+								required
+							/>
+						</div>
+
+						<div class="form-group">
+							<label for="message">Message</label>
+							<textarea
+								id="message"
+								name="message"
+								rows="5"
+								placeholder="Dites-moi tout..."
+								required></textarea>
+						</div>
+
+						<button type="submit" class="submit-btn">
+							<span>Envoyer le message</span>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								><line x1="22" y1="2" x2="11" y2="13"
+								></line><polygon
+									points="22 2 15 22 11 13 2 9 22 2"
+								></polygon></svg
+							>
+						</button>
+					</form>
+				</div>
+			</div>
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<style>
+	/* HERO */
+	.hero-section {
+		padding: 6rem 0 3rem;
+		text-align: center;
+	}
+	.hero-section h1 {
+		font-size: clamp(2.5rem, 5vw, 4rem);
+		line-height: 1.1;
+		margin: 1.5rem 0;
+		font-weight: 900;
+	}
+	.subtitle {
+		max-width: 600px;
+		margin: 0 auto 3rem;
+		font-size: 1.1rem;
+		color: var(--color-text-soft);
+	}
+
+	/* LAYOUT */
+	.contact-wrapper {
+		display: grid;
+		grid-template-columns: 1fr 1.5fr;
+		gap: 2rem;
+		padding-bottom: 4rem;
+	}
+
+	/* PANELS */
+	.glass-panel {
+		background: rgba(255, 255, 255, 0.6);
+		backdrop-filter: blur(12px);
+		border: 1px solid rgba(255, 255, 255, 0.5);
+		border-radius: var(--radius-lg);
+		padding: 2.5rem;
+		box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+	}
+
+	/* LEFT COLUMN: INFO */
+	.contact-info h2 {
+		font-size: 1.8rem;
+		margin-bottom: 1rem;
+		color: var(--color-text-main);
+	}
+	.info-intro {
+		color: var(--color-text-light);
+		margin-bottom: 2.5rem;
+		line-height: 1.6;
+	}
+
+	.info-list {
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+	}
+
+	.info-item {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+	}
+
+	.icon-box {
+		width: 50px;
+		height: 50px;
+		background: linear-gradient(
+			135deg,
+			rgba(255, 255, 255, 0.8),
+			rgba(255, 255, 255, 0.4)
+		);
+		border: 1px solid white;
+		border-radius: 12px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: var(--color-primary);
+		box-shadow: var(--shadow-sm);
+	}
+	.icon-box svg {
+		width: 24px;
+		height: 24px;
+	}
+
+	.info-text {
+		display: flex;
+		flex-direction: column;
+	}
+	.info-text .label {
+		font-size: 0.8rem;
+		text-transform: uppercase;
+		letter-spacing: 1px;
+		color: var(--color-text-soft);
+		font-weight: 600;
+	}
+	.info-text .value {
+		font-size: 1.1rem;
+		color: var(--color-text-main);
+		font-weight: 500;
+		text-decoration: none;
+		transition: color 0.2s;
+	}
+	.info-text a.value:hover {
+		color: var(--color-primary);
+	}
+
+	/* RIGHT COLUMN: FORM */
+	.contact-form form {
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+	}
+
+	.form-group {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+
+	label {
+		font-weight: 600;
+		color: var(--color-text-main);
+		font-size: 0.95rem;
+	}
+
+	input,
+	textarea {
+		background: rgba(255, 255, 255, 0.5);
+		border: 1px solid rgba(255, 255, 255, 0.5);
+		border-radius: var(--radius-md);
+		padding: 1rem;
+		font-family: inherit;
+		font-size: 1rem;
+		color: var(--color-text-main);
+		transition: all 0.2s;
+		outline: none;
+	}
+
+	input:focus,
+	textarea:focus {
+		background: white;
+		border-color: var(--color-primary);
+		box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+	}
+
+	input::placeholder,
+	textarea::placeholder {
+		color: rgba(0, 0, 0, 0.3);
+	}
+
+	.submit-btn {
+		background: linear-gradient(
+			135deg,
+			var(--color-primary-dark),
+			var(--color-primary)
+		);
+		color: white;
+		border: none;
+		padding: 1rem 2rem;
+		border-radius: var(--radius-md);
+		font-weight: 600;
+		font-size: 1.05rem;
+		cursor: pointer;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.8rem;
+		transition:
+			transform 0.2s,
+			box-shadow 0.2s;
+		margin-top: 1rem;
+	}
+
+	.submit-btn:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 10px 20px -5px rgba(79, 70, 229, 0.4);
+	}
+
+	.submit-btn svg {
+		width: 20px;
+		height: 20px;
+		transition: transform 0.2s;
+	}
+	.submit-btn:hover svg {
+		transform: translateX(3px) translateY(-3px);
+	}
+
+	/* RESPONSIVE */
+	@media (max-width: 850px) {
+		.contact-wrapper {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

@@ -107,7 +107,12 @@ const isAboutActive =
 				</div>
 			</div>
 
-			<HeaderLink href={base + "/contact"}>Contact</HeaderLink>
+			<HeaderLink
+				href={base + "/contact"}
+				class={pathname.includes("/contact") ? "active" : ""}
+			>
+				Contact
+			</HeaderLink>
 		</div>
 
 		<div class="social-links">
