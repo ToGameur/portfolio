@@ -2,36 +2,64 @@
 import BaseHead from "../components/BaseHead.astro";
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
+import { Image } from "astro:assets";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 
 // --- TES PROJETS AVEC LIENS INTERNES ---
+// Import des images
+import afficheImg from "../assets/portfolio_crea/Affiche_secu_r.png";
+import magazineImg from "../assets/portfolio_crea/magazine_page-2.jpg";
+import charteImg from "../assets/SAE103/page1.jpg";
+import comImg from "../assets/images/com.jpg"; // Placeholder pour Teaser/Fil d'Ariane/Motion
+
 const projects = [
     {
-        title: "Création d'une charte graphique",
+        title: "Affiche Sécurité Routière",
         description:
-            "Imagination et conception d'une identité visuelle complète. Définition de la palette de couleurs, choix typographiques et règles d'utilisation sur différents supports.",
-        image: "/SAE103/page1.jpg",
-        tags: ["InDesign", "Identité Visuelle"],
-        // Lien vers une page interne (ex: src/pages/projets/portfolio.astro)
-        href: "/blog/design-charte",
+            "Réalisation d'une affiche de prévention sur le thème de l'alcool au volant.",
+        image: afficheImg,
+        tags: ["Graphisme", "Photoshop", "Communication"],
+        href: "/design/poster-securite",
     },
     {
-        title: "Application Météo",
+        title: "Teaser Projet Réfrénome",
         description:
-            "Développement d'une petite application météo connectée à une API. Gestion des états et affichage dynamique.",
-        image: "https://images.unsplash.com/photo-1592210454359-9043f067919b?auto=format&fit=crop&q=80&w=500",
-        tags: ["React", "API", "JavaScript"],
-        // Lien vers une page interne
-        href: "/projets/meteo",
+            "Création d'un teaser vidéo pour présenter 'Réfrénome', un projet de réfrigérateur autonome innovant.",
+        image: comImg, // Pas d'image spécifique trouvée
+        tags: ["Vidéo", "Montage", "Storytelling"],
+        href: "/design/teaser-refrenome",
     },
     {
-        title: "Site Vitrine Agence",
+        title: "Magazine Xbox",
         description:
-            "Maquette et intégration d'un site pour une agence fictive. Travail sur l'UX/UI et les animations CSS.",
-        image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=500",
-        tags: ["HTML", "SASS", "Figma"],
-        // Lien vers une page interne
-        href: "/projets/agence",
+            "Mise en page d'une double page de magazine sur le thème du gaming et de la manette Xbox.",
+        image: magazineImg,
+        tags: ["InDesign", "Mise en page", "Édition"],
+        href: "/design/magazine-xbox",
+    },
+    {
+        title: "Charte Graphique BUT MMI",
+        description:
+            "Conception complète de l'identité visuelle et du logo pour la formation BUT MMI.",
+        image: charteImg,
+        tags: ["Illustrator", "Branding", "Identité Visuelle"],
+        href: "/design/charte-graphique",
+    },
+    {
+        title: "Le Fil d'Ariane",
+        description:
+            "Émission culturelle et humoristique autour de la mythologie grecque, réalisée sur fond vert.",
+        image: comImg, // Pas d'image spécifique trouvée
+        tags: ["Production Vidéo", "Scénario", "Fond Vert"],
+        href: "/design/fil-dariane",
+    },
+    {
+        title: "Motion Design & Innovation",
+        description:
+            "Teaser vidéo 3D/Motion pour un ballon connecté innovant, sans bande sonore.",
+        image: comImg, // Pas d'image spécifique trouvée
+        tags: ["Motion Design", "After Effects", "Innovation"],
+        href: "/design/motion-design",
     },
 ];
 ---
@@ -68,7 +96,7 @@ const projects = [
                             <article class="project-card">
                                 <a href={project.href} class="card-image-link">
                                     <div class="card-image">
-                                        <img
+                                        <Image
                                             src={project.image}
                                             alt={project.title}
                                         />
@@ -125,7 +153,7 @@ const projects = [
         justify-content: center;
         text-align: center;
         color: white;
-        background-image: url("/images/crea.jpg");
+        background-image: url("../assets/images/crea.jpg");
         background-size: cover;
         background-position: center;
     }
@@ -141,7 +169,12 @@ const projects = [
         position: relative;
         z-index: 2;
         padding: 2rem;
+        color: white;
     }
+    .hero-content h1 {
+        color: white !important;
+    }
+
     h1 {
         font-size: 3.5rem;
         font-weight: 800;

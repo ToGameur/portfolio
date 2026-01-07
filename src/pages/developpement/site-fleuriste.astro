@@ -1,0 +1,521 @@
+---
+import BaseHead from "../../components/BaseHead.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
+import { Image } from "astro:assets";
+
+// Import images
+import mainImg from "../../assets/portfolio_dev/satete.png";
+import img1 from "../../assets/portfolio_dev/sa1.jpeg";
+import img2 from "../../assets/portfolio_dev/sa2.jpeg";
+import img3 from "../../assets/portfolio_dev/sa3.jpeg";
+import img4 from "../../assets/portfolio_dev/sa4.jpeg";
+import img5 from "../../assets/portfolio_dev/sa5.jpeg";
+import img6 from "../../assets/portfolio_dev/sa6.jpeg";
+import img7 from "../../assets/portfolio_dev/sa7.jpeg";
+
+const galleryImages = [img1, img2, img3, img4, img5, img6, img7];
+---
+
+<!doctype html>
+<html lang="fr">
+    <head>
+        <BaseHead
+            title={`Site Web Fleuriste | ${SITE_TITLE}`}
+            description="Création d'un site web complet en HTML, CSS et PHP pour un fleuriste."
+        />
+    </head>
+    <body>
+        <!-- BACKGROUND -->
+        <div class="fixed-background">
+            <div class="blob purple"></div>
+            <div class="blob blue"></div>
+            <div class="blob cyan"></div>
+        </div>
+
+        <Header />
+
+        <main class="container project-detail">
+            <!-- BREADCRUMB -->
+            <a href="/developpement" class="back-link">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    ><line x1="19" y1="12" x2="5" y2="12"></line><polyline
+                        points="12 19 5 12 12 5"></polyline></svg
+                >
+                Retour aux projets
+            </a>
+
+            <!-- HERO PROJET -->
+            <section class="project-hero">
+                <div class="hero-image glass-panel">
+                    <Image
+                        src={mainImg}
+                        alt="Page d'accueil du Site Fleuriste"
+                        class="cover-img"
+                    />
+                </div>
+                <div class="hero-info">
+                    <span class="badge">DÉVELOPPEMENT WEB</span>
+                    <h1>🌐 Site web 🌐</h1>
+                    <p class="project-date">2024 - Projet Universitaire</p>
+                    <div class="tags">
+                        <span class="tag">HTML</span>
+                        <span class="tag">CSS</span>
+                        <span class="tag">PHP</span>
+                        <span class="tag">Autonomie</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CONTENT GRID -->
+            <div class="content-grid">
+                <!-- LEFT: TEXT -->
+                <article class="project-text glass-panel">
+                    <h2>Création d'un site de A à Z</h2>
+                    <p>
+                        Dans le cadre de notre formation, nous avons réalisé
+                        notre tout premier site web en partant de zéro.
+                        L’objectif principal était d’apprendre à construire la
+                        base d’un site complet, pour ensuite l’adapter à une
+                        profession de notre choix. J’ai choisi la profession de
+                        fleuriste.
+                    </p>
+                    <p>
+                        Nous avons développé l’ensemble du site en <strong
+                            >HTML</strong
+                        > et <strong>CSS</strong>, puis nous l’avons adapté en <strong
+                            >PHP</strong
+                        > afin de le rendre dynamique. Le contenu (textes, images)
+                        est entièrement fictif, car le but du projet n’était pas le
+                        fond, mais bien la structure et la technique.
+                    </p>
+
+                    <h3>Compétences acquises</h3>
+                    <p>Ce projet m’a permis de :</p>
+                    <ul>
+                        <li>✅ Créer une page web en HTML</li>
+                        <li>✅ Mettre en forme avec du CSS</li>
+                        <li>
+                            ✅ Adapter le site en PHP pour le rendre dynamique
+                        </li>
+                        <li>✅ Travailler en autonomie</li>
+                    </ul>
+
+                    <p style="margin-top: 2rem; font-style: italic;">
+                        👇 Je vous laisse découvrir par vous-mêmes le site web
+                        grâce aux images ! 👇
+                    </p>
+                </article>
+
+                <!-- RIGHT: SIDEBAR INFO -->
+                <aside class="project-sidebar glass-panel">
+                    <h3>Détails du projet</h3>
+                    <ul>
+                        <li>
+                            <span class="label">Contexte</span>
+                            <span class="value"
+                                >Projet Universitaire (BUT MMI)</span
+                            >
+                        </li>
+                        <li>
+                            <span class="label">Technos</span>
+                            <span class="value">HTML, CSS, PHP</span>
+                        </li>
+                        <li>
+                            <span class="label">Thème</span>
+                            <span class="value">Fleuriste</span>
+                        </li>
+                        <li>
+                            <span class="label">Type</span>
+                            <span class="value">Site Dynamique</span>
+                        </li>
+                    </ul>
+                </aside>
+            </div>
+
+            <!-- GALLERY -->
+            <section class="project-gallery">
+                <h2>Galerie du projet</h2>
+                <div class="gallery-grid">
+                    {
+                        galleryImages.map((img, index) => (
+                            <div
+                                class="gallery-item glass-panel"
+                                data-index={index}
+                            >
+                                <Image
+                                    src={img}
+                                    alt={`Capture d'écran du site Fleuriste ${index + 1}`}
+                                />
+                            </div>
+                        ))
+                    }
+                </div>
+            </section>
+        </main>
+
+        <!-- LIGHTBOX OVERLAY -->
+        <div id="lightbox" class="lightbox">
+            <button class="close-btn">&times;</button>
+            <button class="nav-btn prev-btn">&#10094;</button>
+            <button class="nav-btn next-btn">&#10095;</button>
+            <div class="lightbox-content">
+                <img id="lightbox-img" src="" alt="Agrandissement" />
+            </div>
+        </div>
+
+        <Footer />
+
+        <script>
+            // LOGIQUE LIGHTBOX
+            const lightbox = document.getElementById("lightbox");
+            const lightboxImg = document.getElementById("lightbox-img");
+            const closeBtn = document.querySelector(".close-btn");
+            const prevBtn = document.querySelector(".prev-btn");
+            const nextBtn = document.querySelector(".next-btn");
+
+            // Sécurisation TypeScript
+            if (
+                lightbox &&
+                lightboxImg instanceof HTMLImageElement &&
+                closeBtn &&
+                prevBtn &&
+                nextBtn
+            ) {
+                const items = document.querySelectorAll(".gallery-item img");
+                let currentIndex = 0;
+
+                // On récupère les URLs proprement
+                const imageUrls: string[] = [];
+                items.forEach((item) => {
+                    if (item instanceof HTMLImageElement) {
+                        imageUrls.push(item.src);
+                    }
+                });
+
+                // Ouvrir la lightbox
+                items.forEach((img, index) => {
+                    if (img.parentElement) {
+                        img.parentElement.addEventListener("click", () => {
+                            currentIndex = index;
+                            updateLightbox();
+                            lightbox.classList.add("active");
+                            document.body.style.overflow = "hidden"; // Bloque le scroll
+                        });
+                    }
+                });
+
+                // Fonction de fermeture
+                const closeLightbox = () => {
+                    lightbox.classList.remove("active");
+                    document.body.style.overflow = "auto";
+                };
+
+                // Listeners Fermeture
+                closeBtn.addEventListener("click", closeLightbox);
+                lightbox.addEventListener("click", (e) => {
+                    if (e.target === lightbox) closeLightbox();
+                });
+
+                // Navigation
+                const updateLightbox = () => {
+                    if (imageUrls[currentIndex]) {
+                        lightboxImg.src = imageUrls[currentIndex];
+                    }
+                };
+
+                const showNext = () => {
+                    currentIndex = (currentIndex + 1) % imageUrls.length;
+                    updateLightbox();
+                };
+
+                const showPrev = () => {
+                    currentIndex =
+                        (currentIndex - 1 + imageUrls.length) %
+                        imageUrls.length;
+                    updateLightbox();
+                };
+
+                nextBtn.addEventListener("click", showNext);
+                prevBtn.addEventListener("click", showPrev);
+
+                // Clavier
+                document.addEventListener("keydown", (e) => {
+                    if (!lightbox.classList.contains("active")) return;
+                    if (e.key === "Escape") closeLightbox();
+                    if (e.key === "ArrowRight") showNext();
+                    if (e.key === "ArrowLeft") showPrev();
+                });
+            }
+        </script>
+    </body>
+</html>
+
+<style>
+    .project-detail {
+        padding-top: 2rem;
+        padding-bottom: 4rem;
+    }
+
+    /* BREADCRUMB */
+    .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--color-text-light);
+        margin-bottom: 2rem;
+        font-weight: 500;
+        transition: color 0.2s;
+    }
+    .back-link:hover {
+        color: var(--color-primary);
+    }
+
+    /* HERO */
+    .project-hero {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        margin-bottom: 4rem;
+    }
+    .hero-image {
+        width: 100%;
+        height: auto; /* Laisse l'image prendre sa hauteur naturelle */
+        padding: 0;
+        overflow: visible;
+        border-radius: var(--radius-lg);
+    }
+    .cover-img {
+        width: 100%;
+        height: auto;
+        display: block;
+        max-height: 80vh; /* Sécurité pour pas que ça soit immense */
+        object-fit: contain; /* Assure qu'on voit tout */
+    }
+
+    .hero-info .badge {
+        background: rgba(79, 70, 229, 0.1);
+        color: var(--color-primary);
+        padding: 0.5rem 1rem;
+        border-radius: 50px;
+        font-weight: 700;
+        font-size: 0.8rem;
+        display: inline-block;
+        margin-bottom: 1rem;
+    }
+    .hero-info h1 {
+        font-size: 3rem;
+        margin: 0.5rem 0;
+        line-height: 1.1;
+    }
+    .project-date {
+        color: var(--color-text-light);
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+    .tag {
+        background: rgba(255, 255, 255, 0.5);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        padding: 0.3rem 0.8rem;
+        border-radius: 6px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: var(--color-text-main);
+    }
+
+    /* CONTENT GRID */
+    .content-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 2rem;
+        margin-bottom: 4rem;
+    }
+
+    .project-text {
+        padding: 2.5rem;
+        color: var(--color-text-main);
+        line-height: 1.8;
+    }
+    .project-text h2 {
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+    }
+    .project-text h3 {
+        font-size: 1.4rem;
+        margin: 2rem 0 1rem;
+        color: var(--color-primary-dark);
+    }
+    .project-text p {
+        margin-bottom: 1.5rem;
+    }
+    /* Styles pour la liste à puces personnalisée */
+    .project-text ul {
+        list-style: none; /* Enlève les puces par défaut */
+        padding-left: 0;
+    }
+    .project-text li {
+        margin-bottom: 0.5rem;
+        font-size: 1.05rem;
+    }
+
+    /* SIDEBAR */
+    .project-sidebar {
+        padding: 2rem;
+        height: fit-content;
+    }
+    .project-sidebar h3 {
+        font-size: 1.2rem;
+        margin-bottom: 1.5rem;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        padding-bottom: 0.5rem;
+    }
+    .project-sidebar ul {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    .project-sidebar li {
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+    }
+    .project-sidebar .label {
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        color: var(--color-text-soft);
+        font-weight: 700;
+    }
+    .project-sidebar .value {
+        font-size: 1rem;
+        font-weight: 500;
+    }
+
+    /* GALLERY */
+    .project-gallery h2 {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+    .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+    }
+    .gallery-item {
+        padding: 0;
+        overflow: hidden;
+        transition: transform 0.3s ease;
+        cursor: pointer; /* Indique que c'est cliquable */
+    }
+    .gallery-item:hover {
+        transform: scale(1.02);
+    }
+    .gallery-item img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    /* LIGHTBOX STYLES */
+    .lightbox {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.9);
+        z-index: 1000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+    }
+    .lightbox.active {
+        opacity: 1;
+        pointer-events: all;
+    }
+
+    .lightbox-content {
+        max-width: 90%;
+        max-height: 90vh;
+        position: relative;
+    }
+
+    .lightbox-content img {
+        max-width: 100%;
+        max-height: 90vh;
+        border-radius: 8px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .close-btn {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 3rem;
+        cursor: pointer;
+        z-index: 1001;
+        transition: transform 0.2s;
+    }
+    .close-btn:hover {
+        transform: scale(1.1);
+        color: var(--color-primary);
+    }
+
+    .nav-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+        border: none;
+        padding: 1rem;
+        font-size: 2rem;
+        cursor: pointer;
+        border-radius: 50%;
+        transition: all 0.2s;
+    }
+    .nav-btn:hover {
+        background: rgba(255, 255, 255, 0.3);
+    }
+    .prev-btn {
+        left: 20px;
+    }
+    .next-btn {
+        right: 20px;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+        .content-grid {
+            grid-template-columns: 1fr;
+        }
+        .hero-image {
+            height: 300px;
+        }
+        .nav-btn {
+            font-size: 1.5rem;
+            padding: 0.5rem;
+        }
+    }
+</style>

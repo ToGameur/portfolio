@@ -8,6 +8,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 // --- C'EST ICI QUE TU AJOUTES TES PROJETS ---
 // Import des images pour les cartes
 import piThumb from "../assets/portfolio_dev/produit_innovant.jpeg";
+import saThumb from "../assets/portfolio_dev/sa1.jpeg";
 
 const projects = [
 	{
@@ -17,6 +18,14 @@ const projects = [
 		image: piThumb,
 		tags: ["WordPress", "Motion Design", "Rédaction"],
 		link: "/developpement/wordpress-blog",
+	},
+	{
+		title: "Site Web",
+		description:
+			"Premier site web réalisé de zéro (HTML/CSS/PHP) pour un fleuriste fictif.",
+		image: saThumb,
+		tags: ["HTML", "CSS", "PHP"],
+		link: "/developpement/site-fleuriste",
 	},
 	// Copie-colle un bloc {} pour ajouter un nouveau projet
 ];
@@ -35,6 +44,12 @@ const projects = [
 		/>
 	</head>
 	<body>
+		<div class="fixed-background">
+			<div class="blob purple"></div>
+			<div class="blob blue"></div>
+			<div class="blob cyan"></div>
+		</div>
+
 		<Header />
 		<main>
 			<section class="hero-background small-hero">
@@ -108,10 +123,15 @@ const projects = [
 		justify-content: center;
 		text-align: center;
 		color: white;
+		color: white;
+		margin-bottom: 2rem;
 		/* J'ai mis une image de code pour le fond */
-		background-image: url("/images/dev.jpg");
+		background-image: url("../assets/images/dev.jpg");
 		background-size: cover;
 		background-position: center;
+		border-radius: var(--radius-lg);
+		box-shadow: var(--shadow-xl);
+		overflow: hidden;
 	}
 
 	.overlay {
@@ -125,6 +145,7 @@ const projects = [
 		position: relative;
 		z-index: 2;
 		padding: 2rem;
+		color: white;
 	}
 	h1 {
 		font-size: 3.5rem;
@@ -134,9 +155,14 @@ const projects = [
 	.text-gradient {
 		color: #22d3ee;
 	} /* Cyan pour le Web */
+	/* Force white text in hero */
+	.hero-content h1 {
+		color: white !important;
+	}
+
 	.subtitle {
 		font-size: 1.2rem;
-		color: #ddd;
+		color: white !important;
 		margin-top: 10px;
 		font-weight: 300;
 	}

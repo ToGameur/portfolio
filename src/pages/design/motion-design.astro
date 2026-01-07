@@ -1,0 +1,414 @@
+---
+import BaseHead from "../../components/BaseHead.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
+import { Image } from "astro:assets";
+
+// Import video
+import video from "../../assets/portfolio_crea/SAE202 - Motion Design.mp4";
+---
+
+<!doctype html>
+<html lang="fr">
+    <head>
+        <BaseHead
+            title={`Motion Design & Innovation | ${SITE_TITLE}`}
+            description="Création d'une animation 3D/Motion pour un projet sportif innovant."
+        />
+    </head>
+    <body>
+        <!-- BACKGROUND -->
+        <div class="fixed-background">
+            <div class="blob purple"></div>
+            <div class="blob blue"></div>
+        </div>
+
+        <Header />
+
+        <main class="container project-detail">
+            <!-- BREADCRUMB -->
+            <a href="/design" class="back-link">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    ><line x1="19" y1="12" x2="5" y2="12"></line><polyline
+                        points="12 19 5 12 12 5"></polyline></svg
+                >
+                Retour aux projets
+            </a>
+
+            <!-- HERO PROJET -->
+            <section class="project-hero">
+                <div class="hero-info">
+                    <span class="badge">MOTION DESIGN / 3D</span>
+                    <h1>Innovation: Tech & Sport</h1>
+                    <p class="project-date">Projet Universitaire - BUT MMI</p>
+                    <div class="tags">
+                        <span class="tag">After Effects</span>
+                        <span class="tag">Blender</span>
+                        <span class="tag">Premiere Pro</span>
+                        <span class="tag">WordPress</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CONTENT GRID -->
+            <div class="content-grid">
+                <!-- LEFT: TEXT -->
+                <article class="project-text glass-panel">
+                    <h2>🎬 Au cœur de la technologie dans le sport…</h2>
+                    <p>
+                        Dans le cadre de mon BUT Métiers du Multimédia et de
+                        l’Internet, nous avons mené à bien un projet ambitieux :
+                        imaginer un produit ou un service innovant, et concevoir
+                        toute sa communication visuelle.
+                    </p>
+                    <p>
+                        Avec Tom, Eliaz et moi-même, nous avons choisi
+                        d’explorer un domaine en pleine évolution : <strong
+                            >la technologie au service du sport</strong
+                        >, où l’innovation repousse les limites de la
+                        performance et de la sécurité.
+                    </p>
+
+                    <h3>🔗 Notre mission</h3>
+                    <p>
+                        Créer un site média en ligne sous <strong
+                            >WordPress</strong
+                        >, alimenté par nos propres articles, et réaliser un <strong
+                            >teaser vidéo de 30 secondes</strong
+                        > – sans bande sonore – mettant en lumière le ballon de football
+                        <em>Adidas FUSSBALLLIEBE</em>, équipé d’une puce
+                        intégrée transmettant des données en temps réel.
+                    </p>
+                    <p>
+                        Nous avons découvert comment la tech s’intègre au sport,
+                        notamment à travers des objets connectés, des capteurs
+                        de performance ou encore des équipements intelligents.
+                    </p>
+                    <p>
+                        Côté production, la quasi-totalité des visuels de notre
+                        teaser a été réalisée par mon équipe à l’aide d'**After
+                        Effects**, **Blender** et **Premiere Pro**.
+                    </p>
+                    <p>
+                        🎨 Attiré par l’univers de l’image et du design
+                        numérique, ce projet m’a permis de développer mes
+                        compétences en conception visuelle, en mise en page, en
+                        animation graphique et en maîtrise des outils créatifs.
+                        Il a surtout renforcé ma volonté de m’orienter vers le
+                        métier de designer graphique.
+                    </p>
+                </article>
+
+                <!-- RIGHT: SIDEBAR INFO -->
+                <aside class="project-sidebar glass-panel">
+                    <h3>Détails du projet</h3>
+                    <ul>
+                        <li>
+                            <span class="label">Équipe</span>
+                            <span class="value"
+                                >Tom Marcheron, Eliaz Macé, Adelio Chabuel</span
+                            >
+                        </li>
+                        <li>
+                            <span class="label">Contexte</span>
+                            <span class="value">SAE202 - S2</span>
+                        </li>
+                        <li>
+                            <span class="label">Date</span>
+                            <span class="value">2024 - 2025</span>
+                        </li>
+                        <li>
+                            <span class="label">Outils</span>
+                            <span class="value"
+                                >After Effects, Blender, Premiere</span
+                            >
+                        </li>
+                        <li>
+                            <span class="label">Compétences</span>
+                            <span class="value">Motion Design, 3D, Montage</span
+                            >
+                        </li>
+                    </ul>
+                </aside>
+            </div>
+
+            <!-- VIDEO GALLERY -->
+            <section class="project-gallery">
+                <h2>Le Teaser (30s)</h2>
+                <div class="video-container glass-panel">
+                    <video
+                        controls
+                        src={video}
+                        style="width: 100%; border-radius: 8px;"></video>
+                </div>
+            </section>
+        </main>
+
+        <Footer />
+    </body>
+</html>
+
+<style>
+    .project-detail {
+        padding-top: 2rem;
+        padding-bottom: 4rem;
+    }
+
+    /* BREADCRUMB */
+    .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--color-text-light);
+        margin-bottom: 2rem;
+        font-weight: 500;
+        transition: color 0.2s;
+    }
+    .back-link:hover {
+        color: var(--color-primary);
+    }
+
+    /* HERO */
+    .project-hero {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        margin-bottom: 4rem;
+    }
+    .hero-image {
+        width: 100%;
+        height: auto; /* Laisse l'image prendre sa hauteur naturelle */
+        padding: 0;
+        overflow: visible;
+        border-radius: var(--radius-lg);
+    }
+    .cover-img {
+        width: 100%;
+        height: auto;
+        display: block;
+        max-height: 80vh; /* Sécurité pour pas que ça soit immense */
+        object-fit: contain; /* Assure qu'on voit tout */
+    }
+
+    .hero-info .badge {
+        background: rgba(79, 70, 229, 0.1);
+        color: var(--color-primary);
+        padding: 0.5rem 1rem;
+        border-radius: 50px;
+        font-weight: 700;
+        font-size: 0.8rem;
+        display: inline-block;
+        margin-bottom: 1rem;
+    }
+    .hero-info h1 {
+        font-size: 3rem;
+        margin: 0.5rem 0;
+        line-height: 1.1;
+    }
+    .project-date {
+        color: var(--color-text-light);
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+    .tag {
+        background: rgba(255, 255, 255, 0.5);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        padding: 0.3rem 0.8rem;
+        border-radius: 6px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: var(--color-text-main);
+    }
+
+    /* CONTENT GRID */
+    .content-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 2rem;
+        margin-bottom: 4rem;
+    }
+
+    .project-text {
+        padding: 2.5rem;
+        color: var(--color-text-main);
+        line-height: 1.8;
+    }
+    .project-text h2 {
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+    }
+    .project-text h3 {
+        font-size: 1.4rem;
+        margin: 2rem 0 1rem;
+        color: var(--color-primary-dark);
+    }
+    .project-text p {
+        margin-bottom: 1.5rem;
+    }
+
+    /* SIDEBAR */
+    .project-sidebar {
+        padding: 2rem;
+        height: fit-content;
+    }
+    .project-sidebar h3 {
+        font-size: 1.2rem;
+        margin-bottom: 1.5rem;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        padding-bottom: 0.5rem;
+    }
+    .project-sidebar ul {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    .project-sidebar li {
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+    }
+    .project-sidebar .label {
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        color: var(--color-text-soft);
+        font-weight: 700;
+    }
+    .project-sidebar .value {
+        font-size: 1rem;
+        font-weight: 500;
+    }
+
+    /* GALLERY */
+    .project-gallery h2 {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+    .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+    }
+    .gallery-item {
+        padding: 0;
+        overflow: hidden;
+        transition: transform 0.3s ease;
+        cursor: pointer; /* Indique que c'est cliquable */
+    }
+    .gallery-item:hover {
+        transform: scale(1.02);
+    }
+    .gallery-item img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    /* LIGHTBOX STYLES */
+    .lightbox {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.9);
+        z-index: 1000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+    }
+    .lightbox.active {
+        opacity: 1;
+        pointer-events: all;
+    }
+
+    .lightbox-content {
+        max-width: 90%;
+        max-height: 90vh;
+        position: relative;
+    }
+
+    .lightbox-content img {
+        max-width: 100%;
+        max-height: 90vh;
+        border-radius: 8px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .close-btn {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 3rem;
+        cursor: pointer;
+        z-index: 1001;
+        transition: transform 0.2s;
+    }
+    .close-btn:hover {
+        transform: scale(1.1);
+        color: var(--color-primary);
+    }
+
+    .nav-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+        border: none;
+        padding: 1rem;
+        font-size: 2rem;
+        cursor: pointer;
+        border-radius: 50%;
+        transition: all 0.2s;
+    }
+    .nav-btn:hover {
+        background: rgba(255, 255, 255, 0.3);
+    }
+    .prev-btn {
+        left: 20px;
+    }
+    .next-btn {
+        right: 20px;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+        .content-grid {
+            grid-template-columns: 1fr;
+        }
+        .hero-image {
+            height: 300px;
+        }
+        .nav-btn {
+            font-size: 1.5rem;
+            padding: 0.5rem;
+        }
+    }
+
+    .video-container {
+        padding: 0;
+        overflow: hidden;
+    }
+</style>
