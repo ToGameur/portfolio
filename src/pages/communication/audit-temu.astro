@@ -5,19 +5,21 @@ import Footer from "../../components/Footer.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
 import { Image } from "astro:assets";
 
-// Import video
-import video from "../../assets/portfolio_crea/SAE104 - video fil dariane (Compresser).mp4";
+// Import images
+import auditImg from "../../assets/portfolio_com/audit-temu.jpg";
+
+const galleryImages = [auditImg];
 ---
 
 <!doctype html>
 <html lang="fr">
     <head>
         <BaseHead
-            title={`Le Fil d'Ariane | ${SITE_TITLE}`}
-            description="Réalisation d'une vidéo type 'Fil d'Ariane' pour présenter un concept."
+            title={`Audit TEMU | ${SITE_TITLE}`}
+            description="Audit éco-gestion et stratégie web de TEMU."
         />
     </head>
-    <body>
+    <body class="project-page">
         <!-- BACKGROUND -->
         <div class="fixed-background">
             <div class="blob purple"></div>
@@ -28,7 +30,7 @@ import video from "../../assets/portfolio_crea/SAE104 - video fil dariane (Compr
 
         <main class="container project-detail">
             <!-- BREADCRUMB -->
-            <a href="/design" class="back-link">
+            <a href="/communication" class="back-link">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="20"
@@ -48,14 +50,13 @@ import video from "../../assets/portfolio_crea/SAE104 - video fil dariane (Compr
             <!-- HERO PROJET -->
             <section class="project-hero">
                 <div class="hero-info">
-                    <span class="badge">VIDÉO / PREMIERE PRO</span>
-                    <h1>Le Fil d'Ariane</h1>
-                    <p class="project-date">Projet Audiovisuel</p>
+                    <span class="badge">MARKETING / AUDIT</span>
+                    <h1>Audit Eco-Gestion TEMU</h1>
+                    <p class="project-date">Projet Universitaire - SAE 101</p>
                     <div class="tags">
-                        <span class="tag">Montage Vidéo</span>
-                        <span class="tag">Scénarisation</span>
-                        <span class="tag">Prise de vue</span>
-                        <span class="tag">Premiere Pro</span>
+                        <span class="tag">Analyse SWOT</span>
+                        <span class="tag">Stratégie Web</span>
+                        <span class="tag">Eco-Conception</span>
                     </div>
                 </div>
             </section>
@@ -64,21 +65,38 @@ import video from "../../assets/portfolio_crea/SAE104 - video fil dariane (Compr
             <div class="content-grid">
                 <!-- LEFT: TEXT -->
                 <article class="project-text glass-panel">
-                    <h2>🎥 Concept & Réalisation</h2>
+                    <h2>📊 Analyse stratégique d'un géant du e-commerce</h2>
                     <p>
-                        Dans le cadre de ce projet audiovisuel, l'objectif était
-                        de réaliser une vidéo suivante le concept du "Fil
-                        d'Ariane" : un plan-séquence ou une suite de plans
-                        fluides qui guident le spectateur à travers un lieu ou
-                        une action continue.
+                        Dans le cadre de l'enseignement d'Eco-Gestion, nous
+                        avons réalisé un audit complet de la plateforme <strong
+                            >TEMU</strong
+                        >. L'objectif était de décrypter la stratégie agressive
+                        de ce nouvel acteur du e-commerce et d'analyser son
+                        impact économique et écologique.
                     </p>
                     <p>
-                        J'ai travaillé sur la <strong>scénarisation</strong>, le <strong
-                            >tournage</strong
-                        > et le <strong>montage</strong> de cette vidéo. L'utilisation
-                        de stabilisateurs et un travail précis sur les transitions
-                        en post-production (Adobe Premiere Pro) étaient essentiels
-                        pour garantir la fluidité du mouvement.
+                        Notre dossier d'analyse se penche sur plusieurs axes :
+                    </p>
+                    <ul>
+                        <li>
+                            <strong>Le modèle économique :</strong> Comment TEMU parvient-il
+                            à casser les prix ?
+                        </li>
+                        <li>
+                            <strong>La stratégie marketing :</strong> Analyse de leur
+                            présence massive sur les réseaux sociaux et de la gamification
+                            de l'achat.
+                        </li>
+                        <li>
+                            <strong>L'impact environnemental :</strong> Critique de
+                            la fast-fashion et de la logistique mondiale.
+                        </li>
+                    </ul>
+                    <p>
+                        Ce travail a nécessité une recherche documentaire
+                        approfondie et une capacité de synthèse pour mettre en
+                        lumière les forces et les faiblesses (SWOT) de
+                        l'entreprise.
                     </p>
                 </article>
 
@@ -87,46 +105,92 @@ import video from "../../assets/portfolio_crea/SAE104 - video fil dariane (Compr
                     <h3>Détails du projet</h3>
                     <ul>
                         <li>
-                            <span class="label">Équipe</span>
-                            <span class="value"
-                                >Tom Marcheron, Eline Aubril-Madelaine</span
-                            >
-                        </li>
-                        <li>
                             <span class="label">Contexte</span>
-                            <span class="value">SAE104 - S1</span>
+                            <span class="value">SAE 101 - Eco-Gestion</span>
                         </li>
                         <li>
                             <span class="label">Date</span>
-                            <span class="value">2024 - 2025</span>
+                            <span class="value">2024</span>
                         </li>
                         <li>
-                            <span class="label">Outils</span>
-                            <span class="value">Premiere Pro, Caméra</span>
-                        </li>
-                        <li>
-                            <span class="label">Compétences</span>
-                            <span class="value"
-                                >Écriture, Tournage, Montage</span
-                            >
+                            <span class="label">Livrable</span>
+                            <span class="value">Dossier d'analyse (PDF)</span>
                         </li>
                     </ul>
                 </aside>
             </div>
 
-            <!-- VIDEO GALLERY -->
+            <!-- GALLERY -->
             <section class="project-gallery">
-                <h2>Le Rendu Final</h2>
-                <div class="video-container glass-panel">
-                    <video
-                        controls
-                        src={video}
-                        style="width: 100%; border-radius: 8px;"></video>
+                <h2>Aperçu du dossier</h2>
+                <div class="gallery-grid single-image">
+                    {
+                        galleryImages.map((img, index) => (
+                            <div
+                                class="gallery-item glass-panel"
+                                data-index={index}
+                            >
+                                <Image
+                                    src={img}
+                                    alt={`Audit Eco-Gestion TEMU`}
+                                />
+                            </div>
+                        ))
+                    }
                 </div>
             </section>
         </main>
 
+        <!-- LIGHTBOX OVERLAY -->
+        <div id="lightbox" class="lightbox">
+            <button class="close-btn">&times;</button>
+            <div class="lightbox-content">
+                <img id="lightbox-img" src="" alt="Agrandissement" />
+            </div>
+        </div>
+
         <Footer />
+
+        <script>
+            // LOGIQUE LIGHTBOX
+            const lightbox = document.getElementById("lightbox");
+            const lightboxImg = document.getElementById("lightbox-img");
+            const closeBtn = document.querySelector(".close-btn");
+
+            if (
+                lightbox &&
+                lightboxImg instanceof HTMLImageElement &&
+                closeBtn
+            ) {
+                const items = document.querySelectorAll(".gallery-item img");
+
+                items.forEach((img) => {
+                    if (img.parentElement) {
+                        img.parentElement.addEventListener("click", () => {
+                            if (img instanceof HTMLImageElement) {
+                                lightboxImg.src = img.src;
+                                lightbox.classList.add("active");
+                                document.body.style.overflow = "hidden";
+                            }
+                        });
+                    }
+                });
+
+                const closeLightbox = () => {
+                    lightbox.classList.remove("active");
+                    document.body.style.overflow = "auto";
+                };
+
+                closeBtn.addEventListener("click", closeLightbox);
+                lightbox.addEventListener("click", (e) => {
+                    if (e.target === lightbox) closeLightbox();
+                });
+
+                document.addEventListener("keydown", (e) => {
+                    if (e.key === "Escape") closeLightbox();
+                });
+            }
+        </script>
     </body>
 </html>
 
@@ -135,8 +199,6 @@ import video from "../../assets/portfolio_crea/SAE104 - video fil dariane (Compr
         padding-top: 2rem;
         padding-bottom: 4rem;
     }
-
-    /* BREADCRUMB */
     .back-link {
         display: inline-flex;
         align-items: center;
@@ -149,29 +211,12 @@ import video from "../../assets/portfolio_crea/SAE104 - video fil dariane (Compr
     .back-link:hover {
         color: var(--color-primary);
     }
-
-    /* HERO */
     .project-hero {
         display: flex;
         flex-direction: column;
         gap: 2rem;
         margin-bottom: 4rem;
     }
-    .hero-image {
-        width: 100%;
-        height: auto; /* Laisse l'image prendre sa hauteur naturelle */
-        padding: 0;
-        overflow: visible;
-        border-radius: var(--radius-lg);
-    }
-    .cover-img {
-        width: 100%;
-        height: auto;
-        display: block;
-        max-height: 80vh; /* Sécurité pour pas que ça soit immense */
-        object-fit: contain; /* Assure qu'on voit tout */
-    }
-
     .hero-info .badge {
         background: rgba(79, 70, 229, 0.1);
         color: var(--color-primary);
@@ -192,7 +237,6 @@ import video from "../../assets/portfolio_crea/SAE104 - video fil dariane (Compr
         font-size: 1.1rem;
         margin-bottom: 1.5rem;
     }
-
     .tags {
         display: flex;
         flex-wrap: wrap;
@@ -207,15 +251,12 @@ import video from "../../assets/portfolio_crea/SAE104 - video fil dariane (Compr
         font-weight: 600;
         color: var(--color-text-main);
     }
-
-    /* CONTENT GRID */
     .content-grid {
         display: grid;
         grid-template-columns: 2fr 1fr;
         gap: 2rem;
         margin-bottom: 4rem;
     }
-
     .project-text {
         padding: 2.5rem;
         color: var(--color-text-main);
@@ -225,16 +266,16 @@ import video from "../../assets/portfolio_crea/SAE104 - video fil dariane (Compr
         font-size: 1.8rem;
         margin-bottom: 1.5rem;
     }
-    .project-text h3 {
-        font-size: 1.4rem;
-        margin: 2rem 0 1rem;
-        color: var(--color-primary-dark);
+    .project-text ul {
+        margin-bottom: 1.5rem;
+        padding-left: 1.5rem;
+    }
+    .project-text li {
+        margin-bottom: 0.5rem;
     }
     .project-text p {
         margin-bottom: 1.5rem;
     }
-
-    /* SIDEBAR */
     .project-sidebar {
         padding: 2rem;
         height: fit-content;
@@ -267,8 +308,6 @@ import video from "../../assets/portfolio_crea/SAE104 - video fil dariane (Compr
         font-size: 1rem;
         font-weight: 500;
     }
-
-    /* GALLERY */
     .project-gallery h2 {
         font-size: 2rem;
         margin-bottom: 2rem;
@@ -276,14 +315,18 @@ import video from "../../assets/portfolio_crea/SAE104 - video fil dariane (Compr
     }
     .gallery-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         gap: 1.5rem;
+    }
+    .gallery-grid.single-image {
+        grid-template-columns: 1fr;
+        max-width: 800px;
+        margin: 0 auto;
     }
     .gallery-item {
         padding: 0;
         overflow: hidden;
         transition: transform 0.3s ease;
-        cursor: pointer; /* Indique que c'est cliquable */
+        cursor: pointer;
     }
     .gallery-item:hover {
         transform: scale(1.02);
@@ -293,8 +336,6 @@ import video from "../../assets/portfolio_crea/SAE104 - video fil dariane (Compr
         height: auto;
         display: block;
     }
-
-    /* LIGHTBOX STYLES */
     .lightbox {
         position: fixed;
         inset: 0;
@@ -311,20 +352,17 @@ import video from "../../assets/portfolio_crea/SAE104 - video fil dariane (Compr
         opacity: 1;
         pointer-events: all;
     }
-
     .lightbox-content {
         max-width: 90%;
         max-height: 90vh;
         position: relative;
     }
-
     .lightbox-content img {
         max-width: 100%;
         max-height: 90vh;
         border-radius: 8px;
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
     }
-
     .close-btn {
         position: absolute;
         top: 20px;
@@ -341,46 +379,9 @@ import video from "../../assets/portfolio_crea/SAE104 - video fil dariane (Compr
         transform: scale(1.1);
         color: var(--color-primary);
     }
-
-    .nav-btn {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        background: rgba(255, 255, 255, 0.1);
-        color: white;
-        border: none;
-        padding: 1rem;
-        font-size: 2rem;
-        cursor: pointer;
-        border-radius: 50%;
-        transition: all 0.2s;
-    }
-    .nav-btn:hover {
-        background: rgba(255, 255, 255, 0.3);
-    }
-    .prev-btn {
-        left: 20px;
-    }
-    .next-btn {
-        right: 20px;
-    }
-
-    /* RESPONSIVE */
     @media (max-width: 900px) {
         .content-grid {
             grid-template-columns: 1fr;
         }
-        .hero-image {
-            height: 300px;
-        }
-        .nav-btn {
-            font-size: 1.5rem;
-            padding: 0.5rem;
-        }
-    }
-
-    .video-container {
-        padding: 0;
-        overflow: hidden;
     }
 </style>

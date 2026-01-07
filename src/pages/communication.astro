@@ -5,61 +5,53 @@ import Header from "../components/Header.astro";
 import { Image } from "astro:assets";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 
-// --- TES PROJETS AVEC LIENS INTERNES ---
-// Import des images
-import afficheImg from "../assets/portfolio_crea/Affiche_secu_r.png";
-import magazineImg from "../assets/portfolio_crea/magazine_page-2.jpg";
-import charteImg from "../assets/SAE103/page1.jpg";
-import comImg from "../assets/images/com.jpg"; // Placeholder pour Teaser/Fil d'Ariane/Motion
+// Import images
+import afficheImg from "../assets/portfolio_com/affiche-theoricien.jpg";
+import auditImg from "../assets/portfolio_com/audit-temu.jpg";
+import coldallImg from "../assets/portfolio_com/communique-froide.jpg";
+import flexicomImg from "../assets/portfolio_com/agence-flexicom.jpg";
+import sportImg from "../assets/portfolio_com/articles-sport-ia.jpg";
 
 const projects = [
     {
-        title: "Affiche Sécurité Routière",
+        title: "Affiche Théoricien",
         description:
-            "Réalisation d'une affiche de prévention sur le thème de l'alcool au volant.",
+            "Création d'une affiche originale présentant le théoricien de la communication Edward T. Hall sous forme de menu de restaurant.",
         image: afficheImg,
-        tags: ["Graphisme", "Photoshop", "Communication"],
-        href: "/design/poster-securite",
+        tags: ["Communication", "Print", "Mise en page"],
+        href: "/communication/affiche-theoricien",
     },
     {
-        title: "Teaser Projet Réfrénome",
+        title: "Outils de Communication (ColdAll)",
         description:
-            "Création d'un teaser vidéo pour présenter 'Réfrénome', un projet de réfrigérateur autonome innovant.",
-        image: comImg, // Pas d'image spécifique trouvée
-        tags: ["Vidéo", "Montage", "Storytelling"],
-        href: "/design/teaser-refrenome",
+            "Rédaction d'un communiqué et dossier de presse pour 'ColdAll', une entreprise innovante de réfrigérateurs connectés.",
+        image: coldallImg,
+        tags: ["Relations Presse", "Rédaction", "Stratégie"],
+        href: "/communication/communique-froide",
     },
     {
-        title: "Magazine Xbox",
+        title: "Gestion de Projet (Agence Flexicom)",
         description:
-            "Mise en page d'une double page de magazine sur le thème du gaming et de la manette Xbox.",
-        image: magazineImg,
-        tags: ["InDesign", "Mise en page", "Édition"],
-        href: "/design/magazine-xbox",
+            "Définition de la stratégie et recrutement (profilage) pour une agence de communication fictive.",
+        image: flexicomImg,
+        tags: ["Gestion de Projet", "Ressources Humaines", "Stratégie"],
+        href: "/communication/agence-flexicom",
     },
     {
-        title: "Charte Graphique BUT MMI",
+        title: "Audit Communication (TEMU)",
         description:
-            "Conception complète de l'identité visuelle et du logo pour la formation BUT MMI.",
-        image: charteImg,
-        tags: ["Illustrator", "Branding", "Identité Visuelle"],
-        href: "/design/charte-graphique",
+            "Analyse complète de la stratégie webmarketing et éco-gestion de la plateforme TEMU.",
+        image: auditImg,
+        tags: ["Audit", "Marketing Digital", "Eco-Gestion"],
+        href: "/communication/audit-temu",
     },
     {
-        title: "Le Fil d'Ariane",
+        title: "Blog Sport & Tech",
         description:
-            "Émission culturelle et humoristique autour de la mythologie grecque, réalisée sur fond vert.",
-        image: comImg, // Pas d'image spécifique trouvée
-        tags: ["Production Vidéo", "Scénario", "Fond Vert"],
-        href: "/design/fil-dariane",
-    },
-    {
-        title: "Motion Design & Innovation",
-        description:
-            "Teaser vidéo 3D/Motion pour un ballon connecté innovant, sans bande sonore.",
-        image: comImg, // Pas d'image spécifique trouvée
-        tags: ["Motion Design", "After Effects", "Innovation"],
-        href: "/design/motion-design",
+            "Rédaction d'articles de fond sur l'impact de l'IA et de la technologie dans le football et le rugby.",
+        image: sportImg,
+        tags: ["Rédaction Web", "Veille Technologique", "Journalisme"],
+        href: "/communication/articles-sport-ia",
     },
 ];
 ---
@@ -68,8 +60,8 @@ const projects = [
 <html lang="fr">
     <head>
         <BaseHead
-            title={`Création numérique | ${SITE_TITLE}`}
-            description={SITE_DESCRIPTION}
+            title={`Communication | ${SITE_TITLE}`}
+            description="Projets de communication, stratégie et rédaction."
         />
         <link
             href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700;900&display=swap"
@@ -82,9 +74,9 @@ const projects = [
             <section class="hero-background small-hero">
                 <div class="overlay"></div>
                 <div class="hero-content">
-                    <h1>Création numérique</h1>
+                    <h1>Communication</h1>
                     <p class="subtitle">
-                        Interfaces, identités visuelles et créations graphiques.
+                        Stratégie, Rédaction et Relations Presse.
                     </p>
                 </div>
             </section>
@@ -126,9 +118,6 @@ const projects = [
 </html>
 
 <style>
-    /* ... (GARDE TON STYLE CSS D'AVANT, IL EST TRÈS BIEN) ... */
-    /* Je ne le remets pas pour ne pas surcharger, copie-colle juste ton style précédent */
-
     /* --- GLOBAL --- */
     :global(body) {
         font-family: "Outfit", sans-serif !important;
@@ -153,7 +142,7 @@ const projects = [
         justify-content: center;
         text-align: center;
         color: white;
-        background-image: url("../assets/images/crea.jpg");
+        background-image: url("/images/com.jpg");
         background-size: cover;
         background-position: center;
     }
@@ -169,12 +158,7 @@ const projects = [
         position: relative;
         z-index: 2;
         padding: 2rem;
-        color: white;
     }
-    .hero-content h1 {
-        color: white !important;
-    }
-
     h1 {
         font-size: 3.5rem;
         font-weight: 800;
@@ -261,8 +245,8 @@ const projects = [
         margin-bottom: 1rem;
     }
     .tag {
-        background: #f0fdfa;
-        color: #0891b2;
+        background: #f0fdfa; /* Fond bleu très clair */
+        color: #0891b2; /* Texte bleu canard */
         font-size: 0.75rem;
         font-weight: 700;
         padding: 4px 10px;
