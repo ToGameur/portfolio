@@ -9,6 +9,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 // Import des images pour les cartes
 import piThumb from "../assets/portfolio_dev/produit_innovant.jpeg";
 import saThumb from "../assets/portfolio_dev/sa1.jpeg";
+import devBg from "../assets/images/dev.jpg";
 
 const projects = [
 	{
@@ -52,7 +53,10 @@ const projects = [
 
 		<Header />
 		<main>
-			<section class="hero-background small-hero">
+			<section
+				class="hero-background small-hero"
+				style={`background-image: url(${devBg.src});`}
+			>
 				<div class="overlay"></div>
 				<div class="hero-content">
 					<h1>Développement Web</h1>
@@ -125,8 +129,7 @@ const projects = [
 		color: white;
 		color: white;
 		margin-bottom: 2rem;
-		/* J'ai mis une image de code pour le fond */
-		background-image: url("../assets/images/dev.jpg");
+		/* Background image handled via inline style for correct bundling */
 		background-size: cover;
 		background-position: center;
 		border-radius: var(--radius-lg);

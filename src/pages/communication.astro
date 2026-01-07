@@ -11,6 +11,7 @@ import auditImg from "../assets/portfolio_com/audit-temu.jpg";
 import coldallImg from "../assets/portfolio_com/communique-froide.jpg";
 import flexicomImg from "../assets/portfolio_com/agence-flexicom.jpg";
 import sportImg from "../assets/portfolio_com/articles-sport-ia.jpg";
+import comBg from "../assets/images/com.jpg";
 
 const projects = [
     {
@@ -71,7 +72,10 @@ const projects = [
     <body>
         <Header />
         <main>
-            <section class="hero-background small-hero">
+            <section
+                class="hero-background small-hero"
+                style={`background-image: url(${comBg.src});`}
+            >
                 <div class="overlay"></div>
                 <div class="hero-content">
                     <h1>Communication</h1>
@@ -142,7 +146,7 @@ const projects = [
         justify-content: center;
         text-align: center;
         color: white;
-        background-image: url("/images/com.jpg");
+        /* Background image handled via inline style */
         background-size: cover;
         background-position: center;
     }

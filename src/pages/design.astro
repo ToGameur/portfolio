@@ -11,6 +11,7 @@ import afficheImg from "../assets/portfolio_crea/Affiche_secu_r.png";
 import magazineImg from "../assets/portfolio_crea/magazine_page-2.jpg";
 import charteImg from "../assets/SAE103/page1.jpg";
 import comImg from "../assets/images/com.jpg"; // Placeholder pour Teaser/Fil d'Ariane/Motion
+import creaBg from "../assets/images/crea.jpg";
 
 const projects = [
     {
@@ -79,7 +80,10 @@ const projects = [
     <body>
         <Header />
         <main>
-            <section class="hero-background small-hero">
+            <section
+                class="hero-background small-hero"
+                style={`background-image: url(${creaBg.src});`}
+            >
                 <div class="overlay"></div>
                 <div class="hero-content">
                     <h1>Création numérique</h1>
@@ -153,7 +157,7 @@ const projects = [
         justify-content: center;
         text-align: center;
         color: white;
-        background-image: url("../assets/images/crea.jpg");
+        /* Background image handled via inline style */
         background-size: cover;
         background-position: center;
     }
