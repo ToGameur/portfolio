@@ -22,7 +22,7 @@ Pour lancer le serveur de développement local :
 npm run dev
 ```
 
-Le site est alors accessible via l'URL : http://localhost:4321/portfolio/
+Le site est alors accessible via l'URL : http://localhost:4321/
 
 ---
 
