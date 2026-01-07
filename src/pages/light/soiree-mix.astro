@@ -1,0 +1,291 @@
+---
+import BaseHead from "../../components/BaseHead.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
+import { Image } from "astro:assets";
+
+// Import video
+import video from "../../assets/portfolio_lum/video.mp4";
+---
+
+<!doctype html>
+<html lang="fr">
+    <head>
+        <BaseHead
+            title={`Soirée Mix & Lumière | ${SITE_TITLE}`}
+            description="Organisation technique d'une soirée : mixage son et gestion lumière."
+        />
+    </head>
+    <body>
+        <!-- BACKGROUND -->
+        <div class="fixed-background">
+            <div class="blob purple"></div>
+            <div class="blob blue"></div>
+        </div>
+
+        <Header />
+
+        <main class="container project-detail">
+            <!-- BREADCRUMB -->
+            <a href="/light" class="back-link">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    ><line x1="19" y1="12" x2="5" y2="12"></line><polyline
+                        points="12 19 5 12 12 5"></polyline></svg
+                >
+                Retour aux projets
+            </a>
+
+            <!-- HERO PROJET -->
+            <section class="project-hero">
+                <div class="hero-info">
+                    <span class="badge">RÉGIE / ÉVÉNEMENTIEL</span>
+                    <h1>🪩 Soirée Mix & Lumière 🪩</h1>
+                    <p class="project-date">Projet Personnel</p>
+                    <div class="tags">
+                        <span class="tag">Régie Lumière (Sunlite Suite 3)</span>
+                        <span class="tag">Mixage (Pioneer DDJ-FLX10)</span>
+                        <span class="tag">Organisation</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CONTENT GRID -->
+            <div class="content-grid">
+                <!-- LEFT: TEXT -->
+                <article class="project-text glass-panel">
+                    <h2>Ambiance Scénique & Sonore</h2>
+                    <p>
+                        Cela faisait un moment que je n’avais rien partagé ici,
+                        alors voici un petit retour sur une soirée que j’ai
+                        récemment organisée pour des amis !
+                    </p>
+                    <p>
+                        🎶 J’ai eu le plaisir de m’occuper à la fois du <strong
+                            >mix</strong
+                        > et de toute la partie <strong>lumière</strong>. Entre
+                        les transitions musicales sur ma platine <strong
+                            >Pioneer DDJ-FLX10</strong
+                        > et la gestion des effets lumineux via le logiciel <strong
+                            >Sunlite Suite 3</strong
+                        >, j’ai pu créer une ambiance complète et immersive du
+                        début à la fin de la soirée.
+                    </p>
+
+                    <h3>Passion & Avenir</h3>
+                    <p>
+                        🚨 C’est toujours un vrai plaisir de mettre en pratique
+                        ma passion pour le son et la lumière, de tester de
+                        nouvelles idées en termes de transition musicale et de
+                        voir ce que ça donne avec du public. Ce genre
+                        d’expérience me motive encore plus à poursuivre pour
+                        devenir un jour, je l’espère, <strong
+                            >régisseur lumière professionnel</strong
+                        >.
+                    </p>
+                    <p>
+                        🔎 Dans le cadre de ma formation, je suis actuellement à
+                        la recherche d’un <strong
+                            >stage de 10 semaines en régie lumière</strong
+                        >, du <strong>13 avril au 19 juin 2026</strong>, afin de
+                        découvrir ce métier dans le monde professionnel.
+                    </p>
+
+                    <p style="margin-top: 2rem;">
+                        ⬇️ Je vous partage ici une vidéo qui regroupe quelques
+                        images et extraits de cette soirée. (Les vidéos ont été
+                        prises pendant les phases de test)
+                    </p>
+                </article>
+
+                <!-- RIGHT: SIDEBAR INFO -->
+                <aside class="project-sidebar glass-panel">
+                    <h3>Détails du projet</h3>
+                    <ul>
+                        <li>
+                            <span class="label">Type</span>
+                            <span class="value">Projet Personnel</span>
+                        </li>
+                        <li>
+                            <span class="label">Matériel Son</span>
+                            <span class="value">Pioneer DDJ-FLX10</span>
+                        </li>
+                        <li>
+                            <span class="label">Logiciel Lumière</span>
+                            <span class="value">Sunlite Suite 3</span>
+                        </li>
+                        <li>
+                            <span class="label">Objectif</span>
+                            <span class="value">Stage Régie Lumière 2026</span>
+                        </li>
+                    </ul>
+                </aside>
+            </div>
+
+            <!-- VIDEO GALLERY -->
+            <section class="project-gallery">
+                <h2>Vidéo de démonstration</h2>
+                <div class="video-container glass-panel">
+                    <video
+                        controls
+                        src={video}
+                        style="width: 100%; border-radius: 8px;"></video>
+                </div>
+            </section>
+        </main>
+
+        <Footer />
+    </body>
+</html>
+
+<style>
+    .project-detail {
+        padding-top: 2rem;
+        padding-bottom: 4rem;
+    }
+
+    /* BREADCRUMB */
+    .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--color-text-light);
+        margin-bottom: 2rem;
+        font-weight: 500;
+        transition: color 0.2s;
+    }
+    .back-link:hover {
+        color: var(--color-primary);
+    }
+
+    /* HERO */
+    .project-hero {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        margin-bottom: 4rem;
+    }
+
+    .hero-info .badge {
+        background: rgba(79, 70, 229, 0.1);
+        color: var(--color-primary);
+        padding: 0.5rem 1rem;
+        border-radius: 50px;
+        font-weight: 700;
+        font-size: 0.8rem;
+        display: inline-block;
+        margin-bottom: 1rem;
+    }
+    .hero-info h1 {
+        font-size: 3rem;
+        margin: 0.5rem 0;
+        line-height: 1.1;
+    }
+    .project-date {
+        color: var(--color-text-light);
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+    .tag {
+        background: rgba(255, 255, 255, 0.5);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        padding: 0.3rem 0.8rem;
+        border-radius: 6px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: var(--color-text-main);
+    }
+
+    /* CONTENT GRID */
+    .content-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 2rem;
+        margin-bottom: 4rem;
+    }
+
+    .project-text {
+        padding: 2.5rem;
+        color: var(--color-text-main);
+        line-height: 1.8;
+    }
+    .project-text h2 {
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+    }
+    .project-text h3 {
+        font-size: 1.4rem;
+        margin: 2rem 0 1rem;
+        color: var(--color-primary-dark);
+    }
+    .project-text p {
+        margin-bottom: 1.5rem;
+    }
+
+    /* SIDEBAR */
+    .project-sidebar {
+        padding: 2rem;
+        height: fit-content;
+    }
+    .project-sidebar h3 {
+        font-size: 1.2rem;
+        margin-bottom: 1.5rem;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        padding-bottom: 0.5rem;
+    }
+    .project-sidebar ul {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    .project-sidebar li {
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+    }
+    .project-sidebar .label {
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        color: var(--color-text-soft);
+        font-weight: 700;
+    }
+    .project-sidebar .value {
+        font-size: 1rem;
+        font-weight: 500;
+    }
+
+    /* GALLERY */
+    .project-gallery h2 {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+    .video-container {
+        padding: 0;
+        overflow: hidden;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+        .content-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>

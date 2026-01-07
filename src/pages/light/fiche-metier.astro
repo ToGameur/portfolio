@@ -1,0 +1,278 @@
+---
+import BaseHead from "../../components/BaseHead.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
+import { Image } from "astro:assets";
+import ImageGallery from "../../components/ImageGallery.astro";
+
+// Import poster image
+import posterImg from "../../assets/portfolio_lum/PPP - Fiche Metier.png";
+---
+
+<!doctype html>
+<html lang="fr">
+    <head>
+        <BaseHead
+            title={`Fiche Métier - Régisseur Lumière | ${SITE_TITLE}`}
+            description="Recherche et conception d'une fiche métier pour le poste de Régisseur Lumière."
+        />
+    </head>
+    <body>
+        <!-- BACKGROUND -->
+        <div class="fixed-background">
+            <div class="blob purple"></div>
+            <div class="blob blue"></div>
+        </div>
+
+        <Header />
+
+        <main class="container project-detail">
+            <!-- BREADCRUMB -->
+            <a href="/light" class="back-link">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    ><line x1="19" y1="12" x2="5" y2="12"></line><polyline
+                        points="12 19 5 12 12 5"></polyline></svg
+                >
+                Retour aux projets
+            </a>
+
+            <!-- HERO PROJET -->
+            <section class="project-hero">
+                <div class="hero-info">
+                    <span class="badge">ORIENTATION / RECHERCHE</span>
+                    <h1>📃 Fiche Métier PPP 📃</h1>
+                    <p class="project-date">
+                        Projet Personnel et Professionnel
+                    </p>
+                    <div class="tags">
+                        <span class="tag">Régisseur Lumière</span>
+                        <span class="tag">Recherche</span>
+                        <span class="tag">Mise en page</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CONTENT GRID -->
+            <div class="content-grid">
+                <!-- LEFT: TEXT -->
+                <article class="project-text glass-panel">
+                    <h2>Le Projet</h2>
+                    <p>
+                        Dans le cadre de notre formation, nous avons réalisé une
+                        fiche métier afin de présenter le métier que nous
+                        souhaitons exercer. L’objectif était de faire des
+                        recherches approfondies, puis de concevoir une affiche
+                        pour expliquer ce métier de manière claire et visuelle.
+                    </p>
+                    <p>
+                        💡 J’ai choisi de travailler sur le métier de <strong
+                            >Régisseur Lumière</strong
+                        >, un domaine qui me passionne et dans lequel j’aimerais
+                        évoluer plus tard. Je suis à la recherche d’opportunités
+                        pour intégrer ce milieu professionnel et développer mes
+                        compétences dans ce domaine.
+                    </p>
+
+                    <h3>Ce que j'ai appris</h3>
+                    <p>Cette fiche m’a permis de mieux comprendre :</p>
+                    <ul>
+                        <li>✅ Les avantages et les inconvénients</li>
+                        <li>✅ Les compétences requises</li>
+                        <li>✅ Les formations à suivre</li>
+                    </ul>
+
+                    <p style="margin-top: 2rem;">
+                        Je vous laisse découvrir par vous-mêmes le métier de
+                        Régisseur Lumière via l'affiche ci-dessous !
+                    </p>
+                </article>
+
+                <!-- RIGHT: SIDEBAR INFO -->
+                <aside class="project-sidebar glass-panel">
+                    <h3>Détails du projet</h3>
+                    <ul>
+                        <li>
+                            <span class="label">Contexte</span>
+                            <span class="value">Projet PPP (BUT MMI)</span>
+                        </li>
+                        <li>
+                            <span class="label">Métier Visé</span>
+                            <span class="value">Régisseur Lumière</span>
+                        </li>
+                        <li>
+                            <span class="label">Compétences</span>
+                            <span class="value">Synthèse, Graphisme</span>
+                        </li>
+                    </ul>
+                </aside>
+            </div>
+
+            <!-- GALLERY -->
+            <section class="project-gallery">
+                <h2>Le Résultat</h2>
+                <div class="gallery-container">
+                    <ImageGallery images={[posterImg]} />
+                </div>
+            </section>
+        </main>
+
+        <Footer />
+    </body>
+</html>
+
+<style>
+    .project-detail {
+        padding-top: 2rem;
+        padding-bottom: 4rem;
+    }
+
+    /* BREADCRUMB */
+    .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--color-text-light);
+        margin-bottom: 2rem;
+        font-weight: 500;
+        transition: color 0.2s;
+    }
+    .back-link:hover {
+        color: var(--color-primary);
+    }
+
+    /* HERO */
+    .project-hero {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        margin-bottom: 4rem;
+    }
+
+    .hero-info .badge {
+        background: rgba(79, 70, 229, 0.1);
+        color: var(--color-primary);
+        padding: 0.5rem 1rem;
+        border-radius: 50px;
+        font-weight: 700;
+        font-size: 0.8rem;
+        display: inline-block;
+        margin-bottom: 1rem;
+    }
+    .hero-info h1 {
+        font-size: 3rem;
+        margin: 0.5rem 0;
+        line-height: 1.1;
+    }
+    .project-date {
+        color: var(--color-text-light);
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+    .tag {
+        background: rgba(255, 255, 255, 0.5);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        padding: 0.3rem 0.8rem;
+        border-radius: 6px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: var(--color-text-main);
+    }
+
+    /* CONTENT GRID */
+    .content-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 2rem;
+        margin-bottom: 4rem;
+    }
+
+    .project-text {
+        padding: 2.5rem;
+        color: var(--color-text-main);
+        line-height: 1.8;
+    }
+    .project-text h2 {
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+    }
+    .project-text h3 {
+        font-size: 1.4rem;
+        margin: 2rem 0 1rem;
+        color: var(--color-primary-dark);
+    }
+    .project-text p {
+        margin-bottom: 1.5rem;
+    }
+    .project-text ul {
+        list-style: none;
+        padding-left: 0;
+    }
+    .project-text li {
+        margin-bottom: 0.5rem;
+        font-size: 1.05rem;
+    }
+
+    /* SIDEBAR */
+    .project-sidebar {
+        padding: 2rem;
+        height: fit-content;
+    }
+    .project-sidebar h3 {
+        font-size: 1.2rem;
+        margin-bottom: 1.5rem;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        padding-bottom: 0.5rem;
+    }
+    .project-sidebar ul {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    .project-sidebar li {
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+    }
+    .project-sidebar .label {
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        color: var(--color-text-soft);
+        font-weight: 700;
+    }
+    .project-sidebar .value {
+        font-size: 1rem;
+        font-weight: 500;
+    }
+
+    /* GALLERY */
+    .project-gallery h2 {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+        .content-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>

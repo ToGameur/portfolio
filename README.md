@@ -1,62 +1,64 @@
-# Astro Starter Kit: Blog
+## Étapes de Mise en Place du Projet Astro 
 
-```sh
-npm create astro@latest -- --template blog
-```
+### 1. Prérequis et Initialisation
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+* **Installation des Prérequis**
+: Node.js et Astro.
+* **préparation du Projet Git**
+: Initialisation.
+***Création du Projet Astro**
+: Commande npm create astro@latest . Qui nous créer le projet avec
+la dernière version de Astro.
 
-Features:
+### 2. Résolution du Problème Git
+* **problème** : Erreur VS Code - 'git' n'est pas reconnu.
+* **Cause** : Git n'était pas installé.
+* **Solution**
+:**Installation de Git.
+* **Statut** : Liaison Git / VS Code - OK.
+### 3. Développement Local
+* **Démarrage du Serveur**: Commande npm run dev.
+* **ACCes**
+: localhost:4321.
+### 4. Déploiement et Pipeline
+* **Création de la Pipeline** : OK.
+* **Statut**
+: Job succeeded.
+### 5. Ajustement de la Configuration de Build
+Problème / À vérifier** : Documentation Astro.
+I
+![Erreur Astro](img/err astro.png)
+* **Action** : Forcer le dossier de sortie des statiques (build) à se nommer
+**"public ** au lieu
+de ** dist ** dans le processus de la pipeline.
 
-- ✅ Minimal styling (make it your own!)
-- ✅ 100/100 Lighthouse performance
-- ✅ SEO-friendly with canonical URLs and OpenGraph data
-- ✅ Sitemap support
-- ✅ RSS Feed support
-- ✅ Markdown & MDX support
+##* 6. Résultat Final
+* **Succès** : Accès à la page, publication automatique.
 
-## 🚀 Project Structure
 
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-├── public/
-├── src/
-│   ├── components/
-│   ├── content/
-│   ├── layouts/
-│   └── pages/
-├── astro.config.mjs
-├── README.md
-├── package.json
-└── tsconfig.json
-```
-
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-The `src/content/` directory contains "collections" of related Markdown and MDX documents. Use `getCollection()` to retrieve posts from `src/content/blog/`, and type-check your frontmatter using an optional schema. See [Astro's Content Collections docs](https://docs.astro.build/en/guides/content-collections/) to learn more.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Check out [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
-
-## Credit
-
-This theme is based off of the lovely [Bear Blog](https://github.com/HermanMartinus/bearblog/).
+### 2. Résolution du Problème Git
+* ﻿﻿**problème** : Erreur VS Code - 'git' n'est pas reconnu.
+* ﻿﻿**Cause** : Git n'était pas installé.
+* ﻿﻿**Solution**
+:**Installation de Git.
+* **Statut** : Liaison Git / VS Code - OK.
+### 3. Développement Local
+* ﻿﻿**Démarrage du Serveur**: Commande npm run dev.
+* ﻿﻿水*ACCes** : localhost:4321.
+### 4. Déploiement et Pipeline
+* **Création de la Pipeline** : OK.
+* **Statut**
+: Job succeeded.
+### 5. Ajustement de la Configuration de Build
+Problème / À vérifier** : Documentation Astro.
+I
+![Erreur Astro](img/err astro.png)
+* **Action** : Forcer le dossier de sortie des statiques (build) à se nommer
+**"public ** au lieu
+de ** dist ** dans le processus de la pipeline.
+33
+34
+35
+36
+##* 6. Résultat Final
+* **Succès** : Accès à la page, publication automatique.
