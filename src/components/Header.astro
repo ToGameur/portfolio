@@ -4,8 +4,8 @@ import { SITE_TITLE } from "../consts";
 
 const { pathname } = Astro.url;
 
-// --- ASTUCE IMPORTANTE ---
-const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+// Astro fournit toujours BASE_URL avec un `/` final
+const base = import.meta.env.BASE_URL;
 
 // Logique pour les menus actifs
 const isPortfolioActive =
@@ -13,6 +13,7 @@ const isPortfolioActive =
 	pathname.includes("/communication") ||
 	pathname.includes("/design") ||
 	pathname.includes("/light");
+
 const isAboutActive =
 	pathname.includes("/presentation") || pathname.includes("/cv");
 ---
@@ -20,48 +21,51 @@ const isAboutActive =
 <header class="header-animate">
 	<nav class="glass-panel">
 		<div class="logo">
-			<a href={base + "/"}>{SITE_TITLE}</a>
+			<a href={base}>{SITE_TITLE}</a>
 		</div>
 
 		<div class="internal-links">
-			<a
-				href={base + "/"}
-				class={pathname === base || pathname === base + "/"
-					? "active"
-					: ""}
-			>
+			<a href={base} class={pathname === base ? "active" : ""}>
 				Accueil
 			</a>
 
 			<div class="dropdown">
 				<button class={`dropbtn ${isAboutActive ? "active" : ""}`}>
 					A propos
-					<svg class="chevron" viewBox="0 0 20 20" fill="currentColor"
-						><path
+					<svg
+						class="chevron"
+						viewBox="0 0 20 20"
+						fill="currentColor"
+					>
+						<path
 							fill-rule="evenodd"
 							d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-							clip-rule="evenodd"></path></svg
-					>
+							clip-rule="evenodd"></path>
+					</svg>
 				</button>
+
 				<div class="dropdown-content">
 					<div class="glass-panel">
 						<a
-							href={base + "/presentation"}
+							href={`${base}presentation`}
 							class={pathname.includes("/presentation")
 								? "sub-active"
-								: ""}>Présentation</a
+								: ""}
 						>
+							Présentation
+						</a>
 						<a
-							href={base + "/cv"}
+							href={`${base}cv`}
 							class={pathname.includes("/cv") ? "sub-active" : ""}
-							>Mon CV</a
 						>
+							Mon CV
+						</a>
 					</div>
 				</div>
 			</div>
 
 			<HeaderLink
-				href={base + "/competences"}
+				href={`${base}competences`}
 				class={pathname.includes("/competences") ? "active" : ""}
 			>
 				Compétences
@@ -70,45 +74,58 @@ const isAboutActive =
 			<div class="dropdown">
 				<button class={`dropbtn ${isPortfolioActive ? "active" : ""}`}>
 					Portfolio
-					<svg class="chevron" viewBox="0 0 20 20" fill="currentColor"
-						><path
+					<svg
+						class="chevron"
+						viewBox="0 0 20 20"
+						fill="currentColor"
+					>
+						<path
 							fill-rule="evenodd"
 							d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-							clip-rule="evenodd"></path></svg
-					>
+							clip-rule="evenodd"></path>
+					</svg>
 				</button>
+
 				<div class="dropdown-content">
 					<div class="glass-panel">
 						<a
-							href={base + "/developpement"}
+							href={`${base}developpement`}
 							class={pathname.includes("/developpement")
 								? "sub-active"
-								: ""}>Dev WEB</a
+								: ""}
 						>
+							Dev WEB
+						</a>
 						<a
-							href={base + "/communication"}
+							href={`${base}communication`}
 							class={pathname.includes("/communication")
 								? "sub-active"
-								: ""}>Communication WEB</a
+								: ""}
 						>
+							Communication WEB
+						</a>
 						<a
-							href={base + "/design"}
+							href={`${base}design`}
 							class={pathname.includes("/design")
 								? "sub-active"
-								: ""}>Design Multimédia</a
+								: ""}
 						>
+							Design Multimédia
+						</a>
 						<a
-							href={base + "/light"}
+							href={`${base}light`}
 							class={pathname.includes("/light")
 								? "sub-active"
-								: ""}>Éclairage scénique</a
+								: ""}
 						>
+							Éclairage scénique
+						</a>
 					</div>
 				</div>
 			</div>
 
 			<HeaderLink
-				href={base + "/contact"}
+				href={`${base}contact`}
 				class={pathname.includes("/contact") ? "active" : ""}
 			>
 				Contact
@@ -123,26 +140,27 @@ const isAboutActive =
 			>
 				<svg
 					viewBox="0 0 24 24"
-					aria-hidden="true"
 					width="20"
 					height="20"
 					fill="currentColor"
-					><path
-						d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"
-					></path></svg
 				>
+					<path
+						d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"
+					></path>
+				</svg>
 			</a>
+
 			<a href="mailto:tom.marcheron@gmail.com" aria-label="Email">
 				<svg
 					viewBox="0 0 24 24"
-					aria-hidden="true"
 					width="20"
 					height="20"
 					fill="currentColor"
-					><path
-						d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"
-					></path></svg
 				>
+					<path
+						d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"
+					></path>
+				</svg>
 			</a>
 		</div>
 	</nav>
