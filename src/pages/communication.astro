@@ -6,19 +6,19 @@ import { Image } from "astro:assets";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 
 // Import images
-import afficheImg from "../assets/portfolio_com/affiche-theoricien.jpg";
-import auditImg from "../assets/portfolio_com/audit-temu.jpg";
-import coldallImg from "../assets/portfolio_com/communique-froide.jpg";
-import flexicomImg from "../assets/portfolio_com/agence-flexicom.jpg";
-import sportImg from "../assets/portfolio_com/articles-sport-ia.jpg";
-import comBg from "../assets/images/com.jpg";
+import comBg from "../assets/images/com.jpg"; // Header BG
+import affiche from "../assets/portfolio_com/affiche-theoricien/page-1.jpg";
+import coldall from "../assets/portfolio_com/communique-froide/page-1.jpg";
+import flexicom from "../assets/portfolio_com/agence-flexicom/page-1.jpg";
+import audit from "../assets/portfolio_com/audit-temu/page-1.jpg";
+import sport from "../assets/portfolio_com/articles-sport-ia/page-1.jpg";
 
 const projects = [
     {
         title: "Affiche Théoricien",
         description:
             "Création d'une affiche originale présentant le théoricien de la communication Edward T. Hall sous forme de menu de restaurant.",
-        image: afficheImg,
+        image: affiche,
         tags: ["Communication", "Print", "Mise en page"],
         href: "/communication/affiche-theoricien",
     },
@@ -26,7 +26,7 @@ const projects = [
         title: "Outils de Communication (ColdAll)",
         description:
             "Rédaction d'un communiqué et dossier de presse pour 'ColdAll', une entreprise innovante de réfrigérateurs connectés.",
-        image: coldallImg,
+        image: coldall,
         tags: ["Relations Presse", "Rédaction", "Stratégie"],
         href: "/communication/communique-froide",
     },
@@ -34,7 +34,7 @@ const projects = [
         title: "Gestion de Projet (Agence Flexicom)",
         description:
             "Définition de la stratégie et recrutement (profilage) pour une agence de communication fictive.",
-        image: flexicomImg,
+        image: flexicom,
         tags: ["Gestion de Projet", "Ressources Humaines", "Stratégie"],
         href: "/communication/agence-flexicom",
     },
@@ -42,7 +42,7 @@ const projects = [
         title: "Audit Communication (TEMU)",
         description:
             "Analyse complète de la stratégie webmarketing et éco-gestion de la plateforme TEMU.",
-        image: auditImg,
+        image: audit,
         tags: ["Audit", "Marketing Digital", "Eco-Gestion"],
         href: "/communication/audit-temu",
     },
@@ -50,7 +50,7 @@ const projects = [
         title: "Blog Sport & Tech",
         description:
             "Rédaction d'articles de fond sur l'impact de l'IA et de la technologie dans le football et le rugby.",
-        image: sportImg,
+        image: sport,
         tags: ["Rédaction Web", "Veille Technologique", "Journalisme"],
         href: "/communication/articles-sport-ia",
     },
@@ -162,6 +162,9 @@ const projects = [
         position: relative;
         z-index: 2;
         padding: 2rem;
+    }
+    .hero-content h1 {
+        color: white !important;
     }
     h1 {
         font-size: 3.5rem;

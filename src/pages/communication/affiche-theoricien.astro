@@ -3,12 +3,15 @@ import BaseHead from "../../components/BaseHead.astro";
 import Header from "../../components/Header.astro";
 import Footer from "../../components/Footer.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
-import { Image } from "astro:assets";
+import ImageGallery from "../../components/ImageGallery.astro";
 
-// Import images
-import afficheImg from "../../assets/portfolio_com/affiche-theoricien.jpg";
-
-const galleryImages = [afficheImg];
+// Import images (eagerly load all pages)
+// Import images (eagerly load all pages)
+const pages = Object.values(
+    import.meta.glob("../../assets/portfolio_com/affiche-theoricien/*.jpg", {
+        eager: true,
+    }),
+).map((file: any) => file.default);
 ---
 
 <!doctype html>
@@ -119,74 +122,12 @@ const galleryImages = [afficheImg];
             <!-- GALLERY -->
             <section class="project-gallery">
                 <h2>Le Résultat</h2>
-                <div class="gallery-grid single-image">
-                    {
-                        galleryImages.map((img, index) => (
-                            <div
-                                class="gallery-item glass-panel"
-                                data-index={index}
-                            >
-                                <Image
-                                    src={img}
-                                    alt={`Affiche Théoricien - Edward T. Hall`}
-                                />
-                            </div>
-                        ))
-                    }
+                <div class="gallery-container">
+                    <ImageGallery images={pages as any[]} />
                 </div>
             </section>
         </main>
-
-        <!-- LIGHTBOX OVERLAY -->
-        <div id="lightbox" class="lightbox">
-            <button class="close-btn">&times;</button>
-            <div class="lightbox-content">
-                <img id="lightbox-img" src="" alt="Agrandissement" />
-            </div>
-        </div>
-
         <Footer />
-
-        <script>
-            // LOGIQUE LIGHTBOX SIMPLE (Pas de navigation car 1 seule image pour l'instant)
-            const lightbox = document.getElementById("lightbox");
-            const lightboxImg = document.getElementById("lightbox-img");
-            const closeBtn = document.querySelector(".close-btn");
-
-            if (
-                lightbox &&
-                lightboxImg instanceof HTMLImageElement &&
-                closeBtn
-            ) {
-                const items = document.querySelectorAll(".gallery-item img");
-
-                items.forEach((img) => {
-                    if (img.parentElement) {
-                        img.parentElement.addEventListener("click", () => {
-                            if (img instanceof HTMLImageElement) {
-                                lightboxImg.src = img.src;
-                                lightbox.classList.add("active");
-                                document.body.style.overflow = "hidden";
-                            }
-                        });
-                    }
-                });
-
-                const closeLightbox = () => {
-                    lightbox.classList.remove("active");
-                    document.body.style.overflow = "auto";
-                };
-
-                closeBtn.addEventListener("click", closeLightbox);
-                lightbox.addEventListener("click", (e) => {
-                    if (e.target === lightbox) closeLightbox();
-                });
-
-                document.addEventListener("keydown", (e) => {
-                    if (e.key === "Escape") closeLightbox();
-                });
-            }
-        </script>
     </body>
 </html>
 

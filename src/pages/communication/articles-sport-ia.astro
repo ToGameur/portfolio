@@ -3,12 +3,19 @@ import BaseHead from "../../components/BaseHead.astro";
 import Header from "../../components/Header.astro";
 import Footer from "../../components/Footer.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
-import { Image } from "astro:assets";
+import ImageGallery from "../../components/ImageGallery.astro";
 
 // Import images
-import sportImg from "../../assets/portfolio_com/articles-sport-ia.jpg";
-
-const galleryImages = [sportImg];
+// Import images
+const pages = Object.entries(
+    import.meta.glob("../../assets/portfolio_com/articles-sport-ia/*.jpg", {
+        eager: true,
+    }),
+)
+    .sort(([pathA], [pathB]) =>
+        pathA.localeCompare(pathB, undefined, { numeric: true }),
+    )
+    .map(([, file]: [string, any]) => file.default);
 ---
 
 <!doctype html>
@@ -117,74 +124,13 @@ const galleryImages = [sportImg];
             <!-- GALLERY -->
             <section class="project-gallery">
                 <h2>Article "Coup de Cœur"</h2>
-                <div class="gallery-grid single-image">
-                    {
-                        galleryImages.map((img, index) => (
-                            <div
-                                class="gallery-item glass-panel"
-                                data-index={index}
-                            >
-                                <Image
-                                    src={img}
-                                    alt={`Article Blog Sport & IA`}
-                                />
-                            </div>
-                        ))
-                    }
+                <div class="gallery-container">
+                    <ImageGallery images={pages as any[]} />
                 </div>
             </section>
         </main>
 
-        <!-- LIGHTBOX OVERLAY -->
-        <div id="lightbox" class="lightbox">
-            <button class="close-btn">&times;</button>
-            <div class="lightbox-content">
-                <img id="lightbox-img" src="" alt="Agrandissement" />
-            </div>
-        </div>
-
         <Footer />
-
-        <script>
-            // LOGIQUE LIGHTBOX
-            const lightbox = document.getElementById("lightbox");
-            const lightboxImg = document.getElementById("lightbox-img");
-            const closeBtn = document.querySelector(".close-btn");
-
-            if (
-                lightbox &&
-                lightboxImg instanceof HTMLImageElement &&
-                closeBtn
-            ) {
-                const items = document.querySelectorAll(".gallery-item img");
-
-                items.forEach((img) => {
-                    if (img.parentElement) {
-                        img.parentElement.addEventListener("click", () => {
-                            if (img instanceof HTMLImageElement) {
-                                lightboxImg.src = img.src;
-                                lightbox.classList.add("active");
-                                document.body.style.overflow = "hidden";
-                            }
-                        });
-                    }
-                });
-
-                const closeLightbox = () => {
-                    lightbox.classList.remove("active");
-                    document.body.style.overflow = "auto";
-                };
-
-                closeBtn.addEventListener("click", closeLightbox);
-                lightbox.addEventListener("click", (e) => {
-                    if (e.target === lightbox) closeLightbox();
-                });
-
-                document.addEventListener("keydown", (e) => {
-                    if (e.key === "Escape") closeLightbox();
-                });
-            }
-        </script>
     </body>
 </html>
 

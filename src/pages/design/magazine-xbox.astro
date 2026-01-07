@@ -4,6 +4,7 @@ import Header from "../../components/Header.astro";
 import Footer from "../../components/Footer.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
 import { Image } from "astro:assets";
+import ImageGallery from "../../components/ImageGallery.astro";
 
 // Import extracted magazine images
 import page2 from "../../assets/portfolio_crea/magazine_page-2.jpg";
@@ -110,118 +111,11 @@ const magazineImages = [page2, page3];
             <!-- GALLERY -->
             <section class="project-gallery">
                 <h2>Le résultat</h2>
-                <div class="gallery-grid three-columns">
-                    {
-                        magazineImages.map((img, index) => (
-                            <div
-                                class="gallery-item glass-panel"
-                                data-index={index}
-                            >
-                                <Image
-                                    src={img}
-                                    alt={`Page ${index + 1} du Magazine Xbox`}
-                                />
-                            </div>
-                        ))
-                    }
+                <div class="gallery-container">
+                    <ImageGallery images={magazineImages} />
                 </div>
             </section>
         </main>
-
-        <!-- LIGHTBOX OVERLAY -->
-        <div id="lightbox" class="lightbox">
-            <button class="close-btn">&times;</button>
-            <button class="nav-btn prev-btn">&#10094;</button>
-            <button class="nav-btn next-btn">&#10095;</button>
-            <div class="lightbox-content">
-                <img id="lightbox-img" src="" alt="Agrandissement" />
-            </div>
-        </div>
-
-        <Footer />
-
-        <script>
-            // LOGIQUE LIGHTBOX
-            const lightbox = document.getElementById("lightbox");
-            const lightboxImg = document.getElementById("lightbox-img");
-            const closeBtn = document.querySelector(".close-btn");
-            const prevBtn = document.querySelector(".prev-btn");
-            const nextBtn = document.querySelector(".next-btn");
-
-            // Sécurisation TypeScript
-            if (
-                lightbox &&
-                lightboxImg instanceof HTMLImageElement &&
-                closeBtn &&
-                prevBtn &&
-                nextBtn
-            ) {
-                const items = document.querySelectorAll(".gallery-item img");
-                let currentIndex = 0;
-
-                // On récupère les URLs proprement
-                const imageUrls: string[] = [];
-                items.forEach((item) => {
-                    if (item instanceof HTMLImageElement) {
-                        imageUrls.push(item.src);
-                    }
-                });
-
-                // Ouvrir la lightbox
-                items.forEach((img, index) => {
-                    if (img.parentElement) {
-                        img.parentElement.addEventListener("click", () => {
-                            currentIndex = index;
-                            updateLightbox();
-                            lightbox.classList.add("active");
-                            document.body.style.overflow = "hidden"; // Bloque le scroll
-                        });
-                    }
-                });
-
-                // Fonction de fermeture
-                const closeLightbox = () => {
-                    lightbox.classList.remove("active");
-                    document.body.style.overflow = "auto";
-                };
-
-                // Listeners Fermeture
-                closeBtn.addEventListener("click", closeLightbox);
-                lightbox.addEventListener("click", (e) => {
-                    if (e.target === lightbox) closeLightbox();
-                });
-
-                // Navigation
-                const updateLightbox = () => {
-                    if (imageUrls[currentIndex]) {
-                        lightboxImg.src = imageUrls[currentIndex];
-                    }
-                };
-
-                const showNext = () => {
-                    currentIndex = (currentIndex + 1) % imageUrls.length;
-                    updateLightbox();
-                };
-
-                const showPrev = () => {
-                    currentIndex =
-                        (currentIndex - 1 + imageUrls.length) %
-                        imageUrls.length;
-                    updateLightbox();
-                };
-
-                nextBtn.addEventListener("click", showNext);
-                prevBtn.addEventListener("click", showPrev);
-
-                // Clavier
-                document.addEventListener("keydown", (e) => {
-                    if (!lightbox.classList.contains("active")) return;
-                    if (e.key === "Escape") closeLightbox();
-                    if (e.key === "ArrowRight") showNext();
-                    if (e.key === "ArrowLeft") showPrev();
-                });
-            }
-        </script>
     </body>
 </html>
 

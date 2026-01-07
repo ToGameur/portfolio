@@ -1,0 +1,302 @@
+---
+import { Image } from "astro:assets";
+
+interface Props {
+    images: ImageMetadata[];
+}
+
+const { images } = Astro.props;
+---
+
+<div class="gallery-wrapper">
+    <div class="gallery-grid">
+        {
+            images.map((img, index) => (
+                <div class="gallery-item glass-panel" data-index={index}>
+                    <Image
+                        src={img}
+                        alt={`Page ${index + 1}`}
+                        class="gallery-preview"
+                    />
+                    <div class="click-hint">Agrandir</div>
+                </div>
+            ))
+        }
+    </div>
+
+    <!-- Lightbox -->
+    <div class="lightbox">
+        <button class="close-btn">&times;</button>
+        <button class="nav-btn prev-btn">&#10094;</button>
+        <button class="nav-btn next-btn">&#10095;</button>
+        <div class="lightbox-content">
+            <img class="lightbox-img" src="" alt="Zoom" />
+            <div class="page-indicator">
+                <span class="current-page">1</span> / {images.length}
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Robust logic using dataset for image sources
+    const galleries = document.querySelectorAll(".gallery-wrapper");
+
+    galleries.forEach((wrapper) => {
+        const grid = wrapper.querySelector(".gallery-grid");
+        if (!grid) return;
+
+        // Collect URLs from the rendered images in the grid
+        const images = Array.from(
+            grid.querySelectorAll("img.gallery-preview"),
+        ).map((img) => img.getAttribute("src"));
+
+        initLightbox(wrapper, images);
+    });
+
+    function initLightbox(wrapper, images) {
+        const lightbox = wrapper.querySelector(".lightbox");
+        const lightboxImg = wrapper.querySelector(".lightbox-img");
+        const closeBtn = wrapper.querySelector(".close-btn");
+        const prevBtn = wrapper.querySelector(".prev-btn");
+        const nextBtn = wrapper.querySelector(".next-btn");
+        const pageIndicator = wrapper.querySelector(".current-page");
+
+        if (!lightbox || !lightboxImg) return;
+
+        let currentIndex = 0;
+
+        const updateLightbox = () => {
+            // Remove query params if any from Astro optimization to ensure clear reading if needed, but src is fine
+            // Actually Astro processed src is fine.
+            lightboxImg.src = images[currentIndex];
+            if (pageIndicator) pageIndicator.textContent = currentIndex + 1;
+        };
+
+        const open = (index) => {
+            currentIndex = index;
+            updateLightbox();
+            lightbox.classList.add("active");
+            document.body.style.overflow = "hidden";
+        };
+
+        const close = () => {
+            lightbox.classList.remove("active");
+            document.body.style.overflow = "auto";
+        };
+
+        const next = () => {
+            currentIndex = (currentIndex + 1) % images.length;
+            updateLightbox();
+        };
+
+        const prev = () => {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            updateLightbox();
+        };
+
+        // Event Listeners
+        wrapper.querySelectorAll(".gallery-item").forEach((item, idx) => {
+            item.addEventListener("click", () => open(idx));
+        });
+
+        closeBtn?.addEventListener("click", close);
+        nextBtn?.addEventListener("click", (e) => {
+            e.stopPropagation();
+            next();
+        });
+        prevBtn?.addEventListener("click", (e) => {
+            e.stopPropagation();
+            prev();
+        });
+
+        lightbox.addEventListener("click", (e) => {
+            if (e.target === lightbox) close();
+        });
+
+        document.addEventListener("keydown", (e) => {
+            if (!lightbox.classList.contains("active")) return;
+            if (e.key === "Escape") close();
+            if (e.key === "ArrowRight") next();
+            if (e.key === "ArrowLeft") prev();
+        });
+    }
+</script>
+
+<style>
+    .gallery-wrapper {
+        width: 100%;
+        position: relative;
+    }
+
+    .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+    }
+
+    .gallery-item {
+        position: relative;
+        cursor: pointer;
+        border-radius: 12px;
+        overflow: hidden;
+        transition:
+            transform 0.3s ease,
+            box-shadow 0.3s ease;
+        background: white;
+    }
+
+    .gallery-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .gallery-preview {
+        width: 100%;
+        height: auto;
+        display: block;
+        transition: filter 0.3s ease;
+    }
+
+    .gallery-item:hover .gallery-preview {
+        filter: brightness(0.9);
+    }
+
+    .click-hint {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 1rem;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+        color: white;
+        text-align: center;
+        opacity: 0;
+        transform: translateY(10px);
+        transition: all 0.3s ease;
+        font-size: 0.9rem;
+        font-weight: 500;
+        pointer-events: none;
+    }
+
+    .gallery-item:hover .click-hint {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* LIGHTBOX */
+    .lightbox {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.95);
+        z-index: 10000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+        backdrop-filter: blur(5px);
+    }
+
+    .lightbox.active {
+        opacity: 1;
+        pointer-events: all;
+    }
+
+    .lightbox-content {
+        max-width: 95%;
+        max-height: 95vh;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .lightbox-img {
+        max-width: 100%;
+        max-height: 90vh;
+        border-radius: 4px;
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+        object-fit: contain;
+    }
+
+    .page-indicator {
+        margin-top: 1rem;
+        color: white;
+        font-size: 1.1rem;
+        background: rgba(255, 255, 255, 0.1);
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+    }
+
+    .close-btn {
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 3.5rem;
+        cursor: pointer;
+        z-index: 10001;
+        line-height: 0.8;
+        transition: transform 0.2s;
+    }
+
+    .close-btn:hover {
+        transform: scale(1.1);
+        color: #22d3ee;
+    }
+
+    .nav-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+        border: none;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        font-size: 2rem;
+        cursor: pointer;
+        transition: all 0.2s;
+        z-index: 10001;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .nav-btn:hover {
+        background: rgba(255, 255, 255, 0.3);
+        transform: translateY(-50%) scale(1.1);
+    }
+
+    .prev-btn {
+        left: 30px;
+    }
+    .next-btn {
+        right: 30px;
+    }
+
+    @media (max-width: 768px) {
+        .nav-btn {
+            width: 40px;
+            height: 40px;
+            font-size: 1.5rem;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        .prev-btn {
+            left: 10px;
+        }
+        .next-btn {
+            right: 10px;
+        }
+        .close-btn {
+            top: 10px;
+            right: 10px;
+            font-size: 3rem;
+        }
+    }
+</style>

@@ -4,6 +4,7 @@ import Header from "../../components/Header.astro";
 import Footer from "../../components/Footer.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
 import { Image } from "astro:assets";
+import ImageGallery from "../../components/ImageGallery.astro";
 
 // Import images
 import mainImg from "../../assets/portfolio_dev/satete.png";
@@ -146,118 +147,13 @@ const galleryImages = [img1, img2, img3, img4, img5, img6, img7];
             <!-- GALLERY -->
             <section class="project-gallery">
                 <h2>Galerie du projet</h2>
-                <div class="gallery-grid">
-                    {
-                        galleryImages.map((img, index) => (
-                            <div
-                                class="gallery-item glass-panel"
-                                data-index={index}
-                            >
-                                <Image
-                                    src={img}
-                                    alt={`Capture d'écran du site Fleuriste ${index + 1}`}
-                                />
-                            </div>
-                        ))
-                    }
+                <div class="gallery-container">
+                    <ImageGallery images={galleryImages} />
                 </div>
             </section>
         </main>
 
-        <!-- LIGHTBOX OVERLAY -->
-        <div id="lightbox" class="lightbox">
-            <button class="close-btn">&times;</button>
-            <button class="nav-btn prev-btn">&#10094;</button>
-            <button class="nav-btn next-btn">&#10095;</button>
-            <div class="lightbox-content">
-                <img id="lightbox-img" src="" alt="Agrandissement" />
-            </div>
-        </div>
-
         <Footer />
-
-        <script>
-            // LOGIQUE LIGHTBOX
-            const lightbox = document.getElementById("lightbox");
-            const lightboxImg = document.getElementById("lightbox-img");
-            const closeBtn = document.querySelector(".close-btn");
-            const prevBtn = document.querySelector(".prev-btn");
-            const nextBtn = document.querySelector(".next-btn");
-
-            // Sécurisation TypeScript
-            if (
-                lightbox &&
-                lightboxImg instanceof HTMLImageElement &&
-                closeBtn &&
-                prevBtn &&
-                nextBtn
-            ) {
-                const items = document.querySelectorAll(".gallery-item img");
-                let currentIndex = 0;
-
-                // On récupère les URLs proprement
-                const imageUrls: string[] = [];
-                items.forEach((item) => {
-                    if (item instanceof HTMLImageElement) {
-                        imageUrls.push(item.src);
-                    }
-                });
-
-                // Ouvrir la lightbox
-                items.forEach((img, index) => {
-                    if (img.parentElement) {
-                        img.parentElement.addEventListener("click", () => {
-                            currentIndex = index;
-                            updateLightbox();
-                            lightbox.classList.add("active");
-                            document.body.style.overflow = "hidden"; // Bloque le scroll
-                        });
-                    }
-                });
-
-                // Fonction de fermeture
-                const closeLightbox = () => {
-                    lightbox.classList.remove("active");
-                    document.body.style.overflow = "auto";
-                };
-
-                // Listeners Fermeture
-                closeBtn.addEventListener("click", closeLightbox);
-                lightbox.addEventListener("click", (e) => {
-                    if (e.target === lightbox) closeLightbox();
-                });
-
-                // Navigation
-                const updateLightbox = () => {
-                    if (imageUrls[currentIndex]) {
-                        lightboxImg.src = imageUrls[currentIndex];
-                    }
-                };
-
-                const showNext = () => {
-                    currentIndex = (currentIndex + 1) % imageUrls.length;
-                    updateLightbox();
-                };
-
-                const showPrev = () => {
-                    currentIndex =
-                        (currentIndex - 1 + imageUrls.length) %
-                        imageUrls.length;
-                    updateLightbox();
-                };
-
-                nextBtn.addEventListener("click", showNext);
-                prevBtn.addEventListener("click", showPrev);
-
-                // Clavier
-                document.addEventListener("keydown", (e) => {
-                    if (!lightbox.classList.contains("active")) return;
-                    if (e.key === "Escape") closeLightbox();
-                    if (e.key === "ArrowRight") showNext();
-                    if (e.key === "ArrowLeft") showPrev();
-                });
-            }
-        </script>
     </body>
 </html>
 
@@ -408,103 +304,6 @@ const galleryImages = [img1, img2, img3, img4, img5, img6, img7];
         font-weight: 500;
     }
 
-    /* GALLERY */
-    .project-gallery h2 {
-        font-size: 2rem;
-        margin-bottom: 2rem;
-        text-align: center;
-    }
-    .gallery-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 1.5rem;
-    }
-    .gallery-item {
-        padding: 0;
-        overflow: hidden;
-        transition: transform 0.3s ease;
-        cursor: pointer; /* Indique que c'est cliquable */
-    }
-    .gallery-item:hover {
-        transform: scale(1.02);
-    }
-    .gallery-item img {
-        width: 100%;
-        height: auto;
-        display: block;
-    }
-
-    /* LIGHTBOX STYLES */
-    .lightbox {
-        position: fixed;
-        inset: 0;
-        background: rgba(0, 0, 0, 0.9);
-        z-index: 1000;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.3s ease;
-    }
-    .lightbox.active {
-        opacity: 1;
-        pointer-events: all;
-    }
-
-    .lightbox-content {
-        max-width: 90%;
-        max-height: 90vh;
-        position: relative;
-    }
-
-    .lightbox-content img {
-        max-width: 100%;
-        max-height: 90vh;
-        border-radius: 8px;
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-    }
-
-    .close-btn {
-        position: absolute;
-        top: 20px;
-        right: 20px;
-        background: none;
-        border: none;
-        color: white;
-        font-size: 3rem;
-        cursor: pointer;
-        z-index: 1001;
-        transition: transform 0.2s;
-    }
-    .close-btn:hover {
-        transform: scale(1.1);
-        color: var(--color-primary);
-    }
-
-    .nav-btn {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        background: rgba(255, 255, 255, 0.1);
-        color: white;
-        border: none;
-        padding: 1rem;
-        font-size: 2rem;
-        cursor: pointer;
-        border-radius: 50%;
-        transition: all 0.2s;
-    }
-    .nav-btn:hover {
-        background: rgba(255, 255, 255, 0.3);
-    }
-    .prev-btn {
-        left: 20px;
-    }
-    .next-btn {
-        right: 20px;
-    }
-
     /* RESPONSIVE */
     @media (max-width: 900px) {
         .content-grid {
@@ -512,10 +311,6 @@ const galleryImages = [img1, img2, img3, img4, img5, img6, img7];
         }
         .hero-image {
             height: 300px;
-        }
-        .nav-btn {
-            font-size: 1.5rem;
-            padding: 0.5rem;
         }
     }
 </style>

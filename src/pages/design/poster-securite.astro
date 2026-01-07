@@ -4,6 +4,7 @@ import Header from "../../components/Header.astro";
 import Footer from "../../components/Footer.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
 import { Image } from "astro:assets";
+import ImageGallery from "../../components/ImageGallery.astro";
 
 // Import poster image
 import posterImg from "../../assets/portfolio_crea/Affiche_secu_r.png";
@@ -110,66 +111,13 @@ import posterImg from "../../assets/portfolio_crea/Affiche_secu_r.png";
             <!-- POSTER DISPLAY -->
             <section class="project-gallery">
                 <h2>L'Affiche Finale</h2>
-                <div class="gallery-grid single-image">
-                    <div class="gallery-item glass-panel">
-                        <Image
-                            src={posterImg}
-                            alt="Affiche Sécurité Routière - Alcool au volant"
-                            id="poster-trigger"
-                        />
-                    </div>
+                <div class="gallery-container">
+                    <ImageGallery images={[posterImg]} />
                 </div>
             </section>
         </main>
 
-        <!-- LIGHTBOX OVERLAY -->
-        <div id="lightbox" class="lightbox">
-            <button class="close-btn">&times;</button>
-            <div class="lightbox-content">
-                <img id="lightbox-img" src="" alt="Agrandissement" />
-            </div>
-        </div>
-
         <Footer />
-
-        <script>
-            // LOGIQUE LIGHTBOX SIMPLE
-            const lightbox = document.getElementById("lightbox");
-            const lightboxImg = document.getElementById("lightbox-img");
-            const closeBtn = document.querySelector(".close-btn");
-            const trigger = document.getElementById("poster-trigger");
-
-            if (
-                lightbox &&
-                lightboxImg instanceof HTMLImageElement &&
-                closeBtn &&
-                trigger instanceof HTMLImageElement
-            ) {
-                trigger.addEventListener("click", () => {
-                    lightboxImg.src = trigger.src;
-                    lightbox.classList.add("active");
-                    document.body.style.overflow = "hidden";
-                });
-
-                const closeLightbox = () => {
-                    lightbox.classList.remove("active");
-                    document.body.style.overflow = "auto";
-                };
-
-                closeBtn.addEventListener("click", closeLightbox);
-                lightbox.addEventListener("click", (e) => {
-                    if (e.target === lightbox) closeLightbox();
-                });
-
-                document.addEventListener("keydown", (e) => {
-                    if (
-                        e.key === "Escape" &&
-                        lightbox.classList.contains("active")
-                    )
-                        closeLightbox();
-                });
-            }
-        </script>
     </body>
 </html>
 
@@ -311,103 +259,6 @@ import posterImg from "../../assets/portfolio_crea/Affiche_secu_r.png";
         font-weight: 500;
     }
 
-    /* GALLERY */
-    .project-gallery h2 {
-        font-size: 2rem;
-        margin-bottom: 2rem;
-        text-align: center;
-    }
-    .gallery-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 1.5rem;
-    }
-    .gallery-item {
-        padding: 0;
-        overflow: hidden;
-        transition: transform 0.3s ease;
-        cursor: pointer; /* Indique que c'est cliquable */
-    }
-    .gallery-item:hover {
-        transform: scale(1.02);
-    }
-    .gallery-item img {
-        width: 100%;
-        height: auto;
-        display: block;
-    }
-
-    /* LIGHTBOX STYLES */
-    .lightbox {
-        position: fixed;
-        inset: 0;
-        background: rgba(0, 0, 0, 0.9);
-        z-index: 1000;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.3s ease;
-    }
-    .lightbox.active {
-        opacity: 1;
-        pointer-events: all;
-    }
-
-    .lightbox-content {
-        max-width: 90%;
-        max-height: 90vh;
-        position: relative;
-    }
-
-    .lightbox-content img {
-        max-width: 100%;
-        max-height: 90vh;
-        border-radius: 8px;
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-    }
-
-    .close-btn {
-        position: absolute;
-        top: 20px;
-        right: 20px;
-        background: none;
-        border: none;
-        color: white;
-        font-size: 3rem;
-        cursor: pointer;
-        z-index: 1001;
-        transition: transform 0.2s;
-    }
-    .close-btn:hover {
-        transform: scale(1.1);
-        color: var(--color-primary);
-    }
-
-    .nav-btn {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        background: rgba(255, 255, 255, 0.1);
-        color: white;
-        border: none;
-        padding: 1rem;
-        font-size: 2rem;
-        cursor: pointer;
-        border-radius: 50%;
-        transition: all 0.2s;
-    }
-    .nav-btn:hover {
-        background: rgba(255, 255, 255, 0.3);
-    }
-    .prev-btn {
-        left: 20px;
-    }
-    .next-btn {
-        right: 20px;
-    }
-
     /* RESPONSIVE */
     @media (max-width: 900px) {
         .content-grid {
@@ -416,14 +267,5 @@ import posterImg from "../../assets/portfolio_crea/Affiche_secu_r.png";
         .hero-image {
             height: 300px;
         }
-        .nav-btn {
-            font-size: 1.5rem;
-            padding: 0.5rem;
-        }
-    }
-    .gallery-grid.single-image {
-        grid-template-columns: 1fr;
-        max-width: 800px;
-        margin: 0 auto;
     }
 </style>

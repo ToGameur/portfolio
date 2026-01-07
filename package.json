@@ -9,10 +9,14 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/check": "^0.9.6",
     "@astrojs/mdx": "^4.3.12",
     "@astrojs/rss": "^4.0.14",
     "@astrojs/sitemap": "^3.6.0",
     "astro": "^5.16.4",
-    "sharp": "^0.34.3"
+    "canvas": "^3.2.0",
+    "pdfjs-dist": "^3.11.174",
+    "sharp": "^0.34.3",
+    "typescript": "^5.9.3"
   }
 }
